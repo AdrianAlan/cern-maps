@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="cern_black">#2e2e2e</color>
+    <color name="cern_white">#ebebeb</color>
+    <color name="cern_grey">#454545</color>
+    <color name="cern_blue">#22529e</color>
+    <color name="cern_blue_shadow">#8cabdd</color>
+    <color name="cern_greyed">#cdcdcd</color>
+    <color name="trans">#00000000 </color>
+
+</resources>

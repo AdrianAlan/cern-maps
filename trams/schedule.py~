@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+f = open('schedule', 'r')
+tram = 'Y1'
+
+answer = '"trams": ['
+for line in f.read().split('\n'):
+    if line:
+        hour = line.split('h')[0]
+        minutes = line.split('h')[1]
+        for min in minutes.split('\t'):
+            if not min.strip() == '':
+                answer += '{"line":"' + tram + '","time":"0:'+hour+':'+min.strip()+'"},'
+answer += '\b]'
+
+print answer

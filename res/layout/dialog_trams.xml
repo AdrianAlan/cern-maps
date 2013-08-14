@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/boxLogo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:background="@color/trans"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/tram" />
+
+    <TextView
+        android:id="@+id/boxTitle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/boxLogo"
+        android:background="@color/trans"
+        android:gravity="center_vertical"
+        android:text="@string/trams"
+        android:textColor="@color/cern_white"
+        android:textSize="22sp" />
+
+    <RelativeLayout
+        android:id="@+id/layout18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/boxTitle"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/trams_border" >
+
+        <ImageView
+            android:id="@+id/imageView18"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignLeft="@+id/boxLogo"
+            android:layout_marginLeft="20dp"
+            android:contentDescription="@string/image"
+            android:src="@drawable/tram18" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@+id/boxTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageView18"
+            android:gravity="center_vertical|left"
+            android:text="@string/BelAir"
+            android:textColor="@color/cern_white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/box18"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@+id/imageView18"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical|left"
+            android:text="@string/next_trams"
+            android:textColor="@color/cern_white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutY1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout18"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/trams_border" >
+
+        <ImageView
+            android:id="@+id/imageViewY1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignLeft="@+id/boxLogo"
+            android:layout_marginLeft="20dp"
+            android:contentDescription="@string/image"
+            android:src="@drawable/tramy" />
+
+        <TextView
+            android:id="@+id/textViewY1"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@+id/boxTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageViewY1"
+            android:gravity="center_vertical|left"
+            android:text="@string/ValThoiry"
+            android:textColor="@color/cern_white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/boxY1"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@+id/imageViewY1"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical|left"
+            android:text="@string/next_trams"
+            android:textColor="@color/cern_white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutY1"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/trams_border" >
+
+        <ImageView
+            android:id="@+id/imageViewY2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignLeft="@+id/boxLogo"
+            android:layout_marginLeft="20dp"
+            android:contentDescription="@string/image"
+            android:src="@drawable/tramy" />
+
+        <TextView
+            android:id="@+id/textViewY2"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@+id/boxTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageViewY2"
+            android:gravity="center_vertical|left"
+            android:text="@string/FerneyVoltaireMairie"
+            android:textColor="@color/cern_white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/boxY2"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@+id/imageViewY2"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical|left"
+            android:text="@string/next_trams"
+            android:textColor="@color/cern_white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

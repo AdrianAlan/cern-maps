@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/map"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cern_greyed"
+    android:orientation="vertical" >
+
+    <WebView
+        android:id="@+id/mapWebView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_toEndOf="@+id/map"
+        android:scrollbars="none" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:layout_width="44dip"
+        android:layout_height="44dip"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/locate_me" >
+
+        <LinearLayout
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/locatemebg" >
+
+            <ImageButton
+                android:id="@+id/imageButtonLocateMe"
+                android:layout_width="44dip"
+                android:layout_height="44dip"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/locateme"
+                android:src="@drawable/location" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@drawable/searchbg" >
+
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="0dip"
+            android:layout_height="40dip"
+            android:layout_margin="5dip"
+            android:layout_weight="1"
+            android:background="@drawable/searchbg"
+            android:hint="@string/search"
+            android:padding="3dip"
+            android:singleLine="true"
+            android:fitsSystemWindows="true"
+            android:inputType="number"
+            android:textColor="@color/cern_white" >	
+            <requestFocus />
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/imageButtonSearch"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_margin="5dip"
+            android:background="@drawable/selector_search"
+            android:contentDescription="@string/locateme"
+            android:src="@drawable/search" />
+    </LinearLayout>
+
+</RelativeLayout>

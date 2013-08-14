@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/trans">
+
+    <ImageView
+        android:id="@+id/boxLogo"
+        android:layout_marginLeft="10dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:background="@color/trans"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/boxTitle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/boxLogo"
+        android:background="@color/trans"
+        android:gravity="center_vertical"
+        android:text="@string/about"
+        android:textColor="@color/cern_white"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/boxInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/boxLogo"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="@string/app_info"
+        android:textColor="@color/cern_white"
+        android:textSize="13sp" />
+</RelativeLayout>
