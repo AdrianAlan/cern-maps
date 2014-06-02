@@ -73,7 +73,7 @@ public class StartActivity extends Activity {
 	protected void searchForMe() {
 		if (editTextSearch.getText().toString().equals(null)
 				|| editTextSearch.getText().toString().equals("")) {
-			Toast.makeText(getApplicationContext(), "What? Type in something!",
+			Toast.makeText(getApplicationContext(), R.string.onEmptySearch,
 					Toast.LENGTH_LONG).show();
 		} else {
 			double[] search = getPositionOfTheBuildingFromJSON(editTextSearch

@@ -52,9 +52,9 @@ public final class R {
         public static final int boxY2=0x7f08000e;
         public static final int buttonInfo=0x7f08000f;
         public static final int buttonTrams=0x7f080011;
-        public static final int editTextSearch=0x7f080016;
+        public static final int editTextSearch=0x7f080017;
         public static final int imageButtonLocateMe=0x7f080015;
-        public static final int imageButtonSearch=0x7f080017;
+        public static final int imageButtonSearch=0x7f080018;
         public static final int imageView18=0x7f080005;
         public static final int imageViewY1=0x7f080009;
         public static final int imageViewY2=0x7f08000c;
@@ -64,6 +64,8 @@ public final class R {
         public static final int map=0x7f080012;
         public static final int mapWebView=0x7f080013;
         public static final int progressBar=0x7f080014;
+        public static final int searchLayout=0x7f080016;
+        public static final int textOpenStreetMapsContributors=0x7f080019;
         public static final int textView18=0x7f080006;
         public static final int textViewY1=0x7f08000a;
         public static final int textViewY2=0x7f08000d;
@@ -79,16 +81,16 @@ public final class R {
         public static final int BelAir=0x7f06000a;
         public static final int FerneyVoltaireMairie=0x7f06000c;
         public static final int ValThoiry=0x7f06000b;
-        public static final int about=0x7f060003;
-        public static final int action_settings=0x7f060001;
-        public static final int app_info=0x7f060007;
+        public static final int about=0x7f060001;
         public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f060002;
+        public static final int copyright=0x7f060007;
         public static final int image=0x7f060009;
-        public static final int locateme=0x7f060005;
+        public static final int locateme=0x7f060003;
         public static final int next_trams=0x7f06000d;
-        public static final int schedule=0x7f060004;
-        public static final int search=0x7f060006;
+        public static final int onEmptySearch=0x7f060006;
+        public static final int schedule=0x7f060002;
+        public static final int search=0x7f060004;
+        public static final int textOpenStreetMapsContributors=0x7f060005;
         public static final int trams=0x7f060008;
     }
     public static final class style {

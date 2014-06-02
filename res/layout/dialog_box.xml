@@ -36,7 +36,7 @@
         android:layout_marginRight="4dp"
         android:layout_marginTop="4dp"
         android:gravity="center"
-        android:text="@string/app_info"
+        android:text="@string/copyright"
         android:textColor="@color/cern_white"
         android:textSize="13sp" />
 </RelativeLayout>

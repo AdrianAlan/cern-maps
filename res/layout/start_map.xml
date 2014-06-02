@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
-        android:layout_toEndOf="@+id/map"
         android:scrollbars="none" />
+    <!-- android:layout_toEndOf="@+id/map" -->
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -49,6 +49,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="50dip"
         android:layout_alignParentBottom="true"
@@ -64,12 +65,13 @@
             android:layout_margin="5dip"
             android:layout_weight="1"
             android:background="@drawable/searchbg"
+            android:fitsSystemWindows="true"
             android:hint="@string/search"
+            android:inputType="number"
             android:padding="3dip"
             android:singleLine="true"
-            android:fitsSystemWindows="true"
-            android:inputType="number"
-            android:textColor="@color/cern_white" >	
+            android:textColor="@color/cern_white" >
+
             <requestFocus />
         </EditText>
 
@@ -83,5 +85,19 @@
             android:contentDescription="@string/locateme"
             android:src="@drawable/search" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textOpenStreetMapsContributors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/searchLayout"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@color/cern_white"
+        android:text="@string/textOpenStreetMapsContributors"
+        android:textColor="@color/cern_black"
+        android:textSize="12sp" />
 
 </RelativeLayout>

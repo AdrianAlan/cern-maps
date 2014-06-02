@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CERNmaps</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">CERN Maps</string>
     <string name="about">About</string>
     <string name="schedule">Schedule</string>
     <string name="locateme">Locate Me</string>
     <string name="search">Search&#8230;</string>
-    <string name="app_info">© 2013 Adrian Alan Pol, &lt;adrianalan.pol@gmail.com&gt; and Andrea Giardini , &lt;contact@andreagiardini.com&gt; on the beerware licence. As long as you retain this notice you can do whatever you want with this stuff. If we meet some day, and you think this stuff is worth it, you can buy us a beer in return.</string>
-    <string name="trams">CERN stop</string>
-    <string name="image">img</string>
+    <string name="textOpenStreetMapsContributors">© OpenStreetMap contributors</string>
+    <string name="onEmptySearch">Please type in something!</string>
+    <string name="copyright">© 2014 Created by &lt;adrianalan.pol@gmail.com&gt; and &lt;contact@andreagiardini.com&gt;. This software contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL). See more at www.openstreetmap.org/copyright</string>
+    <string name="trams">CERN</string>
+    <string name="image">IMG</string>
     <string name="BelAir">Bel-Air</string>
     <string name="ValThoiry">Val-Thoiry</string>
     <string name="FerneyVoltaireMairie">Ferney-Voltaire-Mairie</string>
