@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+import ch.cern.maps.geo.LocationService;
+import ch.cern.maps.geo.OrientationService;
 import ch.cern.maps.services.*;
 import ch.cern.maps.utils.*;
 import ch.cern.www.R;
@@ -27,19 +29,24 @@ import android.widget.Toast;
 import android.widget.ZoomButtonsController;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
+import android.app.ActivityManager.RunningServiceInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Picture;
 
 @SuppressWarnings("deprecation")
 public class StartActivity extends Activity {
 
-	private TextView headerTitle, editTextSearch;
+	private TextView editTextSearch;
 	private ImageButton imageButtonLocateMe, imageButtonInfo, imageButtonTrams,
 			imageButtonSearch;
 	private String t18, tY1, tY2;
 	private WebView webView;
 	private ProgressBar progressBar;
-	private LocationService myLocation;
 	private MapScroller myMapScroll;
 	private Random diceRoller = new Random();
 	private int[] myPosition = { -1, -1 };
@@ -47,18 +54,39 @@ public class StartActivity extends Activity {
 	private int[] scrollPosition = { -1, -1 };
 	private int currentScale = 150;
 
+	private double mLatitude, mLongitude, mAccuracy, mAzimuth;
+	private boolean mProviders = false;
+	private Handler uCantHandleThat = new Handler();
+	private Intent mIntentOrientation, mIntentLocation;
+	private SensorsReceiver mStateReceiver;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_start);
 
-		initView();
+		progressBar = (ProgressBar) findViewById(R.id.progressBar);
+		webView = (WebView) findViewById(R.id.mapWebView);
+		
+		mIntentOrientation = new Intent(getApplicationContext(),
+				OrientationService.class);
+		mIntentLocation = new Intent(getApplicationContext(),
+				LocationService.class);
+		
+		setWebView();
 		setInfoBox();
 		setLocateMeFuction();
 		setSearchBuilding();
+		initializeVariables();
 	}
-
+	
+	private void initializeVariables() {
+		mLatitude = 0; 
+		mLongitude = 0; mAccuracy = 0; mAzimuth = 0;
+		
+	}
+	
 	private void setSearchBuilding() {
 		imageButtonSearch = (ImageButton) findViewById(R.id.imageButtonSearch);
 		imageButtonSearch.setOnClickListener(new OnClickListener() {
@@ -117,19 +145,6 @@ public class StartActivity extends Activity {
 			Log.i(Constants.TAG, e.getMessage());
 		}
 		return null;
-	}
-
-	private void initView() {
-		headerTitle = (TextView) findViewById(R.id.barTitle);
-		headerTitle.setTypeface(Utils.getTypeface(this,
-				Constants.TYPEFONT_NEOSANS));
-		headerTitle.setText(Constants.APP_NAME);
-		editTextSearch = (TextView) findViewById(R.id.editTextSearch);
-		editTextSearch.setTypeface(Utils.getTypeface(this,
-				Constants.TYPEFONT_NEOSANS));
-		progressBar = (ProgressBar) findViewById(R.id.progressBar);
-		webView = (WebView) findViewById(R.id.mapWebView);
-		setWebView();
 	}
 
 	private void setInfoBox() {
@@ -193,18 +208,32 @@ public class StartActivity extends Activity {
 		imageButtonLocateMe.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				getLocateMe();
+				progressBar.setVisibility(View.VISIBLE);
+				Toast.makeText(getApplicationContext(),
+						R.string.waitforlocation,
+						Toast.LENGTH_LONG).show();
+				setLocateMe();
+				uCantHandleThat.postDelayed(runForYourLife,
+						Constants.LocateMeTreshold);
 			}
 		});
-
-		setLocateMe();
 	}
 
 	private void setLocateMe() {
-		myLocation = new LocationService(this);
+		mStateReceiver = new SensorsReceiver();
+		IntentFilter intentLocationFilter = new IntentFilter();
+		intentLocationFilter.addAction(Constants.LocationActionTag);
+		intentLocationFilter.addAction(Constants.OrientationActionTag);
+		intentLocationFilter.addAction(Constants.ProvidersActionTag);
+		registerReceiver(mStateReceiver, intentLocationFilter);
+		startService(mIntentLocation);
+		startService(mIntentOrientation);
 	}
 
 	private void getLocateMe() {
+		
+		// HERE TO CORRECT - start the service!
+		/*
 		if (myLocation.getMyCurrentPosition()[0] == -1) {
 			// No GPS enabled
 			int notBoringToasts = diceRoller.nextInt(10) + 1;
@@ -236,40 +265,10 @@ public class StartActivity extends Activity {
 						.show();
 			}
 
-			// Waiting 5s to refresh
-			Handler mHandler = new Handler();
-			Runnable mRunnable = new Runnable() {
-				@Override
-				public void run() {
-					if (myLocation.getMyCurrentPosition()[0] == 0) {
-						progressBar.setVisibility(View.INVISIBLE);
-						int notBoringToasts = diceRoller.nextInt(10) + 1;
-						if (notBoringToasts < 6) {
-							Toast.makeText(getApplicationContext(),
-									"Can't localize you. Are you real?",
-									Toast.LENGTH_LONG).show();
-						} else if (notBoringToasts >= 6 && notBoringToasts < 9) {
-							Toast.makeText(getApplicationContext(),
-									"Ufff... no joy. Can't find you",
-									Toast.LENGTH_LONG).show();
-						} else if (notBoringToasts >= 9) {
-							Toast.makeText(
-									getApplicationContext(),
-									"Can't get your position now. Try to jump a few times",
-									Toast.LENGTH_LONG).show();
-						}
-					} else if (myLocation.getMyCurrentPosition()[0] > 0) {
-						progressBar.setVisibility(View.INVISIBLE);
-						processGPS(myLocation.getMyCurrentPosition()[0],
-								myLocation.getMyCurrentPosition()[1]);
-					}
-				}
-			};
-			mHandler.postDelayed(mRunnable, 5000);
 		} else if (myLocation.getMyCurrentPosition()[0] > 0) {
 			processGPS(myLocation.getMyCurrentPosition()[0],
 					myLocation.getMyCurrentPosition()[1]);
-		}
+		}*/
 	}
 
 	protected void processGPS(double d, double e) {
@@ -279,8 +278,15 @@ public class StartActivity extends Activity {
 				|| locationPixel[0] < 0) {
 			Toast.makeText(
 					getApplicationContext(),
-					"Don't think you're close to CERN... Tried to test me, right :P",
+					"Don't think you're close to CERN...",
 					Toast.LENGTH_LONG).show();
+			if (isMyServiceRunning(LocationService.class.getName())) {
+				stopService(mIntentLocation);
+			}
+			if (isMyServiceRunning(OrientationService.class.getName())) {
+				stopService(mIntentOrientation);
+			}
+			unregisterReceiver(mStateReceiver);
 		} else {
 			progressBar.setVisibility(View.VISIBLE);
 			scrollPosition[0] = myPosition[0] = (int) locationPixel[0];
@@ -391,6 +397,8 @@ public class StartActivity extends Activity {
 		return htmlString;
 	}
 
+	// TRAINS
+
 	private void readMyTramsFromJSON() {
 		JSONParser jsonParser;
 		try {
@@ -418,5 +426,105 @@ public class StartActivity extends Activity {
 			Log.i(Constants.TAG, e.getMessage());
 		}
 
+	}
+
+	private class SensorsReceiver extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context arg0, Intent mReceivedIntent) {
+
+			if (mReceivedIntent.getAction().equals(Constants.LocationActionTag)) {
+				mAccuracy = mReceivedIntent.getFloatExtra(
+						Constants.LocationFlagAccuracy, 0);
+				mLongitude = mReceivedIntent.getDoubleExtra(
+						Constants.LocationFlagLongitude, 0);
+				mLatitude = mReceivedIntent.getDoubleExtra(
+						Constants.LocationFlagLatitude, 0);
+
+				if (mLatitude != 0) {
+					uCantHandleThat.removeCallbacks(runForYourLife);
+					progressBar.setVisibility(View.INVISIBLE);
+
+					processGPS(mLongitude, mLatitude);
+					
+				}
+			}
+
+			if (mReceivedIntent.getAction().equals(
+					Constants.OrientationActionTag)) {
+				//TODO Handle Azimuth
+			}
+
+			/*if (mReceivedIntent.getAction()
+					.equals(Constants.ProvidersActionTag)) {
+				mProviders = mReceivedIntent.getBooleanExtra(
+						Constants.GPSProvider, false)
+						|| mReceivedIntent.getBooleanExtra(
+								Constants.NetworkProvider, false);
+
+				if (!mProviders) {
+					if (!mPreferences.getBoolean(Constants.GPSRequest, false)) {
+						buildAlertMessage(
+								getString(R.string.gpsoff),
+								android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS,
+								Constants.GPSRequest);
+					}
+				}
+			}*/
+		}
+	}
+
+	private Runnable runForYourLife = new Runnable() {
+		public void run() {
+			progressBar.setVisibility(View.INVISIBLE);
+			Toast.makeText(
+					getApplicationContext(),
+					getApplicationContext().getString(
+							R.string.unsuccessfullocatization),
+					Toast.LENGTH_LONG).show();
+		}
+	};
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		mStateReceiver = new SensorsReceiver();
+		IntentFilter intentLocationFilter = new IntentFilter();
+		intentLocationFilter.addAction(Constants.LocationActionTag);
+		intentLocationFilter.addAction(Constants.OrientationActionTag);
+		intentLocationFilter.addAction(Constants.ProvidersActionTag);
+		registerReceiver(mStateReceiver, intentLocationFilter);
+		initializeVariables();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onPause()
+	 * Stop services and unregister Broadcast Receiver
+	 */
+	@Override
+	protected void onPause() {
+		if (isMyServiceRunning(LocationService.class.getName())) {
+			stopService(mIntentLocation);
+		}
+		if (isMyServiceRunning(OrientationService.class.getName())) {
+			stopService(mIntentOrientation);
+		}
+		unregisterReceiver(mStateReceiver);
+		super.onPause();
+	}
+	
+	/*
+	 * Loop through the running services and check if the needed one is running
+	 */
+	private boolean isMyServiceRunning(String s) {
+		ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+		for (RunningServiceInfo service : manager
+				.getRunningServices(Integer.MAX_VALUE)) {
+			if (s.equals(service.service.getClassName())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

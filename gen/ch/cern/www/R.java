@@ -92,6 +92,8 @@ public final class R {
         public static final int search=0x7f060004;
         public static final int textOpenStreetMapsContributors=0x7f060005;
         public static final int trams=0x7f060008;
+        public static final int unsuccessfullocatization=0x7f06000e;
+        public static final int waitforlocation=0x7f06000f;
     }
     public static final class style {
         /** 

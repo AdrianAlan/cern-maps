@@ -15,5 +15,6 @@
     <string name="ValThoiry">Val-Thoiry</string>
     <string name="FerneyVoltaireMairie">Ferney-Voltaire-Mairie</string>
     <string name="next_trams">Next trains in: Sorry, no data</string>
-
+	<string name="unsuccessfullocatization">Cannot estimate your position</string>
+	<string name="waitforlocation">Waiting for location</string>
 </resources>
