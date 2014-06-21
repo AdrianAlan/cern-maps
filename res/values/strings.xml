@@ -19,6 +19,7 @@
     <string name="WaitForLocation">Waiting for location</string>
     <string name="OK">OK</string>
     <string name="NextBusIn">Next bus in:</string>
+    <string name="NextTramIn">Next tram in:</string>
     <string name="GPSOff">GPS is disabled in your device</string>
     <string name="enable">Enable</string>
     <string name="cancel">Cancel</string>
@@ -26,5 +27,6 @@
 	<string name="OutOfBound">You are too far from CERN</string>
 	<string name="NoSearchResults">Sorry, no results for&#32;</string>
 	<string name="MapToSmall">Map to small to show&#32;</string>
-	
+	<string name="Y">Y</string>
+	<string name="N18">18</string>
 </resources>

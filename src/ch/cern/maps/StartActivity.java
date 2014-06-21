@@ -154,7 +154,7 @@ public class StartActivity extends Activity {
 				}
 			}
 		} catch (IOException e) {
-			Log.e(Constants.TAG, "Error. " + e);
+			Log.e(Constants.TAG, "Error. " + e.getMessage());
 		}
 		return null;
 	}
@@ -331,7 +331,7 @@ public class StartActivity extends Activity {
 			ArrayList<Trams> trams18 = new ArrayList<Trams>();
 			ArrayList<Trams> tramsY1 = new ArrayList<Trams>();
 			ArrayList<Trams> tramsY2 = new ArrayList<Trams>();
-			InputStream is = getAssets().open("trams.JSON");
+			InputStream is = getAssets().open(Constants.JSONTram);
 			jsonParser = new JSONParser(is);
 			for (Iterator<Trams> i = jsonParser.readSchedule().iterator(); i
 					.hasNext();) {
@@ -349,7 +349,7 @@ public class StartActivity extends Activity {
 			tY2 = Utils.getNextTrains(tramsY2);
 
 		} catch (IOException e) {
-			Log.i(Constants.TAG, e.getMessage());
+			Log.e(Constants.TAG, e.getMessage());
 		}
 
 	}

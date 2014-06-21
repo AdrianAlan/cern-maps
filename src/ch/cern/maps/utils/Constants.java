@@ -2,10 +2,8 @@ package ch.cern.maps.utils;
 
 public class Constants {
 	
-	public static final String APP_NAME = "CERNmaps";
+	public static final String APP_NAME = "CERN Maps";
 	public static final String TAG = "CERNMAPS";
-	
-	public final static String TYPEFONT_NEOSANS = "NeoSans.ttf";
 	
 	public static final String JSON_TAG_TRAMS = "trams";
 	public static final String JSON_TAG_TRAMS_LINE = "line";
@@ -36,5 +34,7 @@ public class Constants {
 	public static final String OrientationFlagAzimuth = "AzimuthRequest";
 	public static final String GPSRequest = "SharedPreferencesGPS";
 	public static final String SharedPreferences = "SharedPreferences";
+	
+	public static final String JSONTram = "trams.JSON";
 	
 }

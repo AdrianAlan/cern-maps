@@ -32,17 +32,23 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/boxLogo"
         android:layout_below="@+id/boxTitle"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/trams_border" >
 
-        <ImageView
+        <TextView
             android:id="@+id/imageView18"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="30dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="20dp"
-            android:contentDescription="@string/image"
-            android:gravity="left"
-            android:src="@drawable/tram18" />
+            android:background="@drawable/trams_18"
+            android:gravity="center_vertical|center_horizontal"
+             android:text="@string/N18"
+            android:textStyle="bold"
+            android:textColor="@color/cern_white"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/textView18"
@@ -53,7 +59,7 @@
             android:gravity="center_vertical|left"
             android:text="@string/BelAir"
             android:textColor="@color/cern_white"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/box18"
@@ -73,16 +79,23 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/boxLogo"
         android:layout_below="@+id/layout18"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/trams_border" >
 
-        <ImageView
+        <TextView
             android:id="@+id/imageViewY1"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="30dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="20dp"
-            android:contentDescription="@string/image"
-            android:src="@drawable/tramy" />
+            android:background="@drawable/trams_y"
+            android:gravity="center_vertical|center_horizontal"
+             android:text="@string/Y"
+            android:textStyle="bold"
+            android:textColor="@color/cern_black"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/textViewY1"
@@ -93,7 +106,7 @@
             android:gravity="center_vertical|left"
             android:text="@string/ValThoiry"
             android:textColor="@color/cern_white"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/boxY1"
@@ -112,16 +125,23 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/boxLogo"
         android:layout_below="@+id/layoutY1"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/trams_border" >
 
-        <ImageView
+        <TextView
             android:id="@+id/imageViewY2"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="30dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="20dp"
-            android:contentDescription="@string/image"
-            android:src="@drawable/tramy" />
+            android:background="@drawable/trams_y"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/Y"
+            android:textStyle="bold"
+            android:textColor="@color/cern_black"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/textViewY2"
@@ -132,7 +152,7 @@
             android:gravity="center_vertical|left"
             android:text="@string/FerneyVoltaireMairie"
             android:textColor="@color/cern_white"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/boxY2"

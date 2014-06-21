@@ -7,6 +7,9 @@
     <color name="cern_blue">#22529e</color>
     <color name="cern_blue_shadow">#8cabdd</color>
     <color name="cern_greyed">#cdcdcd</color>
+    <color name="cern_purple">#a901db</color>
+    <color name="cern_pink">#f5a9f2</color>
     <color name="trans">#00000000 </color>
 
+    
 </resources>

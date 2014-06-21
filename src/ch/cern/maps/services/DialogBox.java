@@ -34,7 +34,7 @@ public class DialogBox extends Activity {
 		View layout = inflater.inflate(R.layout.dialog_trams, null);
 		tram18 = (TextView) layout.findViewById(R.id.box18);
 		if (t18 != null) {
-			tram18.setText(mContext.getString(R.string.NextBusIn) + t18);
+			tram18.setText(mContext.getString(R.string.NextTramIn) + t18);
 		}
 		tramY1 = (TextView) layout.findViewById(R.id.boxY1);
 		if (tY1 != null) {
