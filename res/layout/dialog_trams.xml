@@ -11,7 +11,7 @@
         android:layout_marginLeft="10dp"
         android:background="@color/trans"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/tram" />
+        android:src="@drawable/ic_action_transport_tram_icon" />
 
     <TextView
         android:id="@+id/boxTitle"
@@ -30,6 +30,7 @@
         android:id="@+id/layout18"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/boxLogo"
         android:layout_below="@+id/boxTitle"
         android:layout_marginTop="5dp"
         android:background="@drawable/trams_border" >
@@ -38,16 +39,15 @@
             android:id="@+id/imageView18"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_alignLeft="@+id/boxLogo"
             android:layout_marginLeft="20dp"
             android:contentDescription="@string/image"
+            android:gravity="left"
             android:src="@drawable/tram18" />
 
         <TextView
             android:id="@+id/textView18"
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:layout_below="@+id/boxTitle"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/imageView18"
             android:gravity="center_vertical|left"
@@ -71,6 +71,7 @@
         android:id="@+id/layoutY1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/boxLogo"
         android:layout_below="@+id/layout18"
         android:layout_marginTop="5dp"
         android:background="@drawable/trams_border" >
@@ -79,7 +80,6 @@
             android:id="@+id/imageViewY1"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_alignLeft="@+id/boxLogo"
             android:layout_marginLeft="20dp"
             android:contentDescription="@string/image"
             android:src="@drawable/tramy" />
@@ -88,7 +88,6 @@
             android:id="@+id/textViewY1"
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:layout_below="@+id/boxTitle"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/imageViewY1"
             android:gravity="center_vertical|left"
@@ -111,6 +110,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/boxLogo"
         android:layout_below="@+id/layoutY1"
         android:layout_marginTop="5dp"
         android:background="@drawable/trams_border" >
@@ -119,7 +119,6 @@
             android:id="@+id/imageViewY2"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_alignLeft="@+id/boxLogo"
             android:layout_marginLeft="20dp"
             android:contentDescription="@string/image"
             android:src="@drawable/tramy" />
@@ -128,7 +127,6 @@
             android:id="@+id/textViewY2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:layout_below="@+id/boxTitle"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/imageViewY2"
             android:gravity="center_vertical|left"

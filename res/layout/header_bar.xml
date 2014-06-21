@@ -16,7 +16,7 @@
         android:layout_marginTop="2dp"
         android:background="@drawable/selector_header"
         android:contentDescription="@string/about"
-        android:src="@drawable/about" />
+        android:src="@drawable/ic_action_about" />
 
     <TextView
         android:id="@+id/barTitle"
@@ -45,6 +45,6 @@
         android:layout_marginTop="2dp"
         android:background="@drawable/selector_header"
         android:contentDescription="@string/schedule"
-        android:src="@drawable/schedule" />
+        android:src="@drawable/ic_action_transport_tram_icon" />
 
 </RelativeLayout>

@@ -38,5 +38,5 @@
         android:gravity="center"
         android:text="@string/copyright"
         android:textColor="@color/cern_white"
-        android:textSize="13sp" />
+        android:textSize="14sp" />
 </RelativeLayout>

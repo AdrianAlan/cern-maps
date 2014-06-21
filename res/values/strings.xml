@@ -7,7 +7,7 @@
     <string name="locateme">Locate Me</string>
     <string name="search">Search&#8230;</string>
     <string name="textOpenStreetMapsContributors">© OpenStreetMap contributors</string>
-    <string name="onEmptySearch">Please type in something!</string>
+    <string name="OnEmptySearch">Please type in something!</string>
     <string name="copyright">© 2014 Created by &lt;adrianalan.pol@gmail.com&gt; and &lt;contact@andreagiardini.com&gt;. This software contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL). See more at www.openstreetmap.org/copyright</string>
     <string name="trams">CERN</string>
     <string name="image">IMG</string>
@@ -15,6 +15,16 @@
     <string name="ValThoiry">Val-Thoiry</string>
     <string name="FerneyVoltaireMairie">Ferney-Voltaire-Mairie</string>
     <string name="next_trams">Next trains in: Sorry, no data</string>
-	<string name="unsuccessfullocatization">Cannot estimate your position</string>
-	<string name="waitforlocation">Waiting for location</string>
+    <string name="UnsuccessfulLocatization">Cannot estimate your position</string>
+    <string name="WaitForLocation">Waiting for location</string>
+    <string name="OK">OK</string>
+    <string name="NextBusIn">Next bus in:</string>
+    <string name="GPSOff">GPS is disabled in your device</string>
+    <string name="enable">Enable</string>
+    <string name="cancel">Cancel</string>
+    <string name="stopasking">Stop Asking</string>
+	<string name="OutOfBound">You are too far from CERN</string>
+	<string name="NoSearchResults">Sorry, no results for&#32;</string>
+	<string name="MapToSmall">Map to small to show&#32;</string>
+	
 </resources>

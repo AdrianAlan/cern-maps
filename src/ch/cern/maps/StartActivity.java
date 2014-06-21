@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
 
 import ch.cern.maps.geo.LocationService;
 import ch.cern.maps.geo.OrientationService;
@@ -30,63 +29,81 @@ import android.widget.ZoomButtonsController;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Picture;
 
 @SuppressWarnings("deprecation")
 public class StartActivity extends Activity {
 
-	private TextView editTextSearch;
-	private ImageButton imageButtonLocateMe, imageButtonInfo, imageButtonTrams,
-			imageButtonSearch;
-	private String t18, tY1, tY2;
-	private WebView webView;
-	private ProgressBar progressBar;
-	private MapScroller myMapScroll;
-	private Random diceRoller = new Random();
-	private int[] myPosition = { -1, -1 };
-	private int[] searchPosition = { -1, -1 };
-	private int[] scrollPosition = { -1, -1 };
-	private int currentScale = 150;
-
-	private double mLatitude, mLongitude, mAccuracy, mAzimuth;
 	private boolean mProviders = false;
+	private double mLatitude, mLongitude, mAccuracy, mAzimuth;
+	private GenerateHTMLContent getHTML;
 	private Handler uCantHandleThat = new Handler();
 	private Intent mIntentOrientation, mIntentLocation;
+	private ImageButton imageButtonLocateMe, imageButtonInfo, imageButtonTrams,
+			imageButtonSearch;
+	private ProgressBar progressBar;
+	private MapScroller myMapScroll;
 	private SensorsReceiver mStateReceiver;
-	
+	private SharedPreferences mPreferences;
+	private String t18, tY1, tY2;
+	private TextView editTextSearch;
+	private WebView webView;
+
+	// TODO Place Accuracy::Location Testing
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		// Don't show title
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_start);
 
+		// Initiate activity elements
 		progressBar = (ProgressBar) findViewById(R.id.progressBar);
 		webView = (WebView) findViewById(R.id.mapWebView);
-		
+		editTextSearch = (TextView) findViewById(R.id.editTextSearch);
+
+		// Initiate intents
 		mIntentOrientation = new Intent(getApplicationContext(),
 				OrientationService.class);
 		mIntentLocation = new Intent(getApplicationContext(),
 				LocationService.class);
-		
+
+		// Initiate shared preferences
+		mPreferences = getApplicationContext().getSharedPreferences(
+				Constants.SharedPreferences, 0);
+
+		initializeVariables();
+
+		// Setup
 		setWebView();
 		setInfoBox();
 		setLocateMeFuction();
 		setSearchBuilding();
-		initializeVariables();
 	}
-	
+
+	/*
+	 * Initialize location variables. Also used when
+	 */
+
 	private void initializeVariables() {
-		mLatitude = 0; 
-		mLongitude = 0; mAccuracy = 0; mAzimuth = 0;
-		
+		mLatitude = 0;
+		mLongitude = 0;
+		mAccuracy = 0;
+		mAzimuth = 0;
 	}
-	
+
 	private void setSearchBuilding() {
 		imageButtonSearch = (ImageButton) findViewById(R.id.imageButtonSearch);
 		imageButtonSearch.setOnClickListener(new OnClickListener() {
@@ -95,35 +112,30 @@ public class StartActivity extends Activity {
 				searchForMe();
 			}
 		});
-
 	}
 
 	protected void searchForMe() {
 		if (editTextSearch.getText().toString().equals(null)
 				|| editTextSearch.getText().toString().equals("")) {
-			Toast.makeText(getApplicationContext(), R.string.onEmptySearch,
-					Toast.LENGTH_LONG).show();
+			ToastResult(getString(R.string.NoSearchResults));
 		} else {
 			double[] search = getPositionOfTheBuildingFromJSON(editTextSearch
 					.getText().toString());
 			if (search == null) {
-				Toast.makeText(getApplicationContext(),
-						"Can't find anything like " + editTextSearch.getText(),
-						Toast.LENGTH_LONG).show();
+				ToastResult(getString(R.string.OnEmptySearch)
+						+ editTextSearch.getText());
 			} else if (search[1] < Constants.MAP_WEST
 					|| search[1] > Constants.MAP_EAST
 					|| search[0] > Constants.MAP_NORTH
 					|| search[0] < Constants.MAP_SOUTH) {
-				Toast.makeText(getApplicationContext(),
-						"Map to small to show " + editTextSearch.getText(),
-						Toast.LENGTH_LONG).show();
+				ToastResult(getString(R.string.MapToSmall)
+						+ editTextSearch.getText());
 			} else {
 				progressBar.setVisibility(View.VISIBLE);
-				double[] pixel = Utils.getPixel(search[0], search[1]);
-				scrollPosition[0] = searchPosition[0] = (int) pixel[0];
-				scrollPosition[1] = searchPosition[1] = (int) pixel[1];
-				currentScale = (int) (100 * webView.getScale());
-				setWebView();
+				double[] locationPixel = Utils.getPixel(search[0], search[1]);
+				onShowGPS((int) locationPixel[0], (int) locationPixel[1]);
+				scrollMe(locationPixel);
+				progressBar.setVisibility(View.INVISIBLE);
 			}
 		}
 	}
@@ -142,7 +154,7 @@ public class StartActivity extends Activity {
 				}
 			}
 		} catch (IOException e) {
-			Log.i(Constants.TAG, e.getMessage());
+			Log.e(Constants.TAG, "Error. " + e);
 		}
 		return null;
 	}
@@ -191,12 +203,14 @@ public class StartActivity extends Activity {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					imageButtonLocateMe.setImageResource(R.drawable.location);
+					imageButtonLocateMe
+							.setImageResource(R.drawable.ic_action_locate);
 					imageButtonLocateMe
 							.setBackgroundResource(R.drawable.locatemebg);
 					return false;
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					imageButtonLocateMe.setImageResource(R.drawable.location);
+					imageButtonLocateMe
+							.setImageResource(R.drawable.ic_action_locate);
 					imageButtonLocateMe.setBackgroundColor(getResources()
 							.getColor(R.color.trans));
 					return false;
@@ -209,9 +223,7 @@ public class StartActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				progressBar.setVisibility(View.VISIBLE);
-				Toast.makeText(getApplicationContext(),
-						R.string.waitforlocation,
-						Toast.LENGTH_LONG).show();
+				ToastResult(getString(R.string.WaitForLocation));
 				setLocateMe();
 				uCantHandleThat.postDelayed(runForYourLife,
 						Constants.LocateMeTreshold);
@@ -230,56 +242,12 @@ public class StartActivity extends Activity {
 		startService(mIntentOrientation);
 	}
 
-	private void getLocateMe() {
-		
-		// HERE TO CORRECT - start the service!
-		/*
-		if (myLocation.getMyCurrentPosition()[0] == -1) {
-			// No GPS enabled
-			int notBoringToasts = diceRoller.nextInt(10) + 1;
-			if (notBoringToasts < 6) {
-				Toast.makeText(getApplicationContext(),
-						"Enable your GPS, please!", Toast.LENGTH_LONG).show();
-			} else if (notBoringToasts >= 6 && notBoringToasts < 9) {
-				Toast.makeText(getApplicationContext(), "GPS is off, dude...",
-						Toast.LENGTH_LONG).show();
-			} else if (notBoringToasts >= 9) {
-				Toast.makeText(getApplicationContext(),
-						"Man, I'm not a fortune teller! Gimme some GPS first!",
-						Toast.LENGTH_LONG).show();
-			}
-		} else if (myLocation.getMyCurrentPosition()[0] == 0) {
-			progressBar.setVisibility(View.VISIBLE);
-			// No signal
-			int notBoringToasts = diceRoller.nextInt(10) + 1;
-			if (notBoringToasts < 6) {
-				Toast.makeText(getApplicationContext(), "Waiting for location",
-						Toast.LENGTH_LONG).show();
-			} else if (notBoringToasts >= 6 && notBoringToasts < 9) {
-				Toast.makeText(getApplicationContext(),
-						"Locating such a nice person is a pleasure",
-						Toast.LENGTH_LONG).show();
-			} else if (notBoringToasts >= 9) {
-				Toast.makeText(getApplicationContext(),
-						"Wait. Trying my best to find you!", Toast.LENGTH_LONG)
-						.show();
-			}
-
-		} else if (myLocation.getMyCurrentPosition()[0] > 0) {
-			processGPS(myLocation.getMyCurrentPosition()[0],
-					myLocation.getMyCurrentPosition()[1]);
-		}*/
-	}
-
-	protected void processGPS(double d, double e) {
-		double[] locationPixel = Utils.getPixel(d, e);
+	protected void processGPS(double longitude, double latitude, double accuracy) {
+		double[] locationPixel = Utils.getPixel(longitude, latitude);
 		if (locationPixel[1] < 0 || locationPixel[1] > Constants.MAP_HEIGHT
 				|| locationPixel[0] > Constants.MAP_WIDTH
 				|| locationPixel[0] < 0) {
-			Toast.makeText(
-					getApplicationContext(),
-					"Don't think you're close to CERN...",
-					Toast.LENGTH_LONG).show();
+			ToastResult(getString(R.string.OutOfBound));
 			if (isMyServiceRunning(LocationService.class.getName())) {
 				stopService(mIntentLocation);
 			}
@@ -287,27 +255,27 @@ public class StartActivity extends Activity {
 				stopService(mIntentOrientation);
 			}
 			unregisterReceiver(mStateReceiver);
+			onLocationGone();
 		} else {
 			progressBar.setVisibility(View.VISIBLE);
-			scrollPosition[0] = myPosition[0] = (int) locationPixel[0];
-			scrollPosition[1] = myPosition[1] = (int) locationPixel[1];
-			currentScale = (int) (100 * webView.getScale());
-			setWebView();
+			scrollMe(locationPixel);
 		}
 	}
 
-	private void scrollMe(int initialScrollX, int initialScrollY) {
-		myMapScroll = new MapScroller(initialScrollX, initialScrollY,
-				webView.getMeasuredWidth(), webView.getMeasuredHeight(),
-				webView.getScale());
-		webView.scrollTo(myMapScroll.getScrollToX(), myMapScroll.getScrollToY());
+	private void scrollMe(double[] initialScroll) {
+		double[] mMap = { webView.getMeasuredWidth() / webView.getScale(),
+				webView.getMeasuredHeight() / webView.getScale() };
+		myMapScroll = new MapScroller(initialScroll, mMap);
+		onScrollPage((int) myMapScroll.getScroll()[0],
+				(int) myMapScroll.getScroll()[1]);
 	}
 
-	@SuppressLint("NewApi")
+	@SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
 	private void setWebView() {
-
-		webView.loadDataWithBaseURL("file:///android_asset/images/", getHtml(),
-				"text/html", "utf-8", null);
+		getHTML = new GenerateHTMLContent();
+		webView.loadDataWithBaseURL("file:///android_asset/images/",
+				getHTML.setHtml(80, 80, 20, 20), "text/html", "utf-8", null);
+		webView.getSettings().setJavaScriptEnabled(true);
 		webView.setWebViewClient(new WebViewClient() {
 			@Override
 			public void onPageFinished(WebView view, String url) {
@@ -316,7 +284,6 @@ public class StartActivity extends Activity {
 				// Those might be required later
 				webView.getSettings().setUseWideViewPort(true);
 				webView.getSettings().setLoadWithOverviewMode(true);
-				webView.setInitialScale(currentScale);
 				webView.getSettings().setSupportZoom(true);
 				webView.getSettings().setBuiltInZoomControls(true);
 				webView.getSettings().setUseWideViewPort(true);
@@ -344,60 +311,19 @@ public class StartActivity extends Activity {
 				}
 			}
 		});
+
 		// When content is loaded, scroll map to desired location
 		webView.setPictureListener(new PictureListener() {
 			@Override
 			public void onNewPicture(WebView view, Picture picture) {
 				progressBar.setVisibility(View.INVISIBLE);
 				// Let us scroll to Main Building
-				if (scrollPosition[0] > 0) {
-					scrollMe(scrollPosition[0], scrollPosition[1]);
-				} else {
-					int[] initialScroll = { 2473, 5658 };
-					scrollMe(initialScroll[0], initialScroll[1]);
-				}
-			}
-		});
-
-		// When scroll is finished, any gesture user makes should not scroll
-		// back to initial location
-		webView.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
+				double[] initialScroll = { 2473, 5658 };
+				scrollMe(initialScroll);
 				webView.setPictureListener(null);
-				return false;
 			}
 		});
 	}
-
-	private String getHtml() {
-		String htmlString = "<body style='width:3644px;margin:0; padding:0;'>"
-				+ "<div style='float:left;background-image:url(MAP1A1.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP1A2.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP1B1.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP1B2.png);height:798px;width:911px;'></div>"
-				+ "<div style='float:left;background-image:url(MAP1A3.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP1A4.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP1B3.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP1B4.png);height:798px;width:911px;'></div>"
-				+ "<div style='float:left;background-image:url(MAP2A1.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP2A2.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP2B1.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP2B2.png);height:798px;width:911px;'></div>"
-				+ "<div style='float:left;background-image:url(MAP2A3.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP2A4.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP2B3.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP2B4.png);height:798px;width:911px;'></div>"
-				+ "<div style='float:left;background-image:url(MAP3A1.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP3A2.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP3B1.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP3B2.png);height:798px;width:911px;'></div>"
-				+ "<div style='float:left;background-image:url(MAP3A3.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP3A4.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP3B3.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP3B4.png);height:798px;width:911px;'></div>"
-				+ "<div style='float:left;background-image:url(MAP4A1.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP4A2.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP4B1.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP4B2.png);height:798px;width:911px;'></div>"
-				+ "<div style='float:left;background-image:url(MAP4A3.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP4A4.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP4B3.png);height:798px;width:911px;'></div><div style='float:left;background-image:url(MAP4B4.png);height:798px;width:911px;'></div>";
-		if (myPosition[0] >= 0) {
-			htmlString += "<div style='background-image:url(circle.png);position:absolute;height:40px;width:40px;z-index:98;top:"
-					+ (myPosition[1] - 20)
-					+ "px;left:"
-					+ (myPosition[0] - 20)
-					+ "px;'></div>";
-		}
-		if (searchPosition[0] >= 0) {
-			htmlString += "<div style='background-image:url(pin.png);position:absolute;height:84px;width:100px;z-index:99;top:"
-					+ (searchPosition[1] - 75)
-					+ "px;left:"
-					+ (searchPosition[0] - 30) + "px;'></div>";
-		}
-		htmlString += "</body>";
-		return htmlString;
-	}
-
-	// TRAINS
 
 	private void readMyTramsFromJSON() {
 		JSONParser jsonParser;
@@ -428,6 +354,30 @@ public class StartActivity extends Activity {
 
 	}
 
+	private void onScrollPage(int mLeft, int mTop) {
+		webView.loadUrl("javascript:pageScroll(" + mLeft + ", " + mTop + ")");
+	}
+
+	private void onShowGPS(int mLeft, int mTop) {
+		webView.loadUrl("javascript:mGPSPosition(" + mLeft + ", " + mTop + ")");
+	}
+
+	private void onLocationGone() {
+		webView.loadUrl("javascript:mHidePos()");
+	}
+
+	private void onAzimuthChange(double d) {
+		webView.loadUrl("javascript:mRotationPos(" + (int) d + ")");
+	}
+
+	private void onLocationChange(int mLeft, int mTop) {
+		webView.loadUrl("javascript:mPosPosition(" + mLeft + ", " + mTop + ")");
+	}
+
+	private void setAzimuth(double mAzimuth) {
+		this.mAzimuth = mAzimuth;
+	}
+
 	private class SensorsReceiver extends BroadcastReceiver {
 
 		@Override
@@ -441,21 +391,22 @@ public class StartActivity extends Activity {
 				mLatitude = mReceivedIntent.getDoubleExtra(
 						Constants.LocationFlagLatitude, 0);
 
-				if (mLatitude != 0) {
+				if (mLatitude != 0 && mLatitude != 0) {
 					uCantHandleThat.removeCallbacks(runForYourLife);
 					progressBar.setVisibility(View.INVISIBLE);
-
-					processGPS(mLongitude, mLatitude);
-					
+					onLocationChange(100, 100);
+					processGPS(mLongitude, mLatitude, mAccuracy);
 				}
 			}
 
 			if (mReceivedIntent.getAction().equals(
 					Constants.OrientationActionTag)) {
-				//TODO Handle Azimuth
+				setAzimuth(mReceivedIntent.getDoubleExtra(
+						Constants.OrientationFlagAzimuth, 0));
+				onAzimuthChange(mAzimuth);
 			}
 
-			/*if (mReceivedIntent.getAction()
+			if (mReceivedIntent.getAction()
 					.equals(Constants.ProvidersActionTag)) {
 				mProviders = mReceivedIntent.getBooleanExtra(
 						Constants.GPSProvider, false)
@@ -465,23 +416,19 @@ public class StartActivity extends Activity {
 				if (!mProviders) {
 					if (!mPreferences.getBoolean(Constants.GPSRequest, false)) {
 						buildAlertMessage(
-								getString(R.string.gpsoff),
+								getString(R.string.GPSOff),
 								android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS,
 								Constants.GPSRequest);
 					}
 				}
-			}*/
+			}
 		}
 	}
 
 	private Runnable runForYourLife = new Runnable() {
 		public void run() {
 			progressBar.setVisibility(View.INVISIBLE);
-			Toast.makeText(
-					getApplicationContext(),
-					getApplicationContext().getString(
-							R.string.unsuccessfullocatization),
-					Toast.LENGTH_LONG).show();
+			ToastResult(getString(R.string.UnsuccessfulLocatization));
 		}
 	};
 
@@ -496,11 +443,12 @@ public class StartActivity extends Activity {
 		registerReceiver(mStateReceiver, intentLocationFilter);
 		initializeVariables();
 	}
-	
+
 	/*
 	 * (non-Javadoc)
-	 * @see android.app.Activity#onPause()
-	 * Stop services and unregister Broadcast Receiver
+	 * 
+	 * @see android.app.Activity#onPause() Stop services and unregister
+	 * Broadcast Receiver
 	 */
 	@Override
 	protected void onPause() {
@@ -513,9 +461,9 @@ public class StartActivity extends Activity {
 		unregisterReceiver(mStateReceiver);
 		super.onPause();
 	}
-	
+
 	/*
-	 * Loop through the running services and check if the needed one is running
+	 * Loop through the running services and check if the input one is running
 	 */
 	private boolean isMyServiceRunning(String s) {
 		ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
@@ -526,5 +474,43 @@ public class StartActivity extends Activity {
 			}
 		}
 		return false;
+	}
+
+	private void buildAlertMessage(String mMessage, final String mIntent,
+			final String mKey) {
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		alertDialogBuilder
+				.setMessage(mMessage)
+				.setCancelable(false)
+				.setPositiveButton(getString(R.string.enable),
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								Intent callSettingIntent = new Intent(mIntent);
+								startActivity(callSettingIntent);
+							}
+						});
+		alertDialogBuilder.setNeutralButton(getString(R.string.cancel),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+					}
+				});
+		alertDialogBuilder.setNegativeButton(getString(R.string.stopasking),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						SharedPreferences mPreferences = getApplicationContext()
+								.getSharedPreferences(
+										Constants.SharedPreferences, 0);
+						Editor mEditor = mPreferences.edit();
+						mEditor.putBoolean(mKey, true);
+						mEditor.commit();
+					}
+				});
+		AlertDialog alert = alertDialogBuilder.create();
+		alert.show();
+	}
+
+	private void ToastResult(String s) {
+		Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
 	}
 }

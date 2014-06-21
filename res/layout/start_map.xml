@@ -44,7 +44,7 @@
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/locateme"
-                android:src="@drawable/location" />
+                android:src="@drawable/ic_action_locate" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -83,7 +83,7 @@
             android:layout_margin="5dip"
             android:background="@drawable/selector_search"
             android:contentDescription="@string/locateme"
-            android:src="@drawable/search" />
+            android:src="@drawable/ic_action_search" />
     </LinearLayout>
 
     <TextView

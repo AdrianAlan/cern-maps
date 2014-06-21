@@ -26,21 +26,19 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int about=0x7f020000;
-        public static final int help=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int locate_me=0x7f020003;
-        public static final int locatemebg=0x7f020004;
-        public static final int location=0x7f020005;
-        public static final int schedule=0x7f020006;
-        public static final int search=0x7f020007;
-        public static final int searchbg=0x7f020008;
-        public static final int selector_header=0x7f020009;
-        public static final int selector_search=0x7f02000a;
-        public static final int tram=0x7f02000b;
-        public static final int tram18=0x7f02000c;
-        public static final int trams_border=0x7f02000d;
-        public static final int tramy=0x7f02000e;
+        public static final int ic_action_about=0x7f020000;
+        public static final int ic_action_locate=0x7f020001;
+        public static final int ic_action_search=0x7f020002;
+        public static final int ic_action_transport_tram_icon=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int locate_me=0x7f020005;
+        public static final int locatemebg=0x7f020006;
+        public static final int searchbg=0x7f020007;
+        public static final int selector_header=0x7f020008;
+        public static final int selector_search=0x7f020009;
+        public static final int tram18=0x7f02000a;
+        public static final int trams_border=0x7f02000b;
+        public static final int tramy=0x7f02000c;
     }
     public static final class id {
         public static final int barTitle=0x7f080010;
@@ -80,20 +78,29 @@ public final class R {
     public static final class string {
         public static final int BelAir=0x7f06000a;
         public static final int FerneyVoltaireMairie=0x7f06000c;
+        public static final int GPSOff=0x7f060012;
+        public static final int MapToSmall=0x7f060018;
+        public static final int NextBusIn=0x7f060011;
+        public static final int NoSearchResults=0x7f060017;
+        public static final int OK=0x7f060010;
+        public static final int OnEmptySearch=0x7f060006;
+        public static final int OutOfBound=0x7f060016;
+        public static final int UnsuccessfulLocatization=0x7f06000e;
         public static final int ValThoiry=0x7f06000b;
+        public static final int WaitForLocation=0x7f06000f;
         public static final int about=0x7f060001;
         public static final int app_name=0x7f060000;
+        public static final int cancel=0x7f060014;
         public static final int copyright=0x7f060007;
+        public static final int enable=0x7f060013;
         public static final int image=0x7f060009;
         public static final int locateme=0x7f060003;
         public static final int next_trams=0x7f06000d;
-        public static final int onEmptySearch=0x7f060006;
         public static final int schedule=0x7f060002;
         public static final int search=0x7f060004;
+        public static final int stopasking=0x7f060015;
         public static final int textOpenStreetMapsContributors=0x7f060005;
         public static final int trams=0x7f060008;
-        public static final int unsuccessfullocatization=0x7f06000e;
-        public static final int waitforlocation=0x7f06000f;
     }
     public static final class style {
         /** 
