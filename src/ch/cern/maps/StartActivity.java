@@ -59,8 +59,6 @@ public class StartActivity extends Activity {
 	private TextView editTextSearch;
 	private WebView webView;
 
-	// TODO Place Accuracy::Location Testing
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -94,7 +92,7 @@ public class StartActivity extends Activity {
 	}
 
 	/*
-	 * Initialize location variables. Also used when
+	 * Initialize location variables. Also used when provider disappears
 	 */
 
 	private void initializeVariables() {
@@ -117,12 +115,12 @@ public class StartActivity extends Activity {
 	protected void searchForMe() {
 		if (editTextSearch.getText().toString().equals(null)
 				|| editTextSearch.getText().toString().equals("")) {
-			ToastResult(getString(R.string.NoSearchResults));
+			ToastResult(getString(R.string.OnEmptySearch));
 		} else {
 			double[] search = getPositionOfTheBuildingFromJSON(editTextSearch
 					.getText().toString());
 			if (search == null) {
-				ToastResult(getString(R.string.OnEmptySearch)
+				ToastResult(getString(R.string.NoSearchResults) + " "
 						+ editTextSearch.getText());
 			} else if (search[1] < Constants.MAP_WEST
 					|| search[1] > Constants.MAP_EAST
@@ -143,7 +141,7 @@ public class StartActivity extends Activity {
 	private double[] getPositionOfTheBuildingFromJSON(String userInput) {
 		JSONParser jsonParser;
 		try {
-			InputStream is = getAssets().open("buildings.JSON");
+			InputStream is = getAssets().open(Constants.JSON_BUILDINGS);
 			jsonParser = new JSONParser(is);
 			for (Iterator<Building> i = jsonParser.readBuildingCoordinants()
 					.iterator(); i.hasNext();) {
@@ -154,7 +152,7 @@ public class StartActivity extends Activity {
 				}
 			}
 		} catch (IOException e) {
-			Log.e(Constants.TAG, "Error. " + e.getMessage());
+			Log.e(Constants.TAG, e.getMessage());
 		}
 		return null;
 	}
@@ -258,7 +256,15 @@ public class StartActivity extends Activity {
 			onLocationGone();
 		} else {
 			progressBar.setVisibility(View.VISIBLE);
+			accuracy = accuracy * Constants.MeterToPixelRatio;
+			// UI improvement: the compass icon dimension are 20x20
+			if (accuracy < 10) {
+				accuracy = 10;
+			}
+			onShowPos((int) locationPixel[0], (int) locationPixel[1],
+					(int) accuracy);
 			scrollMe(locationPixel);
+			progressBar.setVisibility(View.INVISIBLE);
 		}
 	}
 
@@ -360,6 +366,12 @@ public class StartActivity extends Activity {
 
 	private void onShowGPS(int mLeft, int mTop) {
 		webView.loadUrl("javascript:mGPSPosition(" + mLeft + ", " + mTop + ")");
+	}
+
+	private void onShowPos(int mLeft, int mTop, int mRadius) {
+		webView.loadUrl("javascript:mPosPosition(" + mLeft + ", " + mTop + ")");
+		webView.loadUrl("javascript:mAccuracy(" + mLeft + ", " + mTop + ", "
+				+ mRadius + ")");
 	}
 
 	private void onLocationGone() {
