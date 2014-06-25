@@ -139,6 +139,7 @@ public class StartActivity extends Activity {
 	}
 
 	private double[] getPositionOfTheBuildingFromJSON(String userInput) {
+		userInput = userInput.toLowerCase();
 		JSONParser jsonParser;
 		try {
 			InputStream is = getAssets().open(Constants.JSON_BUILDINGS);
@@ -146,7 +147,8 @@ public class StartActivity extends Activity {
 			for (Iterator<Building> i = jsonParser.readBuildingCoordinants()
 					.iterator(); i.hasNext();) {
 				Building b = (Building) i.next();
-				if (b.getBuildingName().equals(userInput)) {
+				if (b.getBuildingName().equals(userInput)
+						|| b.getBuildingDesc().equals(userInput)) {
 					double[] returnCoordinants = { b.getNS(), b.getWE() };
 					return returnCoordinants;
 				}

@@ -15,7 +15,8 @@ public class Constants {
 	public static final String JSON_TAG_BUILDINGS_NAME = "name";
 	public static final String JSON_TAG_BUILDINGS_NS = "NS";
 	public static final String JSON_TAG_BUILDINGS_WE = "WE";
-
+	public static final String JSON_TAG_BUILDINGS_DESC = "desc";
+	
 	public static final int MAP_HEIGHT = 6384;
 	public static final int MAP_WIDTH = 3644;
 

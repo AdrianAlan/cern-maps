@@ -68,7 +68,13 @@ public class JSONParser {
 						.getString(Constants.JSON_TAG_BUILDINGS_NS);
 				String we = theBuilding
 						.getString(Constants.JSON_TAG_BUILDINGS_WE);
-				buildings.add(new Building(name, ns, we));
+				String desc = "";
+				if (!theBuilding.isNull(Constants.JSON_TAG_BUILDINGS_DESC)) {
+					desc = theBuilding
+							.getString(Constants.JSON_TAG_BUILDINGS_DESC);
+				}
+				buildings.add(new Building(name.toLowerCase(), ns, we, desc
+						.toLowerCase()));
 			}
 		} catch (JSONException e) {
 			Log.e(Constants.TAG, "Error parsing data " + e.toString());

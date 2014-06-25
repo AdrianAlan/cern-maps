@@ -13,7 +13,6 @@
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
         android:scrollbars="none" />
-    <!-- android:layout_toEndOf="@+id/map" -->
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -67,7 +66,6 @@
             android:background="@drawable/searchbg"
             android:fitsSystemWindows="true"
             android:hint="@string/search"
-            android:inputType="number"
             android:padding="3dip"
             android:singleLine="true"
             android:textColor="@color/cern_white" >

@@ -79,6 +79,7 @@ public final class R {
     }
     public static final class string {
         public static final int BelAir=0x7f06000a;
+        public static final int Copyright=0x7f060007;
         public static final int FerneyVoltaireMairie=0x7f06000c;
         public static final int GPSOff=0x7f060013;
         public static final int MapToSmall=0x7f060019;
@@ -96,7 +97,6 @@ public final class R {
         public static final int about=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int cancel=0x7f060015;
-        public static final int copyright=0x7f060007;
         public static final int enable=0x7f060014;
         public static final int image=0x7f060009;
         public static final int locateme=0x7f060003;

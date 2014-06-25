@@ -40,15 +40,15 @@
             android:id="@+id/imageView18"
             android:layout_width="30dp"
             android:layout_height="23dp"
-            android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
             android:background="@drawable/trams_18"
             android:gravity="center_vertical|center_horizontal"
-             android:text="@string/N18"
-            android:textStyle="bold"
+            android:text="@string/N18"
             android:textColor="@color/cern_white"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView18"
@@ -87,15 +87,15 @@
             android:id="@+id/imageViewY1"
             android:layout_width="30dp"
             android:layout_height="23dp"
-            android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
             android:background="@drawable/trams_y"
             android:gravity="center_vertical|center_horizontal"
-             android:text="@string/Y"
-            android:textStyle="bold"
+            android:text="@string/Y"
             android:textColor="@color/cern_black"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewY1"
@@ -133,15 +133,15 @@
             android:id="@+id/imageViewY2"
             android:layout_width="30dp"
             android:layout_height="23dp"
-            android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
             android:background="@drawable/trams_y"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/Y"
-            android:textStyle="bold"
             android:textColor="@color/cern_black"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewY2"

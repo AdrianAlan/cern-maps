@@ -3,12 +3,13 @@ package ch.cern.maps.utils;
 public class Building {
 
 	private double NS, WE;
-	private String buildingName;
+	private String buildingName, buildingDesc;
 
-	public Building(String name, String NS, String WE) {
+	public Building(String name, String NS, String WE, String desc) {
 		this.setNS(Double.parseDouble(NS));
 		this.setWE(Double.parseDouble(WE));
 		this.setBuildingName(name);
+		this.setBuildingDesc(desc);
 	}
 
 	public double getNS() {
@@ -33,5 +34,13 @@ public class Building {
 
 	public void setBuildingName(String buildingName) {
 		this.buildingName = buildingName;
+	}
+
+	public String getBuildingDesc() {
+		return buildingDesc;
+	}
+
+	public void setBuildingDesc(String buildingDesc) {
+		this.buildingDesc = buildingDesc;
 	}
 }
