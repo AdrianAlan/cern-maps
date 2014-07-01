@@ -24,9 +24,10 @@
     <string name="enable">Enable</string>
     <string name="cancel">Cancel</string>
     <string name="stopasking">Stop Asking</string>
-	<string name="OutOfBound">You are too far from CERN</string>
-	<string name="NoSearchResults">Sorry, no results for&#32;</string>
-	<string name="MapToSmall">Map to small to show&#32;</string>
-	<string name="Y">Y</string>
-	<string name="N18">18</string>
+    <string name="OutOfBound">You are too far from CERN</string>
+    <string name="NoSearchResults">Sorry, no results for&#32;</string>
+    <string name="MapToSmall">Map to small to show&#32;</string>
+    <string name="Y">Y</string>
+    <string name="N18">18</string>
+
 </resources>

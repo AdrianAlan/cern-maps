@@ -38,7 +38,7 @@ public class GenerateHTMLContent {
 	public String setHtml(int searchLatitude, int searchLongitude,
 			int myLatitude, int myLongitude) {
 
-		HTML += "<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\" />";
+		HTML += "<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />";
 		HTML += "<script>" + scriptsAccuracy + pageScroll + scriptPlaceGPS
 				+ scriptsHidePos + scriptsRotatePos + scriptPlacePos
 				+ "</script>";

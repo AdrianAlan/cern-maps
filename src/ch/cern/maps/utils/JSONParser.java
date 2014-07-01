@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Locale;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,8 +75,9 @@ public class JSONParser {
 					desc = theBuilding
 							.getString(Constants.JSON_TAG_BUILDINGS_DESC);
 				}
-				buildings.add(new Building(name.toLowerCase(), ns, we, desc
-						.toLowerCase()));
+				buildings.add(new Building(
+						name.toLowerCase(Locale.getDefault()), ns, we, desc
+								.toLowerCase(Locale.getDefault())));
 			}
 		} catch (JSONException e) {
 			Log.e(Constants.TAG, "Error parsing data " + e.toString());

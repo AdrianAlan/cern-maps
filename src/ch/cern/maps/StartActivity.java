@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 
 import ch.cern.maps.geo.LocationService;
 import ch.cern.maps.geo.OrientationService;
@@ -139,7 +140,7 @@ public class StartActivity extends Activity {
 	}
 
 	private double[] getPositionOfTheBuildingFromJSON(String userInput) {
-		userInput = userInput.toLowerCase();
+		userInput = userInput.toLowerCase(Locale.getDefault());
 		JSONParser jsonParser;
 		try {
 			InputStream is = getAssets().open(Constants.JSON_BUILDINGS);
@@ -278,7 +279,7 @@ public class StartActivity extends Activity {
 				(int) myMapScroll.getScroll()[1]);
 	}
 
-	@SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
+	@SuppressLint({"NewApi", "SetJavaScriptEnabled" })
 	private void setWebView() {
 		getHTML = new GenerateHTMLContent();
 		webView.loadDataWithBaseURL("file:///android_asset/images/",
@@ -325,6 +326,8 @@ public class StartActivity extends Activity {
 			@Override
 			public void onNewPicture(WebView view, Picture picture) {
 				progressBar.setVisibility(View.INVISIBLE);
+				webView.getSettings().setSupportZoom(true);
+				webView.getSettings().setBuiltInZoomControls(true);
 				// Let us scroll to Main Building
 				double[] initialScroll = { 2473, 5658 };
 				scrollMe(initialScroll);
@@ -384,10 +387,6 @@ public class StartActivity extends Activity {
 		webView.loadUrl("javascript:mRotationPos(" + (int) d + ")");
 	}
 
-	private void onLocationChange(int mLeft, int mTop) {
-		webView.loadUrl("javascript:mPosPosition(" + mLeft + ", " + mTop + ")");
-	}
-
 	private void setAzimuth(double mAzimuth) {
 		this.mAzimuth = mAzimuth;
 	}
@@ -408,7 +407,6 @@ public class StartActivity extends Activity {
 				if (mLatitude != 0 && mLatitude != 0) {
 					uCantHandleThat.removeCallbacks(runForYourLife);
 					progressBar.setVisibility(View.INVISIBLE);
-					onLocationChange(100, 100);
 					processGPS(mLongitude, mLatitude, mAccuracy);
 				}
 			}
