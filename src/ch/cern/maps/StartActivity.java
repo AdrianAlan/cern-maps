@@ -59,6 +59,7 @@ public class StartActivity extends Activity {
 	private String t18, tY1, tY2;
 	private TextView editTextSearch;
 	private WebView webView;
+	private double[] locationPixel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -131,8 +132,8 @@ public class StartActivity extends Activity {
 						+ editTextSearch.getText());
 			} else {
 				progressBar.setVisibility(View.VISIBLE);
-				double[] locationPixel = Utils.getPixel(search[0], search[1]);
-				onShowGPS((int) locationPixel[0], (int) locationPixel[1]);
+				locationPixel = Utils.getPixel(search[0], search[1]);
+				onShowGPS((int) locationPixel[0], (int) locationPixel[1], webView.getScale());
 				scrollMe(locationPixel);
 				progressBar.setVisibility(View.INVISIBLE);
 			}
@@ -279,13 +280,26 @@ public class StartActivity extends Activity {
 				(int) myMapScroll.getScroll()[1]);
 	}
 
-	@SuppressLint({"NewApi", "SetJavaScriptEnabled" })
+	@SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
 	private void setWebView() {
 		getHTML = new GenerateHTMLContent();
 		webView.loadDataWithBaseURL("file:///android_asset/images/",
-				getHTML.setHtml(80, 80, 20, 20), "text/html", "utf-8", null);
+				getHTML.setHtml(), "text/html", "utf-8", null);
 		webView.getSettings().setJavaScriptEnabled(true);
+		
+		webView.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				onShowGPS((int) locationPixel[0], (int) locationPixel[1], webView.getScale());
+				Log.i(Constants.APP_NAME, webView.getScale() + "");
+				return false;
+			}
+			
+		});
+		
 		webView.setWebViewClient(new WebViewClient() {
+
 			@Override
 			public void onPageFinished(WebView view, String url) {
 				super.onPageFinished(view, url);
@@ -368,9 +382,9 @@ public class StartActivity extends Activity {
 	private void onScrollPage(int mLeft, int mTop) {
 		webView.loadUrl("javascript:pageScroll(" + mLeft + ", " + mTop + ")");
 	}
-
-	private void onShowGPS(int mLeft, int mTop) {
-		webView.loadUrl("javascript:mGPSPosition(" + mLeft + ", " + mTop + ")");
+	
+	private void onShowGPS(int mLeft, int mTop, double mScale) {
+		webView.loadUrl("javascript:mGPSPosition(" + mLeft + ", " + mTop + ", " + mScale + ")");
 	}
 
 	private void onShowPos(int mLeft, int mTop, int mRadius) {
