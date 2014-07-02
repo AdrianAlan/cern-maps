@@ -47,6 +47,7 @@ public class StartActivity extends Activity {
 
 	private boolean mProviders = false;
 	private double mLatitude, mLongitude, mAccuracy, mAzimuth;
+	private double[] GPSPixel = { 0, 0 }, mPositionPixel = { 0, 0 };
 	private GenerateHTMLContent getHTML;
 	private Handler uCantHandleThat = new Handler();
 	private Intent mIntentOrientation, mIntentLocation;
@@ -59,7 +60,6 @@ public class StartActivity extends Activity {
 	private String t18, tY1, tY2;
 	private TextView editTextSearch;
 	private WebView webView;
-	private double[] locationPixel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +102,8 @@ public class StartActivity extends Activity {
 		mLongitude = 0;
 		mAccuracy = 0;
 		mAzimuth = 0;
+		mPositionPixel[0] = 0;
+		mPositionPixel[1] = 0;
 	}
 
 	private void setSearchBuilding() {
@@ -130,11 +132,14 @@ public class StartActivity extends Activity {
 					|| search[0] < Constants.MAP_SOUTH) {
 				ToastResult(getString(R.string.MapToSmall)
 						+ editTextSearch.getText());
+				GPSPixel[0] = 0;
+				GPSPixel[1] = 0;
 			} else {
 				progressBar.setVisibility(View.VISIBLE);
-				locationPixel = Utils.getPixel(search[0], search[1]);
-				onShowGPS((int) locationPixel[0], (int) locationPixel[1], webView.getScale());
-				scrollMe(locationPixel);
+				GPSPixel = Utils.getPixel(search[0], search[1]);
+				onShowGPS((int) GPSPixel[0], (int) GPSPixel[1],
+						webView.getScale());
+				scrollMe(GPSPixel);
 				progressBar.setVisibility(View.INVISIBLE);
 			}
 		}
@@ -234,21 +239,15 @@ public class StartActivity extends Activity {
 	}
 
 	private void setLocateMe() {
-		mStateReceiver = new SensorsReceiver();
-		IntentFilter intentLocationFilter = new IntentFilter();
-		intentLocationFilter.addAction(Constants.LocationActionTag);
-		intentLocationFilter.addAction(Constants.OrientationActionTag);
-		intentLocationFilter.addAction(Constants.ProvidersActionTag);
-		registerReceiver(mStateReceiver, intentLocationFilter);
 		startService(mIntentLocation);
 		startService(mIntentOrientation);
 	}
 
 	protected void processGPS(double longitude, double latitude, double accuracy) {
-		double[] locationPixel = Utils.getPixel(longitude, latitude);
-		if (locationPixel[1] < 0 || locationPixel[1] > Constants.MAP_HEIGHT
-				|| locationPixel[0] > Constants.MAP_WIDTH
-				|| locationPixel[0] < 0) {
+		mPositionPixel = Utils.getPixel(longitude, latitude);
+		if (mPositionPixel[1] < 0 || mPositionPixel[1] > Constants.MAP_HEIGHT
+				|| mPositionPixel[0] > Constants.MAP_WIDTH
+				|| mPositionPixel[0] < 0) {
 			ToastResult(getString(R.string.OutOfBound));
 			if (isMyServiceRunning(LocationService.class.getName())) {
 				stopService(mIntentLocation);
@@ -256,18 +255,14 @@ public class StartActivity extends Activity {
 			if (isMyServiceRunning(OrientationService.class.getName())) {
 				stopService(mIntentOrientation);
 			}
-			unregisterReceiver(mStateReceiver);
+			initializeVariables();
 			onLocationGone();
 		} else {
 			progressBar.setVisibility(View.VISIBLE);
-			accuracy = accuracy * Constants.MeterToPixelRatio;
-			// UI improvement: the compass icon dimension are 20x20
-			if (accuracy < 10) {
-				accuracy = 10;
-			}
-			onShowPos((int) locationPixel[0], (int) locationPixel[1],
-					(int) accuracy);
-			scrollMe(locationPixel);
+			mAccuracy = accuracy * Constants.MeterToPixelRatio;
+			onShowPos((int) mPositionPixel[0], (int) mPositionPixel[1],
+					(int) mAccuracy, webView.getScale());
+			scrollMe(mPositionPixel);
 			progressBar.setVisibility(View.INVISIBLE);
 		}
 	}
@@ -286,18 +281,22 @@ public class StartActivity extends Activity {
 		webView.loadDataWithBaseURL("file:///android_asset/images/",
 				getHTML.setHtml(), "text/html", "utf-8", null);
 		webView.getSettings().setJavaScriptEnabled(true);
-		
-		webView.setOnTouchListener(new OnTouchListener() {
 
+		webView.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				onShowGPS((int) locationPixel[0], (int) locationPixel[1], webView.getScale());
-				Log.i(Constants.APP_NAME, webView.getScale() + "");
+				if (GPSPixel[0] != 0) {
+					onShowGPS((int) GPSPixel[0], (int) GPSPixel[1],
+							webView.getScale());
+				}
+				if (mPositionPixel[0] != 0) {
+					onShowPos((int) mPositionPixel[0], (int) mPositionPixel[1],
+							(int) mAccuracy, webView.getScale());
+				}
 				return false;
 			}
-			
 		});
-		
+
 		webView.setWebViewClient(new WebViewClient() {
 
 			@Override
@@ -343,7 +342,7 @@ public class StartActivity extends Activity {
 				webView.getSettings().setSupportZoom(true);
 				webView.getSettings().setBuiltInZoomControls(true);
 				// Let us scroll to Main Building
-				double[] initialScroll = { 2473, 5658 };
+				double[] initialScroll = { 2480, 5660 };
 				scrollMe(initialScroll);
 				webView.setPictureListener(null);
 			}
@@ -382,15 +381,15 @@ public class StartActivity extends Activity {
 	private void onScrollPage(int mLeft, int mTop) {
 		webView.loadUrl("javascript:pageScroll(" + mLeft + ", " + mTop + ")");
 	}
-	
+
 	private void onShowGPS(int mLeft, int mTop, double mScale) {
-		webView.loadUrl("javascript:mGPSPosition(" + mLeft + ", " + mTop + ", " + mScale + ")");
+		webView.loadUrl("javascript:mGPSPosition(" + mLeft + ", " + mTop + ", "
+				+ mScale + ")");
 	}
 
-	private void onShowPos(int mLeft, int mTop, int mRadius) {
-		webView.loadUrl("javascript:mPosPosition(" + mLeft + ", " + mTop + ")");
-		webView.loadUrl("javascript:mAccuracy(" + mLeft + ", " + mTop + ", "
-				+ mRadius + ")");
+	private void onShowPos(int mLeft, int mTop, int mRadius, double mScale) {
+		webView.loadUrl("javascript:mPosPosition(" + mLeft + ", " + mTop + ", "
+				+ mRadius + ", " + mScale + ")");
 	}
 
 	private void onLocationGone() {
