@@ -17,8 +17,6 @@ public class Constants {
 	public static final String JSON_TAG_BUILDINGS_WE = "WE";
 	public static final String JSON_TAG_BUILDINGS_DESC = "desc";
 	
-	//10496 ,  6656
-	
 	public static final int MAP_HEIGHT = 5376;
 	public static final int MAP_WIDTH = 4096;
 
@@ -29,7 +27,7 @@ public class Constants {
 
 	// Calculated by: MAP_HEIGHT / ((MAP_NORTH-MAP_SOUTH) * 111111)
 	// 111111 is a ratio between degrees and meters
-	public static final double MeterToPixelRatio = 1.436401436;
+	public static final double MeterToPixelRatio = 1.218281465;
 
 	public static final int LocateMeTreshold = 20000;
 	public static final String LocationActionTag = "LocationRequest";

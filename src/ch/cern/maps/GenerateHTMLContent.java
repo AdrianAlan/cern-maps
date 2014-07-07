@@ -74,7 +74,7 @@ public class GenerateHTMLContent {
 
 		for (int j = 46490; j < 46511; j++) {
 			for (int i = 67730; i < 67746; i++) {
-				HTML += "<div style='float:left;background-image:url(67736/"
+				HTML += "<div style='float:left;background-image:url(map/"
 						+ i + "-" + j
 						+ ".png);height:256px;width:256px;'></div>";
 			}

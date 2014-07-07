@@ -116,6 +116,10 @@ public class StartActivity extends Activity {
 		});
 	}
 
+	/*
+	 * 
+	 */
+	
 	protected void searchForMe() {
 		if (editTextSearch.getText().toString().equals(null)
 				|| editTextSearch.getText().toString().equals("")) {
@@ -135,11 +139,13 @@ public class StartActivity extends Activity {
 				GPSPixel[0] = 0;
 				GPSPixel[1] = 0;
 			} else {
+				
 				progressBar.setVisibility(View.VISIBLE);
 				GPSPixel = Utils.getPixel(search[0], search[1]);
 				onShowGPS((int) GPSPixel[0], (int) GPSPixel[1],
 						webView.getScale());
 				scrollMe(GPSPixel);
+				Log.e(Constants.APP_NAME, (int) GPSPixel[0] + "" + (int) GPSPixel[1]);
 				progressBar.setVisibility(View.INVISIBLE);
 			}
 		}
@@ -342,7 +348,7 @@ public class StartActivity extends Activity {
 				webView.getSettings().setSupportZoom(true);
 				webView.getSettings().setBuiltInZoomControls(true);
 				// Let us scroll to Main Building
-				double[] initialScroll = { 2480, 5660 };
+				double[] initialScroll = { 2641, 4833 };
 				scrollMe(initialScroll);
 				webView.setPictureListener(null);
 			}
