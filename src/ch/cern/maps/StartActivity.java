@@ -26,7 +26,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ZoomButtonsController;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -117,9 +116,8 @@ public class StartActivity extends Activity {
 	}
 
 	/*
-	 * 
+	 * Gets position of the building and converts to proper scroll coordinates
 	 */
-	
 	protected void searchForMe() {
 		if (editTextSearch.getText().toString().equals(null)
 				|| editTextSearch.getText().toString().equals("")) {
@@ -139,13 +137,12 @@ public class StartActivity extends Activity {
 				GPSPixel[0] = 0;
 				GPSPixel[1] = 0;
 			} else {
-				
+
 				progressBar.setVisibility(View.VISIBLE);
 				GPSPixel = Utils.getPixel(search[0], search[1]);
 				onShowGPS((int) GPSPixel[0], (int) GPSPixel[1],
 						webView.getScale());
 				scrollMe(GPSPixel);
-				Log.e(Constants.APP_NAME, (int) GPSPixel[0] + "" + (int) GPSPixel[1]);
 				progressBar.setVisibility(View.INVISIBLE);
 			}
 		}
@@ -281,7 +278,7 @@ public class StartActivity extends Activity {
 				(int) myMapScroll.getScroll()[1]);
 	}
 
-	@SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
+	@SuppressLint({ "SetJavaScriptEnabled" })
 	private void setWebView() {
 		getHTML = new GenerateHTMLContent();
 		webView.loadDataWithBaseURL("file:///android_asset/images/",
@@ -316,27 +313,8 @@ public class StartActivity extends Activity {
 				webView.getSettings().setBuiltInZoomControls(true);
 				webView.getSettings().setUseWideViewPort(true);
 				webView.setScrollbarFadingEnabled(true);
+				webView.getSettings().setDisplayZoomControls(false);
 				webView.setPadding(0, 0, 0, 0);
-				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
-					// Use the API 11+ calls to disable the controls
-					new Runnable() {
-						@SuppressLint("NewApi")
-						public void run() {
-							webView.getSettings().setDisplayZoomControls(false);
-						}
-					}.run();
-				} else {
-					ZoomButtonsController zoom_controll;
-					try {
-						zoom_controll = (ZoomButtonsController) webView
-								.getClass()
-								.getMethod("getZoomButtonsController")
-								.invoke(webView, null);
-						zoom_controll.getContainer().setVisibility(View.GONE);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
 			}
 		});
 
