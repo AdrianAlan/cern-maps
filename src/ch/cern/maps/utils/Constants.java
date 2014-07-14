@@ -41,5 +41,7 @@ public class Constants {
 	public static final String OrientationFlagAzimuth = "AzimuthRequest";
 	public static final String GPSRequest = "SharedPreferencesGPS";
 	public static final String SharedPreferences = "SharedPreferences";
+	
+	public static final int UpdatePeriod = 2592000; 
 
 }

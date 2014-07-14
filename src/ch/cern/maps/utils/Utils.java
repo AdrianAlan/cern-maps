@@ -51,4 +51,9 @@ public class Utils {
 		double[] returnMe = { picH, picV };
 		return returnMe;
 	}
+	
+	public static Date getLastTPGUpdate() {
+		return null;
+		// TODO Check last update date
+	}
 }

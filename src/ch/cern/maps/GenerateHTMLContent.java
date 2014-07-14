@@ -44,7 +44,7 @@ public class GenerateHTMLContent {
 			+ " * 2 / mScale) + 'px'); "
 			+ "mAccuracy(mLeft, mTop, mRadius)" + "}";
 
-	private String pageScroll = "function pageScroll(mLeft, mTop) { window.scrollTo(mLeft, mTop); }";
+	private String pageScroll = "function pageScroll(mLeft, mTop) { $('html, body').animate({scrollTop: mTop}, 1000); $('html, body').animate({scrollLeft: mLeft}, 1000);}";
 	private String scriptsRotatePos = "function mRotationPos(mDegree) { var el = document.getElementById('pos'); el.style.webkitTransform = 'rotate('+mDegree+'deg)'; }";
 	private String scriptsHidePos = "function mHidePos() { var el = document.getElementById('pos'); el.style.display = 'none'; var el = document.getElementById('circle'); el.style.display = 'none'; }";
 
@@ -64,6 +64,7 @@ public class GenerateHTMLContent {
 	public String setHtml() {
 
 		HTML += "<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />";
+		HTML += "<script src=\"jquery-1.11.1.js\"></script>";
 		HTML += "<script>" + scriptsAccuracy + pageScroll + scriptPlaceGPS
 				+ scriptsHidePos + scriptsRotatePos + scriptPlacePos
 				+ "</script>";
@@ -74,9 +75,8 @@ public class GenerateHTMLContent {
 
 		for (int j = 46490; j < 46511; j++) {
 			for (int i = 67730; i < 67746; i++) {
-				HTML += "<div style='float:left;background-image:url(map/"
-						+ i + "-" + j
-						+ ".png);height:256px;width:256px;'></div>";
+				HTML += "<div style='float:left;background-image:url(map/" + i
+						+ "-" + j + ".png);height:256px;width:256px;'></div>";
 			}
 		}
 		HTML += "<div id='circle'></div><div id='gps'></div><div id='pos'></div></body>";
