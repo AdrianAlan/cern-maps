@@ -35,23 +35,15 @@ public class Utils {
 		minB = Math.min(max, C);
 	}
 
-	public static double[] getPixel(double vertical, double horizontal) {
-		double maxTop = Constants.MAP_NORTH;
-		double maxBottom = Constants.MAP_SOUTH;
-		double maxLeft = Constants.MAP_WEST;
-		double maxRight = Constants.MAP_EAST;
-		double picHeight = Constants.MAP_HEIGHT;
-		double picWidth = Constants.MAP_WIDTH;
-
-		double picV = picHeight
-				* (1 - ((vertical - maxBottom) / (maxTop - maxBottom)));
-		double picH = picWidth
-				* ((horizontal - maxLeft) / (maxRight - maxLeft));
-
-		double[] returnMe = { picH, picV };
-		return returnMe;
+	public static double[] getPixel(double x, double y) {
+		double[] mPixels = {
+				Constants.MAP_WIDTH
+						* ((x - Constants.MAP_WEST) / (Constants.MAP_EAST - Constants.MAP_WEST)),
+				Constants.MAP_HEIGHT
+						* (1 - ((y - Constants.MAP_SOUTH) / (Constants.MAP_NORTH - Constants.MAP_SOUTH))) };
+		return mPixels;
 	}
-	
+
 	public static Date getLastTPGUpdate() {
 		return null;
 		// TODO Check last update date

@@ -139,7 +139,7 @@ public class StartActivity extends Activity {
 			} else {
 
 				progressBar.setVisibility(View.VISIBLE);
-				GPSPixel = Utils.getPixel(search[0], search[1]);
+				GPSPixel = Utils.getPixel(search[1], search[0]);
 				onShowGPS((int) GPSPixel[0], (int) GPSPixel[1],
 						webView.getScale());
 				scrollMe(GPSPixel);
