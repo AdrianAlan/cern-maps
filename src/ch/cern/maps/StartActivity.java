@@ -27,6 +27,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
@@ -64,10 +65,13 @@ public class StartActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// Don't show title
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		// Show Action Bar
+		this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
 		setContentView(R.layout.activity_start);
-
+		
+		ActionBar actionBar = getActionBar();
+		actionBar.show();
+		
 		// Initiate activity elements
 		progressBar = (ProgressBar) findViewById(R.id.progressBar);
 		webView = (WebView) findViewById(R.id.mapWebView);
@@ -91,7 +95,7 @@ public class StartActivity extends Activity {
 		setLocateMeFuction();
 		setSearchBuilding();
 	}
-
+	
 	/*
 	 * Initialize location variables. Also used when provider disappears
 	 */
