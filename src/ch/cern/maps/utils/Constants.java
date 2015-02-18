@@ -1,5 +1,7 @@
 package ch.cern.maps.utils;
 
+import ch.cern.www.R;
+
 public class Constants {
 
 	public static final String APP_NAME = "CERN Maps";
@@ -16,7 +18,7 @@ public class Constants {
 	public static final String JSON_TAG_BUILDINGS_NS = "NS";
 	public static final String JSON_TAG_BUILDINGS_WE = "WE";
 	public static final String JSON_TAG_BUILDINGS_DESC = "desc";
-	
+
 	public static final int MAP_HEIGHT = 5376;
 	public static final int MAP_WIDTH = 4096;
 
@@ -41,7 +43,12 @@ public class Constants {
 	public static final String OrientationFlagAzimuth = "AzimuthRequest";
 	public static final String GPSRequest = "SharedPreferencesGPS";
 	public static final String SharedPreferences = "SharedPreferences";
-	
-	public static final int UpdatePeriod = 2592000; 
+
+	public static final int[] navIcons = { R.drawable.ic_action_map,
+			R.drawable.ic_action_call,
+			R.drawable.ic_action_transport_tram_icon,
+			R.drawable.ic_action_group, R.drawable.ic_action_about };
+
+	public static final int UpdatePeriod = 2592000;
 
 }

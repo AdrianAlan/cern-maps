@@ -32,11 +32,10 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#333"
+        android:background="@color/cern_black"
         android:choiceMode="singleChoice"
-        android:divider="#666"
+        android:divider="@color/cern_greyed"
         android:dividerHeight="1dp"
-        android:paddingLeft="15sp"
-        android:paddingRight="15sp" />
+        android:paddingLeft="15sp"/>
 
 </android.support.v4.widget.DrawerLayout>

@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import ch.cern.maps.geo.LocationService;
 import ch.cern.maps.geo.OrientationService;
+import ch.cern.maps.navigation.NavigationAdapter;
 import ch.cern.maps.services.*;
 import ch.cern.maps.utils.*;
 import ch.cern.www.R;
@@ -27,7 +28,6 @@ import android.webkit.WebView;
 import android.webkit.WebView.PictureListener;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -53,7 +53,6 @@ import android.graphics.Picture;
 @SuppressWarnings("deprecation")
 public class StartActivity extends Activity {
 
-	private String[] drawerListViewItems;
 	private DrawerLayout drawerLayout;
 	private ListView drawerListView;
 	private ActionBarDrawerToggle actionBarDrawerToggle;
@@ -85,23 +84,18 @@ public class StartActivity extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.show();
 
-		// get list items from strings.xml
-		drawerListViewItems = getResources().getStringArray(R.array.planets_array);
-		// get ListView defined in activity_main.xml
-		drawerListView = (ListView) findViewById(R.id.left_drawer);
-
-		// Set the adapter for the list view
-		drawerListView.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.drawer_list_item, drawerListViewItems));
-
+		ListView drawerListView = (ListView) findViewById(R.id.left_drawer);
+        NavigationAdapter customAdapter = new NavigationAdapter(getApplicationContext());
+        drawerListView.setAdapter(customAdapter);
+		
 		// App Icon
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 		actionBarDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
 		drawerLayout, /* DrawerLayout object */
 		R.drawable.ic_launcher, /* nav drawer icon to replace 'Up' caret */
-		R.string.drawer_open, /* "open drawer" description */
-		R.string.drawer_close /* "close drawer" description */
+		R.string.nool, /* "open drawer" description */
+		R.string.nool /* "close drawer" description */
 		);
 
 		// Set actionBarDrawerToggle as the DrawerListener
@@ -167,7 +161,7 @@ public class StartActivity extends Activity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-            Toast.makeText(StartActivity.this, ((TextView)view).getText(), Toast.LENGTH_LONG).show();
+            Toast.makeText(StartActivity.this, position + "", Toast.LENGTH_LONG).show();
             drawerLayout.closeDrawer(drawerListView);
  
         }

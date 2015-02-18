@@ -29,16 +29,22 @@
     <string name="MapToSmall">Map to small to show&#32;</string>
     <string name="Y">Y</string>
     <string name="N18">18</string>
+    <string name="nool"></string>
+    <string name="icon">icon</string>
 
-    <string-array name="planets_array">
-        <item>Item 1</item>
-        <item>Item 2</item>
-        <item>Item 3</item>
-        <item>Item 4</item>
-        <item>Item 5</item>
-        <item>Item 6</item>
+    <string-array name="NavigationTitles">
+        <item>Map</item>
+        <item>Phonebook</item>
+        <item>TPG Timetable</item>
+        <item>Shuttles</item>
+        <item>About</item>
     </string-array>
-    
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
+    <string-array name="NavigationDescriptions">
+        <item>Locate your own black hole</item>
+        <item>For stalking CERN people</item>
+        <item>Anyway on strike probably</item>
+        <item>Everyday we\'re shutteling</item>
+        <item>Gurus that build this app</item>
+    </string-array>
+
 </resources>
