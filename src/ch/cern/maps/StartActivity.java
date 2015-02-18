@@ -13,7 +13,11 @@ import ch.cern.maps.utils.*;
 import ch.cern.www.R;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -22,7 +26,10 @@ import android.view.View.OnTouchListener;
 import android.webkit.WebView;
 import android.webkit.WebView.PictureListener;
 import android.webkit.WebViewClient;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,10 +47,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
 import android.graphics.Picture;
 
 @SuppressWarnings("deprecation")
 public class StartActivity extends Activity {
+
+	private String[] drawerListViewItems;
+	private DrawerLayout drawerLayout;
+	private ListView drawerListView;
+	private ActionBarDrawerToggle actionBarDrawerToggle;
 
 	private boolean mProviders = false;
 	private double mLatitude, mLongitude, mAccuracy, mAzimuth;
@@ -68,10 +81,40 @@ public class StartActivity extends Activity {
 		// Show Action Bar
 		this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
 		setContentView(R.layout.activity_start);
-		
+
 		ActionBar actionBar = getActionBar();
 		actionBar.show();
+
+		// get list items from strings.xml
+		drawerListViewItems = getResources().getStringArray(R.array.planets_array);
+		// get ListView defined in activity_main.xml
+		drawerListView = (ListView) findViewById(R.id.left_drawer);
+
+		// Set the adapter for the list view
+		drawerListView.setAdapter(new ArrayAdapter<String>(this,
+				R.layout.drawer_list_item, drawerListViewItems));
+
+		// App Icon
+		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+		actionBarDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
+		drawerLayout, /* DrawerLayout object */
+		R.drawable.ic_launcher, /* nav drawer icon to replace 'Up' caret */
+		R.string.drawer_open, /* "open drawer" description */
+		R.string.drawer_close /* "close drawer" description */
+		);
+
+		// Set actionBarDrawerToggle as the DrawerListener
+		drawerLayout.setDrawerListener(actionBarDrawerToggle);
+
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+
+		// just styling option add shadow the right edge of the drawer
+		drawerLayout.setDrawerShadow(R.drawable.ic_action_about,
+				GravityCompat.START);
 		
+		drawerListView.setOnItemClickListener(new DrawerItemClickListener());
+
 		// Initiate activity elements
 		progressBar = (ProgressBar) findViewById(R.id.progressBar);
 		webView = (WebView) findViewById(R.id.mapWebView);
@@ -95,7 +138,42 @@ public class StartActivity extends Activity {
 		setLocateMeFuction();
 		setSearchBuilding();
 	}
+
+	@Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        actionBarDrawerToggle.onConfigurationChanged(newConfig);
+    }
+ 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+ 
+         // call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns true
+        // then it has handled the app icon touch event
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+         actionBarDrawerToggle.syncState();
+    }
 	
+    
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            Toast.makeText(StartActivity.this, ((TextView)view).getText(), Toast.LENGTH_LONG).show();
+            drawerLayout.closeDrawer(drawerListView);
+ 
+        }
+    }
+    
+    
 	/*
 	 * Initialize location variables. Also used when provider disappears
 	 */
