@@ -6,6 +6,7 @@ import ch.cern.maps.models.DataNavigation;
 import ch.cern.maps.utils.Constants;
 import ch.cern.www.R;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 public class NavigationAdapter extends BaseAdapter {
 
 	private ArrayList<DataNavigation> navObjects;
+	private Typeface mTypeface;
 	private Context mContext;
 	private TextView tv;
 	private ImageView iv;
@@ -33,6 +35,8 @@ public class NavigationAdapter extends BaseAdapter {
 			navObjects.add(new DataNavigation(navTitles[i], navDescription[i],
 					navIcons[i]));
 		}
+		mTypeface = Typeface.createFromAsset(mContext.getAssets(),
+				"DroidSans.ttf");
 	}
 
 	@Override
@@ -61,11 +65,14 @@ public class NavigationAdapter extends BaseAdapter {
 		final DataNavigation dataModel = navObjects.get(index);
 
 		tv = (TextView) view.findViewById(R.id.navTitle);
+		tv.setTypeface(mTypeface);
 		tv.setText(dataModel.getTitle());
 		tv = (TextView) view.findViewById(R.id.navDescription);
+		tv.setTypeface(mTypeface);
 		tv.setText(dataModel.getaDescription());
 		iv = (ImageView) view.findViewById(R.id.navIcon);
-		iv.setImageDrawable(mContext.getResources().getDrawable(dataModel.getImage()));
+		iv.setImageDrawable(mContext.getResources().getDrawable(
+				dataModel.getImage()));
 
 		view.setOnClickListener(new View.OnClickListener() {
 			@Override

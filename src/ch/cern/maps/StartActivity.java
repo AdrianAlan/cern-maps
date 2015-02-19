@@ -104,7 +104,7 @@ public class StartActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// just styling option add shadow the right edge of the drawer
-		drawerLayout.setDrawerShadow(R.drawable.ic_action_about,
+		drawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
 				GravityCompat.START);
 		
 		drawerListView.setOnItemClickListener(new DrawerItemClickListener());
