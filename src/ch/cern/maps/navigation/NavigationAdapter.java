@@ -2,10 +2,13 @@ package ch.cern.maps.navigation;
 
 import java.util.ArrayList;
 
+import ch.cern.maps.AboutActivity;
+import ch.cern.maps.StartActivity;
 import ch.cern.maps.models.DataNavigation;
 import ch.cern.maps.utils.Constants;
 import ch.cern.www.R;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,7 +58,7 @@ public class NavigationAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int index, View view, final ViewGroup parent) {
+	public View getView(final int index, View view, final ViewGroup parent) {
 
 		if (view == null) {
 			LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -77,9 +80,21 @@ public class NavigationAdapter extends BaseAdapter {
 		view.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-
+				
+				if (index == 0) {
+					Intent i = new Intent(mContext, StartActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					mContext.startActivity(i);
+				}
+				
+				if (index == 4) {
+					Intent i = new Intent(mContext, AboutActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					mContext.startActivity(i);
+				}
+				
 				Toast.makeText(parent.getContext(),
-						"view clicked: " + dataModel.getaDescription(),
+						"view clicked: " + index + dataModel.getaDescription(),
 						Toast.LENGTH_SHORT).show();
 			}
 		});

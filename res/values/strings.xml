@@ -2,13 +2,11 @@
 <resources>
 
     <string name="app_name">CERN Maps</string>
-    <string name="about">About</string>
     <string name="schedule">Schedule</string>
     <string name="locateme">Locate Me</string>
     <string name="search">Search&#8230;</string>
     <string name="textOpenStreetMapsContributors">© OpenStreetMap contributors</string>
     <string name="OnEmptySearch">Please type in something!</string>
-    <string name="Copyright">© 2014 Created by &lt;adrianalan.pol@gmail.com&gt; and &lt;contact@andreagiardini.com&gt;. This software contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL). See more at www.openstreetmap.org/copyright. Please report suggestions and bugs (and feel free to contribute to the code) to https://github.com/AdrianAlan/cern-maps</string>
     <string name="trams">CERN</string>
     <string name="image">IMG</string>
     <string name="BelAir">Bel-Air</string>
@@ -32,6 +30,16 @@
     <string name="nool"></string>
     <string name="icon">icon</string>
 
+    <!-- About -->
+    <string name="about">About</string>
+    <string name="adrian">adrianalan.pol@gmail.com \nCERN PH \nTechnical University of Denmark</string>
+    <string name="andrea">contact@andreagiardini.com \nCERN IT \nUniversity of Bologna</string>
+    <string name="contribute">Please report suggestions and bugs (and feel free to contribute to the code) to https://github.com/AdrianAlan/cern-maps</string>
+    <string name="contributors">© 2015 Created by</string>
+    <string name="github">GitHub</string>
+    <string name="licence">This software contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL). See more at www.openstreetmap.org/copyright. Adrian Alan Pol and Andrea Giardini wrote this app. As long as you retain this notice you can do whatever you want with this stuff. If we meet some day, and you think this stuff is worth it, you can buy us a beer in return.</string>
+
+    <!-- Navigation -->
     <string-array name="NavigationTitles">
         <item>Map</item>
         <item>Phonebook</item>

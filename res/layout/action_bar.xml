@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/action_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/trans"
+    android:gravity="center_vertical" >
+
+    <TextView
+        android:id="@+id/action_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/cern_white"
+        android:text="About"
+        android:textSize="@dimen/text_normal" />
+
+    <Button
+        android:id="@+id/action_bar_sent"
+        style="@style/ActionBarButtonOffWhite" />
+
+    <Button
+        android:id="@+id/action_bar_staff"
+        style="@style/ActionBarButtonOffWhite" />
+
+    <Button
+        android:id="@+id/action_bar_locations"
+        style="@style/ActionBarButtonOffWhite" />
+
+</LinearLayout>

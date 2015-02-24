@@ -18,17 +18,20 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.webkit.WebView;
 import android.webkit.WebView.PictureListener;
 import android.webkit.WebViewClient;
-import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -49,14 +52,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.graphics.Picture;
+import android.graphics.drawable.Drawable;
 
 @SuppressWarnings("deprecation")
 public class StartActivity extends Activity {
 
-	private DrawerLayout drawerLayout;
-	private ListView drawerListView;
 	private ActionBarDrawerToggle actionBarDrawerToggle;
-
 	private boolean mProviders = false;
 	private double mLatitude, mLongitude, mAccuracy, mAzimuth;
 	private double[] GPSPixel = { 0, 0 }, mPositionPixel = { 0, 0 };
@@ -81,34 +82,58 @@ public class StartActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
 		setContentView(R.layout.activity_start);
 
-		ActionBar actionBar = getActionBar();
-		actionBar.show();
-
+		// Take care of navigation drawer and action bar
 		ListView drawerListView = (ListView) findViewById(R.id.left_drawer);
-        NavigationAdapter customAdapter = new NavigationAdapter(getApplicationContext());
-        drawerListView.setAdapter(customAdapter);
-		
-		// App Icon
-		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-		actionBarDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
-		drawerLayout, /* DrawerLayout object */
-		R.drawable.ic_launcher, /* nav drawer icon to replace 'Up' caret */
-		R.string.nool, /* "open drawer" description */
-		R.string.nool /* "close drawer" description */
-		);
+		NavigationAdapter customAdapter = new NavigationAdapter(
+				getApplicationContext());
+		drawerListView.setAdapter(customAdapter);
+		DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
+				R.drawable.ic_drawer, R.string.nool, R.string.nool);
 
 		// Set actionBarDrawerToggle as the DrawerListener
 		drawerLayout.setDrawerListener(actionBarDrawerToggle);
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-
-		// just styling option add shadow the right edge of the drawer
 		drawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
 				GravityCompat.START);
-		
-		drawerListView.setOnItemClickListener(new DrawerItemClickListener());
 
+		// Inflate your custom layout
+		final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater()
+				.inflate(R.layout.action_bar, null);
+
+		// Set up your ActionBar
+		final ActionBar actionBar = getActionBar();
+		actionBar.setDisplayShowHomeEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
+		actionBar.setDisplayShowCustomEnabled(true);
+		actionBar.setCustomView(actionBarLayout);
+
+		// You customizationaction_bar
+		final Drawable actionBarColor = getResources().getDrawable(
+				R.drawable.top_lines);
+		actionBar.setBackgroundDrawable(actionBarColor);
+
+		final Button actionBarSent = (Button) findViewById(R.id.action_bar_sent);
+		actionBarSent.setText("Sent");
+
+		final Button actionBarStaff = (Button) findViewById(R.id.action_bar_staff);
+		actionBarStaff.setText("Staff");
+
+		final Button actionBarLocations = (Button) findViewById(R.id.action_bar_locations);
+		actionBarLocations.setText("HIPPA Locations");
+
+		LayoutInflater inflater = (LayoutInflater) this
+				.getSystemService(LAYOUT_INFLATER_SERVICE);
+		
+		/*View childLayout = inflater.inflate(R.layout.header_bar,
+	            (ViewGroup) findViewById(R.layout.header_bar));*/
+		LinearLayout parentLayout = (LinearLayout) findViewById(R.id.content_frame);
+		//parentLayout.addView(childLayout);
+		View childLayout = inflater.inflate(R.layout.start_map,
+	            (ViewGroup) findViewById(R.layout.start_map));
+		parentLayout.addView(childLayout);
+		
 		// Initiate activity elements
 		progressBar = (ProgressBar) findViewById(R.id.progressBar);
 		webView = (WebView) findViewById(R.id.mapWebView);
@@ -128,46 +153,35 @@ public class StartActivity extends Activity {
 
 		// Setup
 		setWebView();
-		setInfoBox();
+		//setInfoBox();
 		setLocateMeFuction();
 		setSearchBuilding();
 	}
 
 	@Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        actionBarDrawerToggle.onConfigurationChanged(newConfig);
-    }
- 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
- 
-         // call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns true
-        // then it has handled the app icon touch event
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
-         actionBarDrawerToggle.syncState();
-    }
-	
-    
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position, long id) {
-            Toast.makeText(StartActivity.this, position + "", Toast.LENGTH_LONG).show();
-            drawerLayout.closeDrawer(drawerListView);
- 
-        }
-    }
-    
-    
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		actionBarDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns
+		// true
+		// then it has handled the app icon touch event
+		if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		actionBarDrawerToggle.syncState();
+	}
+
 	/*
 	 * Initialize location variables. Also used when provider disappears
 	 */

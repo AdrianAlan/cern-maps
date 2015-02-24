@@ -27,6 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="ch.cern.maps.AboutActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" >
+        </activity>
 
         <service android:name="ch.cern.maps.geo.OrientationService" />
         <service android:name="ch.cern.maps.geo.LocationService" />

@@ -8,19 +8,11 @@
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/content_frame"
+        android:background="@color/cern_black"
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="50dip"
-            layout="@layout/header_bar" />
-
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            layout="@layout/start_map" />
         <!-- The navigation drawer -->
 
     </LinearLayout>
@@ -32,10 +24,13 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/cern_black"
+        android:background="@drawable/selector_nav"
         android:choiceMode="singleChoice"
         android:divider="@color/cern_greyed"
         android:dividerHeight="1dp"
-        android:paddingLeft="15sp"/>
+        android:paddingEnd="0dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="0dp"
+        android:paddingStart="15dp" />
 
 </android.support.v4.widget.DrawerLayout>

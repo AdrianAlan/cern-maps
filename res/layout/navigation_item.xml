@@ -6,7 +6,6 @@
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:background="@drawable/selector_navigation"
-    android:orientation="vertical"
     android:paddingBottom="5dp"
     android:paddingTop="2dp" >
 
@@ -32,9 +31,8 @@
         android:layout_toEndOf="@+id/navIcon"
         android:layout_toRightOf="@+id/navIcon"
         android:gravity="center_vertical"
-        android:minHeight="40sp"
         android:textColor="@color/cern_white"
-        android:textSize="20sp" />
+        android:textSize="@dimen/text_normal" />
 
     <TextView
         android:id="@+id/navDescription"
@@ -47,6 +45,6 @@
         android:layout_marginStart="3dp"
         android:gravity="center_vertical"
         android:textColor="@color/cern_white"
-        android:textSize="14sp" />
+        android:textSize="@dimen/text_small" />
 
 </RelativeLayout>
