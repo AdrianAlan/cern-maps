@@ -110,18 +110,13 @@ public class StartActivity extends Activity {
 		actionBar.setCustomView(actionBarLayout);
 
 		// You customizationaction_bar
+		TextView tv = (TextView) findViewById(R.id.action_bar_title);
+		tv.setText(getResources().getString(R.string.none));
+		
+		
 		final Drawable actionBarColor = getResources().getDrawable(
 				R.drawable.top_lines);
 		actionBar.setBackgroundDrawable(actionBarColor);
-
-		final Button actionBarSent = (Button) findViewById(R.id.action_bar_sent);
-		actionBarSent.setText("Sent");
-
-		final Button actionBarStaff = (Button) findViewById(R.id.action_bar_staff);
-		actionBarStaff.setText("Staff");
-
-		final Button actionBarLocations = (Button) findViewById(R.id.action_bar_locations);
-		actionBarLocations.setText("HIPPA Locations");
 
 		LayoutInflater inflater = (LayoutInflater) this
 				.getSystemService(LAYOUT_INFLATER_SERVICE);

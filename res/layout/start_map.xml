@@ -26,7 +26,9 @@
         android:layout_width="44dip"
         android:layout_height="44dip"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/locate_me" >
 
@@ -46,48 +48,12 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/searchLayout"
-        android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:background="@drawable/searchbg" >
-
-        <EditText
-            android:id="@+id/editTextSearch"
-            android:layout_width="0dip"
-            android:layout_height="40dip"
-            android:layout_margin="5dip"
-            android:layout_weight="1"
-            android:background="@drawable/searchbg"
-            android:fitsSystemWindows="true"
-            android:hint="@string/search"
-            android:padding="3dip"
-            android:singleLine="true"
-            android:textColor="@color/cern_white" >
-
-            <requestFocus />
-        </EditText>
-
-        <ImageButton
-            android:id="@+id/imageButtonSearch"
-            android:layout_width="40dip"
-            android:layout_height="40dip"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_margin="5dip"
-            android:background="@drawable/selector_search"
-            android:contentDescription="@string/locateme"
-            android:src="@drawable/ic_action_search" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/textOpenStreetMapsContributors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/searchLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="2dp"

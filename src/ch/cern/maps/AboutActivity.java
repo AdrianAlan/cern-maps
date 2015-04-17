@@ -90,6 +90,8 @@ public class AboutActivity extends Activity {
 
 		TextView tv = (TextView) findViewById(R.id.action_bar_title);
 		tv.setText(getResources().getString(R.string.about));
+		LinearLayout ll = (LinearLayout) findViewById(R.id.searchLayout);
+		ll.setVisibility(View.INVISIBLE);
 		
 		mTypeface = Typeface.createFromAsset(getAssets(), "DroidSans.ttf");
 		for (int i = 0; i < mTVs.length; i++) {

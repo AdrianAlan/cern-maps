@@ -9,8 +9,8 @@
 *.class
 
 # Generated files
-bin/
-gen/
+bin/*
+gen/*
 
 # Gradle files
 .gradle/

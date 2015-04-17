@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/action_bar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/trans"
     android:gravity="center_vertical" >
 
@@ -10,19 +10,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/cern_white"
-        android:text="About"
         android:textSize="@dimen/text_normal" />
 
-    <Button
-        android:id="@+id/action_bar_sent"
-        style="@style/ActionBarButtonOffWhite" />
+    <LinearLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@color/trans" >
 
-    <Button
-        android:id="@+id/action_bar_staff"
-        style="@style/ActionBarButtonOffWhite" />
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dip"
+            android:layout_weight="1"
+            android:background="@drawable/searchbg"
+            android:fitsSystemWindows="true"
+            android:hint="@string/search"
+            android:padding="3dip"
+            android:singleLine="true"
+            android:textColor="@color/cern_white" >
 
-    <Button
-        android:id="@+id/action_bar_locations"
-        style="@style/ActionBarButtonOffWhite" />
+            <requestFocus />
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/imageButtonSearch"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_margin="5dip"
+            android:background="@drawable/selector_search"
+            android:contentDescription="@string/locateme"
+            android:src="@drawable/ic_action_search" />
+    </LinearLayout>
 
 </LinearLayout>
