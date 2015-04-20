@@ -10,6 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ch.cern.maps.models.Building;
+import ch.cern.maps.models.Trams;
 import android.util.Log;
 
 public class JSONParser {

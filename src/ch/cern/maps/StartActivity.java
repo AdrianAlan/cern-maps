@@ -8,6 +8,8 @@ import java.util.Locale;
 
 import ch.cern.maps.geo.LocationService;
 import ch.cern.maps.geo.OrientationService;
+import ch.cern.maps.models.Building;
+import ch.cern.maps.models.Trams;
 import ch.cern.maps.navigation.NavigationAdapter;
 import ch.cern.maps.services.*;
 import ch.cern.maps.utils.*;
@@ -61,7 +63,7 @@ public class StartActivity extends Activity {
 	private ActionBarDrawerToggle actionBarDrawerToggle;
 	private boolean mProviders = false;
 	private double mLatitude, mLongitude, mAccuracy, mAzimuth;
-	private double[] GPSPixel = { 0, 0 }, mPositionPixel = { 0, 0 };
+	private double[] GPSPixel = { 0, 0 }, mPositionPixel = { 0, 0 }, initialScroll = { 2641, 4833 };
 	private GenerateHTMLContent getHTML;
 	private Dialog myDialog;
 	private Handler uCantHandleThat = new Handler();
@@ -155,7 +157,7 @@ public class StartActivity extends Activity {
 		initializeVariables();
 
 		// Setup
-		setWebView(mPreferences.getString(Constants.MapType, ""));
+		setWebView(mPreferences.getString(Constants.MapType, ""), 0, 0);
 		setLocateMeFuction();
 		setSearchBuilding();
 		setMapTypeSelector();
@@ -368,7 +370,13 @@ public class StartActivity extends Activity {
 	}
 
 	@SuppressLint({ "SetJavaScriptEnabled" })
-	private void setWebView(String mMapType) {
+	private void setWebView(String mMapType, float f, float g) {
+		if (f != 0 && g != 0) {
+			Log.e("A", f + "x" + g);
+			initialScroll[0] = f;
+			initialScroll[1] = g;
+		}
+		
 		getHTML = new GenerateHTMLContent(mMapType);
 		webView.loadDataWithBaseURL("file:///android_asset/images/",
 				getHTML.setHtml(), "text/html", "utf-8", null);
@@ -416,7 +424,6 @@ public class StartActivity extends Activity {
 				webView.getSettings().setSupportZoom(true);
 				webView.getSettings().setBuiltInZoomControls(true);
 				// Let us scroll to Main Building
-				double[] initialScroll = { 2641, 4833 };
 				scrollMe(initialScroll);
 				webView.setPictureListener(null);
 			}
@@ -529,8 +536,15 @@ public class StartActivity extends Activity {
 		@Override
 		public void onReceive(Context arg0, Intent mReceivedIntent) {
 			if (mReceivedIntent.getAction().equals(Constants.MapTypeActionTag)) {
+				String mt = mReceivedIntent.getStringExtra(Constants.MapType);
+				
 				myDialog.cancel();
-				setWebView(mReceivedIntent.getStringExtra(Constants.MapType));
+				mPreferences = getApplicationContext().getSharedPreferences(
+						Constants.SharedPreferences, 0);
+				Editor mEditor = mPreferences.edit();
+				mEditor.putString(Constants.MapType, mt);
+				mEditor.commit();
+				setWebView(mt, webView.getScrollX(), webView.getScrollY());
 			}
 		}
 	}

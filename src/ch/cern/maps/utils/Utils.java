@@ -3,6 +3,8 @@ package ch.cern.maps.utils;
 import java.util.ArrayList;
 import java.util.Date;
 
+import ch.cern.maps.models.Trams;
+
 public class Utils {
 
 	private static int minA, minB;

@@ -1,4 +1,4 @@
-package ch.cern.maps.utils;
+package ch.cern.maps.models;
 
 public class Building {
 
