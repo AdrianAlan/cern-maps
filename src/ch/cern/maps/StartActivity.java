@@ -63,13 +63,15 @@ public class StartActivity extends Activity {
 	private double mLatitude, mLongitude, mAccuracy, mAzimuth;
 	private double[] GPSPixel = { 0, 0 }, mPositionPixel = { 0, 0 };
 	private GenerateHTMLContent getHTML;
+	private Dialog myDialog;
 	private Handler uCantHandleThat = new Handler();
 	private Intent mIntentOrientation, mIntentLocation;
-	private ImageButton imageButtonLocateMe, imageButtonInfo, imageButtonTrams,
+	private ImageButton imageButtonLocateMe, imageButtonTrams,
 			imageButtonSearch, imageButtonMapType;
 	private ProgressBar progressBar;
 	private MapScroller myMapScroll;
 	private SensorsReceiver mStateReceiver;
+	private MapTypeReceiver mMapTypeReceiver;
 	private SharedPreferences mPreferences;
 	private String t18, tY1, tY2;
 	private TextView editTextSearch;
@@ -153,7 +155,7 @@ public class StartActivity extends Activity {
 		initializeVariables();
 
 		// Setup
-		setWebView();
+		setWebView(mPreferences.getString(Constants.MapType, ""));
 		setLocateMeFuction();
 		setSearchBuilding();
 		setMapTypeSelector();
@@ -161,7 +163,6 @@ public class StartActivity extends Activity {
 		DisplayMetrics displaymetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 		editTextSearch.setWidth(displaymetrics.widthPixels);
-
 	}
 
 	private void setMapTypeSelector() {
@@ -276,7 +277,7 @@ public class StartActivity extends Activity {
 	}
 
 	public void showDialogBox(int i) {
-		Dialog myDialog = new Dialog(this);
+		myDialog = new Dialog(this);
 		DialogBox customDialogBox = new DialogBox(this);
 		switch (i) {
 		case 1:
@@ -367,10 +368,11 @@ public class StartActivity extends Activity {
 	}
 
 	@SuppressLint({ "SetJavaScriptEnabled" })
-	private void setWebView() {
-		getHTML = new GenerateHTMLContent();
+	private void setWebView(String mMapType) {
+		getHTML = new GenerateHTMLContent(mMapType);
 		webView.loadDataWithBaseURL("file:///android_asset/images/",
 				getHTML.setHtml(), "text/html", "utf-8", null);
+
 		webView.getSettings().setJavaScriptEnabled(true);
 
 		webView.setOnTouchListener(new OnTouchListener() {
@@ -522,6 +524,17 @@ public class StartActivity extends Activity {
 		}
 	}
 
+	private class MapTypeReceiver extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context arg0, Intent mReceivedIntent) {
+			if (mReceivedIntent.getAction().equals(Constants.MapTypeActionTag)) {
+				myDialog.cancel();
+				setWebView(mReceivedIntent.getStringExtra(Constants.MapType));
+			}
+		}
+	}
+
 	private Runnable runForYourLife = new Runnable() {
 		public void run() {
 			progressBar.setVisibility(View.INVISIBLE);
@@ -538,6 +551,10 @@ public class StartActivity extends Activity {
 		intentLocationFilter.addAction(Constants.OrientationActionTag);
 		intentLocationFilter.addAction(Constants.ProvidersActionTag);
 		registerReceiver(mStateReceiver, intentLocationFilter);
+		mMapTypeReceiver = new MapTypeReceiver();
+		IntentFilter intentTypeFilter = new IntentFilter();
+		intentTypeFilter.addAction(Constants.MapTypeActionTag);
+		registerReceiver(mMapTypeReceiver, intentTypeFilter);
 		initializeVariables();
 	}
 
@@ -556,6 +573,7 @@ public class StartActivity extends Activity {
 			stopService(mIntentOrientation);
 		}
 		unregisterReceiver(mStateReceiver);
+		unregisterReceiver(mMapTypeReceiver);
 		super.onPause();
 	}
 

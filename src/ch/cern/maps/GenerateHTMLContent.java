@@ -3,6 +3,13 @@ package ch.cern.maps;
 public class GenerateHTMLContent {
 
 	private String HTML = "";
+	private String mType = "standard";
+
+	public GenerateHTMLContent(String mapType) {
+		if (!mapType.isEmpty()) {
+			this.mType = mapType;
+		}
+	}
 
 	public String getmHTML() {
 		return HTML;
@@ -75,8 +82,9 @@ public class GenerateHTMLContent {
 
 		for (int j = 46490; j < 46511; j++) {
 			for (int i = 67730; i < 67751; i++) {
-				HTML += "<div style='float:left;background-image:url(map/cycle/" + i
-						+ "-" + j + ".png);height:256px;width:256px;'></div>";
+				HTML += "<div style='float:left;background-image:url(map/"
+						+ mType + "/" + i + "-" + j
+						+ ".png);height:256px;width:256px;'></div>";
 			}
 		}
 		HTML += "<div id='circle'></div><div id='gps'></div><div id='pos'></div></body>";

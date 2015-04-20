@@ -53,5 +53,8 @@ public class Constants {
 			R.drawable.ic_cycle, R.drawable.ic_transport };
 
 	public static final int UpdatePeriod = 2592000;
+	
+	public static final String MapTypeActionTag = "MapTypeActionTag";
+	public static final String MapType = "MapType";
 
 }

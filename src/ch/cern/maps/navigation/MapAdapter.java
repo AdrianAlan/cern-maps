@@ -1,9 +1,8 @@
 package ch.cern.maps.navigation;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-import ch.cern.maps.AboutActivity;
-import ch.cern.maps.StartActivity;
 import ch.cern.maps.models.DataNavigation;
 import ch.cern.maps.utils.Constants;
 import ch.cern.www.R;
@@ -16,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MapAdapter extends BaseAdapter {
 
@@ -80,25 +78,18 @@ public class MapAdapter extends BaseAdapter {
 		view.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				
-				if (index == 0) {
-					Intent i = new Intent(mContext, StartActivity.class);
-					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					mContext.startActivity(i);
-				}
-				
-				if (index == 4) {
-					Intent i = new Intent(mContext, AboutActivity.class);
-					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					mContext.startActivity(i);
-				}
-				
-				Toast.makeText(parent.getContext(),
-						"view clicked: " + index + dataModel.getaDescription(),
-						Toast.LENGTH_SHORT).show();
+				DataNavigation mp = (DataNavigation) getItem(index);
+				sendTypeIntent(mp.getTitle().toLowerCase(Locale.ENGLISH));	
 			}
 		});
 
 		return view;
+	}
+	
+	public void sendTypeIntent(String mType) {
+		Intent typeIntent = new Intent();
+		typeIntent.setAction(Constants.MapTypeActionTag);
+		typeIntent.putExtra(Constants.MapType, mType);
+		mContext.sendBroadcast(typeIntent);
 	}
 }
