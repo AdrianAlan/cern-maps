@@ -5,6 +5,7 @@
     <string name="app_name">CERN Maps</string>
     <string name="schedule">Schedule</string>
     <string name="locateme">Locate Me</string>
+    <string name="overflow">More maps</string>
     <string name="search">Search&#8230;</string>
     <string name="textOpenStreetMapsContributors">© OpenStreetMap contributors</string>
     <string name="OnEmptySearch">Please type in something!</string>

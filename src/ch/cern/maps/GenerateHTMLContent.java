@@ -74,7 +74,7 @@ public class GenerateHTMLContent {
 		HTML += "<style type='text/css'>" + cssCIR + cssGPS + cssPOS
 				+ "</style></head>";
 
-		HTML += "<body style='height: 5120px; width: 5376px; margin: 0; padding: 0;'>";
+		HTML += "<body style='height: 5376px; width: 5376px; margin: 0; padding: 0;'>";
 
 		for (int j = 46490; j < 46511; j++) {
 			for (int i = 67730; i < 67751; i++) {
@@ -83,8 +83,6 @@ public class GenerateHTMLContent {
 			}
 		}
 		HTML += "<div id='circle'></div><div id='gps'></div><div id='pos'></div></body>";
-		
-		Log.e(Constants.APP_NAME, HTML);
 		return HTML;
 	}
 }

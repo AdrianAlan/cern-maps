@@ -20,12 +20,12 @@ public class Constants {
 	public static final String JSON_TAG_BUILDINGS_DESC = "desc";
 
 	public static final int MAP_HEIGHT = 5376;
-	public static final int MAP_WIDTH = 4096;
+	public static final int MAP_WIDTH = 5376;
 
 	public static final double MAP_NORTH = 46.267124;
 	public static final double MAP_SOUTH = 46.227409;
 	public static final double MAP_WEST = 6.025761;
-	public static final double MAP_EAST = 6.069970;
+	public static final double MAP_EAST = 6.083785;
 
 	// Calculated by: MAP_HEIGHT / ((MAP_NORTH-MAP_SOUTH) * 111111)
 	// 111111 is a ratio between degrees and meters

@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -52,6 +53,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.graphics.Picture;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
 @SuppressWarnings("deprecation")
@@ -65,13 +67,14 @@ public class StartActivity extends Activity {
 	private Handler uCantHandleThat = new Handler();
 	private Intent mIntentOrientation, mIntentLocation;
 	private ImageButton imageButtonLocateMe, imageButtonInfo, imageButtonTrams,
-			imageButtonSearch;
+			imageButtonSearch, imageButtonMapType;
 	private ProgressBar progressBar;
 	private MapScroller myMapScroll;
 	private SensorsReceiver mStateReceiver;
 	private SharedPreferences mPreferences;
 	private String t18, tY1, tY2;
 	private TextView editTextSearch;
+	private Typeface mTypeface;
 	private WebView webView;
 
 	@Override
@@ -106,33 +109,37 @@ public class StartActivity extends Activity {
 		final ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(false);
+
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
 
 		// You customizationaction_bar
 		TextView tv = (TextView) findViewById(R.id.action_bar_title);
 		tv.setText(getResources().getString(R.string.none));
-		
-		
+
 		final Drawable actionBarColor = getResources().getDrawable(
 				R.drawable.top_lines);
 		actionBar.setBackgroundDrawable(actionBarColor);
 
 		LayoutInflater inflater = (LayoutInflater) this
 				.getSystemService(LAYOUT_INFLATER_SERVICE);
-		
-		/*View childLayout = inflater.inflate(R.layout.header_bar,
-	            (ViewGroup) findViewById(R.layout.header_bar));*/
+
+		/*
+		 * View childLayout = inflater.inflate(R.layout.header_bar, (ViewGroup)
+		 * findViewById(R.layout.header_bar));
+		 */
 		LinearLayout parentLayout = (LinearLayout) findViewById(R.id.content_frame);
-		//parentLayout.addView(childLayout);
+		// parentLayout.addView(childLayout);
 		View childLayout = inflater.inflate(R.layout.start_map,
-	            (ViewGroup) findViewById(R.layout.start_map));
+				(ViewGroup) findViewById(R.layout.start_map));
 		parentLayout.addView(childLayout);
-		
+
 		// Initiate activity elements
+		mTypeface = Typeface.createFromAsset(this.getAssets(), "DroidSans.ttf");
 		progressBar = (ProgressBar) findViewById(R.id.progressBar);
 		webView = (WebView) findViewById(R.id.mapWebView);
 		editTextSearch = (TextView) findViewById(R.id.editTextSearch);
+		editTextSearch.setTypeface(mTypeface);
 
 		// Initiate intents
 		mIntentOrientation = new Intent(getApplicationContext(),
@@ -148,9 +155,26 @@ public class StartActivity extends Activity {
 
 		// Setup
 		setWebView();
-		//setInfoBox();
+		// setInfoBox();
 		setLocateMeFuction();
 		setSearchBuilding();
+		setMapTypeSelector();
+		
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		editTextSearch.setWidth(displaymetrics.widthPixels);
+		
+	}
+
+	private void setMapTypeSelector() {
+		imageButtonMapType = (ImageButton) findViewById(R.id.imageButtonMapType);
+		imageButtonMapType.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(getApplicationContext(), "map select",
+						Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
 	@Override
