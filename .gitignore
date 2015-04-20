@@ -9,7 +9,7 @@
 *.class
 
 # Generated files
-bin/*
+bin/CERNmaps.apk
 gen/*
 
 # Gradle files
@@ -54,3 +54,5 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
+
+*buildings.json

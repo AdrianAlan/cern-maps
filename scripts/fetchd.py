@@ -43,13 +43,3 @@ if __name__ == "__main__":
     mtype = sys.argv[2]
     ffo = FetchFromOSM()
     ffo.loop_and_save(url, mtype)
-
-'''
-urlo = 'https://c.tile.openstreetmap.org/17/67730/46490.png'
-ffo = FetchFromOSM()
-a = ffo.curl(urlo)
-
-file_ = open('somefile.png', 'wb')
-file_.write(a)
-file_.close()
-'''
