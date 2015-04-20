@@ -30,6 +30,7 @@
             android:background="@drawable/searchbg"
             android:fitsSystemWindows="true"
             android:hint="@string/search"
+            android:inputType="number|numberDecimal"
             android:padding="3dip"
             android:singleLine="true"
             android:textColor="@color/cern_white" >

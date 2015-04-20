@@ -1,8 +1,5 @@
 package ch.cern.maps;
 
-import ch.cern.maps.utils.Constants;
-import android.util.Log;
-
 public class GenerateHTMLContent {
 
 	private String HTML = "";

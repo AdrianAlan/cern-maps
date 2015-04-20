@@ -49,6 +49,9 @@ public class Constants {
 			R.drawable.ic_action_transport_tram_icon,
 			R.drawable.ic_action_group, R.drawable.ic_action_about };
 
+	public static final int[] mapSelectorIcons = { R.drawable.ic_standard,
+			R.drawable.ic_cycle, R.drawable.ic_transport };
+
 	public static final int UpdatePeriod = 2592000;
 
 }

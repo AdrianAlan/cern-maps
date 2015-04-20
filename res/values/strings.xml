@@ -7,6 +7,7 @@
     <string name="locateme">Locate Me</string>
     <string name="overflow">More maps</string>
     <string name="search">Search&#8230;</string>
+    <string name="select_view">Select View</string>
     <string name="textOpenStreetMapsContributors">© OpenStreetMap contributors</string>
     <string name="OnEmptySearch">Please type in something!</string>
     <string name="trams">CERN</string>
@@ -55,6 +56,17 @@
         <item>Anyway on strike probably</item>
         <item>Everyday we\'re shutteling</item>
         <item>Gurus that build this app</item>
+    </string-array>
+    
+    <string-array name="MapSelectorTitles">
+        <item>Standard</item>
+        <item>Cycle</item>
+        <item>Transport</item>
+    </string-array>
+    <string-array name="MapSelectorDescriptions">
+        <item>Perfect map type for autumn strolls to R2</item>
+        <item>Ideal for your preparations for Tour de France</item>
+        <item>Cruising down the CERN in your 64?</item>
     </string-array>
 
 </resources>

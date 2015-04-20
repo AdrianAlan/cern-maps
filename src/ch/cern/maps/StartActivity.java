@@ -30,7 +30,6 @@ import android.view.View.OnTouchListener;
 import android.webkit.WebView;
 import android.webkit.WebView.PictureListener;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -155,15 +154,14 @@ public class StartActivity extends Activity {
 
 		// Setup
 		setWebView();
-		// setInfoBox();
 		setLocateMeFuction();
 		setSearchBuilding();
 		setMapTypeSelector();
-		
+
 		DisplayMetrics displaymetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 		editTextSearch.setWidth(displaymetrics.widthPixels);
-		
+
 	}
 
 	private void setMapTypeSelector() {
@@ -171,8 +169,7 @@ public class StartActivity extends Activity {
 		imageButtonMapType.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "map select",
-						Toast.LENGTH_SHORT).show();
+				showDialogBox(1);
 			}
 		});
 	}
@@ -278,30 +275,12 @@ public class StartActivity extends Activity {
 		return null;
 	}
 
-	private void setInfoBox() {
-		imageButtonInfo = (ImageButton) findViewById(R.id.buttonInfo);
-		imageButtonInfo.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showDialogBox(1);
-			}
-		});
-		imageButtonTrams = (ImageButton) findViewById(R.id.buttonTrams);
-		imageButtonTrams.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showDialogBox(2);
-			}
-		});
-
-	}
-
 	public void showDialogBox(int i) {
 		Dialog myDialog = new Dialog(this);
 		DialogBox customDialogBox = new DialogBox(this);
 		switch (i) {
 		case 1:
-			myDialog = customDialogBox.startInfoBox();
+			myDialog = customDialogBox.startInfoBox(mTypeface);
 			break;
 		case 2:
 			progressBar.setVisibility(View.VISIBLE);
