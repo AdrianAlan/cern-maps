@@ -63,13 +63,14 @@ public class StartActivity extends Activity {
 	private ActionBarDrawerToggle actionBarDrawerToggle;
 	private boolean mProviders = false;
 	private double mLatitude, mLongitude, mAccuracy, mAzimuth;
-	private double[] GPSPixel = { 0, 0 }, mPositionPixel = { 0, 0 }, initialScroll = { 2641, 4833 };
+	private double[] GPSPixel = { 0, 0 }, mPositionPixel = { 0, 0 },
+			initialScroll = { 2641, 4833 };
 	private GenerateHTMLContent getHTML;
 	private Dialog myDialog;
 	private Handler uCantHandleThat = new Handler();
 	private Intent mIntentOrientation, mIntentLocation;
-	private ImageButton imageButtonLocateMe, imageButtonTrams,
-			imageButtonSearch, imageButtonMapType;
+	private ImageButton imageButtonLocateMe, imageButtonSearch,
+			imageButtonMapType;
 	private ProgressBar progressBar;
 	private MapScroller myMapScroll;
 	private SensorsReceiver mStateReceiver;
@@ -234,6 +235,7 @@ public class StartActivity extends Activity {
 		} else {
 			double[] search = getPositionOfTheBuildingFromJSON(editTextSearch
 					.getText().toString());
+
 			if (search == null) {
 				ToastResult(getString(R.string.NoSearchResults) + " "
 						+ editTextSearch.getText());
@@ -258,19 +260,14 @@ public class StartActivity extends Activity {
 	}
 
 	private double[] getPositionOfTheBuildingFromJSON(String userInput) {
-		userInput = userInput.toLowerCase(Locale.getDefault());
-		JSONParser jsonParser;
 		try {
-			InputStream is = getAssets().open(Constants.JSON_BUILDINGS);
-			jsonParser = new JSONParser(is);
-			for (Iterator<Building> i = jsonParser.readBuildingCoordinants()
-					.iterator(); i.hasNext();) {
-				Building b = (Building) i.next();
-				if (b.getBuildingName().equals(userInput)
-						|| b.getBuildingDesc().equals(userInput)) {
-					double[] returnCoordinants = { b.getNS(), b.getWE() };
-					return returnCoordinants;
-				}
+			JSONParser jsonParser = new JSONParser(getAssets().open(
+					Constants.JSON_BUILDINGS));
+			Building b = jsonParser.readBuildingCoordinants(userInput
+					.toLowerCase(Locale.getDefault()));
+			if (b != null) {
+				double[] returnCoordinants = { b.getNS(), b.getWE() };
+				return returnCoordinants;
 			}
 		} catch (IOException e) {
 			Log.e(Constants.TAG, e.getMessage());
@@ -370,13 +367,12 @@ public class StartActivity extends Activity {
 	}
 
 	@SuppressLint({ "SetJavaScriptEnabled" })
-	private void setWebView(String mMapType, float f, float g) {
+	private void setWebView(String mMapType, double f, double g) {
 		if (f != 0 && g != 0) {
-			Log.e("A", f + "x" + g);
 			initialScroll[0] = f;
 			initialScroll[1] = g;
 		}
-		
+
 		getHTML = new GenerateHTMLContent(mMapType);
 		webView.loadDataWithBaseURL("file:///android_asset/images/",
 				getHTML.setHtml(), "text/html", "utf-8", null);
@@ -537,14 +533,24 @@ public class StartActivity extends Activity {
 		public void onReceive(Context arg0, Intent mReceivedIntent) {
 			if (mReceivedIntent.getAction().equals(Constants.MapTypeActionTag)) {
 				String mt = mReceivedIntent.getStringExtra(Constants.MapType);
-				
+
 				myDialog.cancel();
 				mPreferences = getApplicationContext().getSharedPreferences(
 						Constants.SharedPreferences, 0);
 				Editor mEditor = mPreferences.edit();
 				mEditor.putString(Constants.MapType, mt);
 				mEditor.commit();
-				setWebView(mt, webView.getScrollX(), webView.getScrollY());
+				double x = mPositionPixel[0];
+				double y = mPositionPixel[1];
+				if (x == 0 && y == 0) {
+					x = GPSPixel[0];
+					y = GPSPixel[1];
+				}
+				if (x == 0 && y == 0) {
+					x = 2641;
+					y = 4833;
+				}
+				setWebView(mt, x, y);
 			}
 		}
 	}

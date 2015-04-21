@@ -59,32 +59,17 @@ public class JSONParser {
 		return trams;
 	}
 
-	public ArrayList<Building> readBuildingCoordinants() {
-		ArrayList<Building> buildings = new ArrayList<Building>();
+	public Building readBuildingCoordinants(String searchingFor) {
 		try {
-			JSONArray jsonBuildings = jObj
-					.getJSONArray(Constants.JSON_TAG_BUILDINGS);
-			for (int i = 0; i < jsonBuildings.length(); i++) {
-				JSONObject theBuilding = jsonBuildings.getJSONObject(i);
-				String name = theBuilding
-						.getString(Constants.JSON_TAG_BUILDINGS_NAME);
-				String ns = theBuilding
-						.getString(Constants.JSON_TAG_BUILDINGS_NS);
-				String we = theBuilding
-						.getString(Constants.JSON_TAG_BUILDINGS_WE);
-				String desc = "";
-				if (!theBuilding.isNull(Constants.JSON_TAG_BUILDINGS_DESC)) {
-					desc = theBuilding
-							.getString(Constants.JSON_TAG_BUILDINGS_DESC);
-				}
-				buildings.add(new Building(
-						name.toLowerCase(Locale.getDefault()), ns, we, desc
-								.toLowerCase(Locale.getDefault())));
-			}
+			JSONObject theBuilding = jObj.getJSONObject(searchingFor);
+			return new Building(searchingFor.toLowerCase(Locale.getDefault()),
+					theBuilding
+							.getString(Constants.JSON_TAG_BUILDINGS_LATITUDE),
+					theBuilding
+							.getString(Constants.JSON_TAG_BUILDINGS_LONGITUDE),
+					"".toLowerCase(Locale.getDefault()));
 		} catch (JSONException e) {
-			Log.e(Constants.TAG, "Error parsing data " + e.toString());
-			e.printStackTrace();
+			return null;
 		}
-		return buildings;
 	}
 }

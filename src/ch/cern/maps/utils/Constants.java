@@ -13,11 +13,8 @@ public class Constants {
 	public static final String JSON_TAG_TRAMS_TIME = "time";
 
 	public static final String JSON_BUILDINGS = "buildings.json";
-	public static final String JSON_TAG_BUILDINGS = "buildings";
-	public static final String JSON_TAG_BUILDINGS_NAME = "name";
-	public static final String JSON_TAG_BUILDINGS_NS = "NS";
-	public static final String JSON_TAG_BUILDINGS_WE = "WE";
-	public static final String JSON_TAG_BUILDINGS_DESC = "desc";
+	public static final String JSON_TAG_BUILDINGS_LATITUDE = "lat";
+	public static final String JSON_TAG_BUILDINGS_LONGITUDE = "lon";
 
 	public static final int MAP_HEIGHT = 5376;
 	public static final int MAP_WIDTH = 5376;
