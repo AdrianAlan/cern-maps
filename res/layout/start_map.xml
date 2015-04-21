@@ -61,6 +61,6 @@
         android:background="@color/cern_white"
         android:text="@string/textOpenStreetMapsContributors"
         android:textColor="@color/cern_black"
-        android:textSize="12sp" />
+        android:textSize="@dimen/text_super_small" />
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package ch.cern.maps.navigation;
 import java.util.ArrayList;
 
 import ch.cern.maps.AboutActivity;
+import ch.cern.maps.PhonebookActivity;
 import ch.cern.maps.StartActivity;
 import ch.cern.maps.models.DataNavigation;
 import ch.cern.maps.utils.Constants;
@@ -83,6 +84,12 @@ public class NavigationAdapter extends BaseAdapter {
 				
 				if (index == 0) {
 					Intent i = new Intent(mContext, StartActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					mContext.startActivity(i);
+				}
+				
+				if (index == 1) {
+					Intent i = new Intent(mContext, PhonebookActivity.class);
 					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					mContext.startActivity(i);
 				}
