@@ -1,11 +1,13 @@
 package ch.cern.maps;
 
-import ch.cern.maps.geo.LocationService;
-import ch.cern.maps.geo.OrientationService;
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import ch.cern.maps.models.Person;
 import ch.cern.maps.navigation.NavigationAdapter;
 import ch.cern.maps.utils.Constants;
 import ch.cern.maps.utils.GetContentByURL;
 import ch.cern.maps.utils.ImageHelper;
+import ch.cern.maps.utils.JSONParser;
 import ch.cern.www.R;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -13,7 +15,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -28,10 +29,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -145,23 +144,18 @@ public class PhonebookActivity extends Activity {
 		tv.setTypeface(mTypeface);
 	}
 
-	private void openBrowser(String url) {
-		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-	}
-
 	private class PhonebookReceiver extends BroadcastReceiver {
-
 		@Override
 		public void onReceive(Context arg0, Intent mReceivedIntent) {
 			if (mReceivedIntent.getAction()
 					.equals(Constants.PhonebookActionTag)) {
-
 				String mt = mReceivedIntent
 						.getStringExtra(Constants.PhonebookResponse);
-
 				Log.e("TAGs", mt);
+				JSONParser jsonParser = new JSONParser(new ByteArrayInputStream(mt.getBytes()));
+				ArrayList<Person> p = jsonParser.readPhonebook();
+				Log.e("TAGs2", p.get(0).getFamilyname());
 				
-				//TODO JSON parser
 			}
 		}
 	}

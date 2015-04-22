@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import ch.cern.maps.models.Building;
+import ch.cern.maps.models.Person;
 import ch.cern.maps.models.Trams;
 import android.util.Log;
 
@@ -40,6 +41,27 @@ public class JSONParser {
 		} catch (JSONException e) {
 			Log.e(Constants.TAG, "Error parsing data " + e.toString());
 		}
+	}
+
+	public ArrayList<Person> readPhonebook() {
+		ArrayList<Person> people = new ArrayList<Person>();
+		try {
+			JSONArray jsonPeople = jObj
+					.getJSONArray(Constants.JSON_TAG_Phonebook);
+			for (int i = 0; i < jsonPeople.length(); i++) {
+				JSONObject person = jsonPeople.getJSONObject(i);
+				people.add(new Person(
+						person.getString(Constants.JSON_TAG_Phonebook_Firstname),
+						person.getString(Constants.JSON_TAG_Phonebook_Familyname),
+						person.getString(Constants.JSON_TAG_Phonebook_Email),
+						person.getString(Constants.JSON_TAG_Phonebook_Group),
+						person.getString(Constants.JSON_TAG_Phonebook_Office)));
+			}
+		} catch (JSONException e) {
+			Log.e(Constants.TAG, "Error parsing data " + e.toString());
+			e.printStackTrace();
+		}
+		return people;
 	}
 
 	public ArrayList<Trams> readSchedule() {

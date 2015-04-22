@@ -57,5 +57,10 @@ public class Constants {
 	public static final String PhonebookURL = "http://m.web.cern.ch/m/ajax-util.php?f=phonebook&search=";
 	public static final String PhonebookActionTag = "PhonebookActionTag";
 	public static final String PhonebookResponse = "PhonebookResponse";
-	
+	public static final String JSON_TAG_Phonebook = "results";
+	public static final String JSON_TAG_Phonebook_Firstname = "firstname";
+	public static final String JSON_TAG_Phonebook_Familyname = "familyname";
+	public static final String JSON_TAG_Phonebook_Email = "email";
+	public static final String JSON_TAG_Phonebook_Group = "group";
+	public static final String JSON_TAG_Phonebook_Office = "office";
 }
