@@ -9,7 +9,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/content_frame"
         android:background="@color/cern_black"
-        android:gravity="center_vertical"
+        android:gravity="top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >

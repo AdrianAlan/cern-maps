@@ -2,12 +2,14 @@ package ch.cern.maps;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+
 import ch.cern.maps.models.Person;
 import ch.cern.maps.navigation.NavigationAdapter;
 import ch.cern.maps.utils.Constants;
 import ch.cern.maps.utils.GetContentByURL;
 import ch.cern.maps.utils.ImageHelper;
 import ch.cern.maps.utils.JSONParser;
+import ch.cern.maps.utils.Utils;
 import ch.cern.www.R;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -16,32 +18,35 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
 public class PhonebookActivity extends Activity {
 
 	private ActionBarDrawerToggle actionBarDrawerToggle;
-	private int[] mTVs = { R.id.action_bar_title };
+	private int[] mTVs = { R.id.action_bar_title, R.id.editPersonSearch };
 	private PhonebookReceiver mPhonebookReceiver;
+	private ImageButton imageButtonPhonebook;
+	private TextView editTextSearch;
 	private Typeface mTypeface;
 
 	@Override
@@ -51,8 +56,6 @@ public class PhonebookActivity extends Activity {
 		// Show Action Bar
 		this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
 		setContentView(R.layout.activity_start);
-
-		new GetContentByURL(getApplicationContext()).execute("Andrea Giardini");
 
 		// Take care of navigation drawer and action bar
 		ListView drawerListView = (ListView) findViewById(R.id.left_drawer);
@@ -81,35 +84,52 @@ public class PhonebookActivity extends Activity {
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
 
-		// You customizationaction_bar
+		// Customization
 		final Drawable actionBarColor = getResources().getDrawable(
 				R.drawable.top_lines);
 		actionBar.setBackgroundDrawable(actionBarColor);
 		LayoutInflater inflater = (LayoutInflater) this
 				.getSystemService(LAYOUT_INFLATER_SERVICE);
-
-		/*
-		 * View childLayout = inflater.inflate(R.layout.header_bar, (ViewGroup)
-		 * findViewById(R.layout.header_bar));
-		 */
 		LinearLayout parentLayout = (LinearLayout) findViewById(R.id.content_frame);
-		// parentLayout.addView(childLayout);
 		View childLayout = inflater.inflate(R.layout.phonebook_activity,
 				(ViewGroup) findViewById(R.layout.phonebook_activity));
 		parentLayout.addView(childLayout);
 
 		TextView tv = (TextView) findViewById(R.id.action_bar_title);
-		tv.setText(getResources().getString(R.string.about));
+		tv.setText(getResources().getString(R.string.phonebook));
 		LinearLayout ll = (LinearLayout) findViewById(R.id.searchLayout);
 		ll.setVisibility(View.INVISIBLE);
-
 		mTypeface = Typeface.createFromAsset(getAssets(), "DroidSans.ttf");
 		for (int i = 0; i < mTVs.length; i++) {
 			setFontsOnTextViews(mTVs[i]);
 		}
 
-		setAvatar(R.id.aap, R.drawable.aap);
-		setAvatar(R.id.ag, R.drawable.ag);
+		ImageView iv = (ImageView) findViewById(R.id.phonebookimg);
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		iv.setImageBitmap(ImageHelper.decodeSampledBitmapFromResource(
+				getResources(), R.drawable.cern, displaymetrics.widthPixels,
+				150));
+		
+		editTextSearch = (TextView) findViewById(R.id.editPersonSearch);
+		 
+		imageButtonPhonebook = (ImageButton) findViewById(R.id.imageButtonSearchPhonebook);
+		imageButtonPhonebook.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startQuery();
+			}
+		});
+	}
+	
+	protected void startQuery() {
+		if (editTextSearch.getText().toString().equals(null)
+				|| editTextSearch.getText().toString().equals("")) {
+			ToastResult(getString(R.string.OnEmptySearch));
+		} else {
+			ToastResult(editTextSearch.getText().toString());
+			new GetContentByURL(getApplicationContext()).execute(editTextSearch.getText().toString());
+		}
 	}
 
 	@Override
@@ -132,13 +152,6 @@ public class PhonebookActivity extends Activity {
 		actionBarDrawerToggle.syncState();
 	}
 
-	private void setAvatar(int arg0, int arg1) {
-		ImageView iv = (ImageView) findViewById(arg0);
-		Bitmap bitmap = ((BitmapDrawable) getResources().getDrawable(arg1))
-				.getBitmap();
-		iv.setImageBitmap(ImageHelper.getRoundedCornerBitmap(bitmap, 500));
-	}
-
 	private void setFontsOnTextViews(int arg) {
 		TextView tv = (TextView) findViewById(arg);
 		tv.setTypeface(mTypeface);
@@ -152,10 +165,10 @@ public class PhonebookActivity extends Activity {
 				String mt = mReceivedIntent
 						.getStringExtra(Constants.PhonebookResponse);
 				Log.e("TAGs", mt);
-				JSONParser jsonParser = new JSONParser(new ByteArrayInputStream(mt.getBytes()));
+				JSONParser jsonParser = new JSONParser(
+						new ByteArrayInputStream(mt.getBytes()));
 				ArrayList<Person> p = jsonParser.readPhonebook();
 				Log.e("TAGs2", p.get(0).getFamilyname());
-				
 			}
 		}
 	}
@@ -173,5 +186,9 @@ public class PhonebookActivity extends Activity {
 	protected void onPause() {
 		unregisterReceiver(mPhonebookReceiver);
 		super.onPause();
+	}
+	
+	private void ToastResult(String s) {
+		Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
 	}
 }
