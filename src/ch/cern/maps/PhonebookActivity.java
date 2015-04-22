@@ -1,11 +1,19 @@
 package ch.cern.maps;
 
+import ch.cern.maps.geo.LocationService;
+import ch.cern.maps.geo.OrientationService;
 import ch.cern.maps.navigation.NavigationAdapter;
+import ch.cern.maps.utils.Constants;
+import ch.cern.maps.utils.GetContentByURL;
 import ch.cern.maps.utils.ImageHelper;
 import ch.cern.www.R;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -16,6 +24,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +42,7 @@ public class PhonebookActivity extends Activity {
 
 	private ActionBarDrawerToggle actionBarDrawerToggle;
 	private int[] mTVs = { R.id.action_bar_title };
+	private PhonebookReceiver mPhonebookReceiver;
 	private Typeface mTypeface;
 
 	@Override
@@ -42,6 +52,8 @@ public class PhonebookActivity extends Activity {
 		// Show Action Bar
 		this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
 		setContentView(R.layout.activity_start);
+
+		new GetContentByURL(getApplicationContext()).execute("Andrea Giardini");
 
 		// Take care of navigation drawer and action bar
 		ListView drawerListView = (ListView) findViewById(R.id.left_drawer);
@@ -91,7 +103,7 @@ public class PhonebookActivity extends Activity {
 		tv.setText(getResources().getString(R.string.about));
 		LinearLayout ll = (LinearLayout) findViewById(R.id.searchLayout);
 		ll.setVisibility(View.INVISIBLE);
-		
+
 		mTypeface = Typeface.createFromAsset(getAssets(), "DroidSans.ttf");
 		for (int i = 0; i < mTVs.length; i++) {
 			setFontsOnTextViews(mTVs[i]);
@@ -100,7 +112,7 @@ public class PhonebookActivity extends Activity {
 		setAvatar(R.id.aap, R.drawable.aap);
 		setAvatar(R.id.ag, R.drawable.ag);
 	}
-	
+
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
@@ -135,5 +147,37 @@ public class PhonebookActivity extends Activity {
 
 	private void openBrowser(String url) {
 		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+	}
+
+	private class PhonebookReceiver extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context arg0, Intent mReceivedIntent) {
+			if (mReceivedIntent.getAction()
+					.equals(Constants.PhonebookActionTag)) {
+
+				String mt = mReceivedIntent
+						.getStringExtra(Constants.PhonebookResponse);
+
+				Log.e("TAGs", mt);
+				
+				//TODO JSON parser
+			}
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		mPhonebookReceiver = new PhonebookReceiver();
+		IntentFilter intentPhonebookFilter = new IntentFilter();
+		intentPhonebookFilter.addAction(Constants.PhonebookActionTag);
+		registerReceiver(mPhonebookReceiver, intentPhonebookFilter);
+	}
+
+	@Override
+	protected void onPause() {
+		unregisterReceiver(mPhonebookReceiver);
+		super.onPause();
 	}
 }

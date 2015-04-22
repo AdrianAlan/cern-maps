@@ -54,4 +54,8 @@ public class Constants {
 	public static final String MapTypeActionTag = "MapTypeActionTag";
 	public static final String MapType = "MapType";
 
+	public static final String PhonebookURL = "http://m.web.cern.ch/m/ajax-util.php?f=phonebook&search=";
+	public static final String PhonebookActionTag = "PhonebookActionTag";
+	public static final String PhonebookResponse = "PhonebookResponse";
+	
 }
