@@ -1,7 +1,5 @@
-[
-    {
-        "line": "18",
-        "schedule": [
+{
+    "18": [
             {
                 "time": "05:24",
                 "direction": "Carouge"
@@ -378,11 +376,8 @@
                 "time": "23:17",
                 "direction": "Carouge"
             }
-        ]
-    },
-    {
-        "line": "Y",
-        "schedule:": [
+        ],
+        "Y": [
             {
                 "time": "06:03",
                 "direction": "Val-Thoiry"
@@ -741,4 +736,3 @@
             }
         ]
     }
-]

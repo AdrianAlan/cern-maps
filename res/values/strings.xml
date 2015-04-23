@@ -22,7 +22,7 @@
     <string name="UnsuccessfulLocatization">Cannot estimate your position</string>
     <string name="WaitForLocation">Waiting for location</string>
     <string name="OK">OK</string>
-    <string name="NextBusIn">Next bus in:</string>
+    <string name="next_in">next in</string>
     <string name="NextTramIn">Next tram in:</string>
     <string name="GPSOff">GPS is disabled in your device</string>
     <string name="enable">Enable</string>
@@ -33,6 +33,7 @@
     <string name="MapToSmall">Map to small to show&#32;</string>
     <string name="Y">Y</string>
     <string name="N18">18</string>
+    <string name="line">Line</string>
     <string name="nool"></string>
     <string name="icon">icon</string>
 

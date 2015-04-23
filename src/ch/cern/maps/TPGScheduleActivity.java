@@ -1,7 +1,19 @@
 package ch.cern.maps;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import ch.cern.maps.adapters.NavigationAdapter;
+import ch.cern.maps.adapters.PhonebookAdapter;
+import ch.cern.maps.adapters.TPGAdapter;
+import ch.cern.maps.models.TPGView;
+import ch.cern.maps.models.Trams;
+import ch.cern.maps.utils.Constants;
 import ch.cern.maps.utils.ImageHelper;
+import ch.cern.maps.utils.JSONParser;
+import ch.cern.maps.utils.Utils;
 import ch.cern.www.R;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -13,6 +25,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +35,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
 public class TPGScheduleActivity extends Activity {
@@ -93,6 +107,51 @@ public class TPGScheduleActivity extends Activity {
 		iv.setImageBitmap(ImageHelper
 				.decodeSampledBitmapFromResource(getResources(),
 						R.drawable.tpg, displaymetrics.widthPixels, 150));
+
+		// Get the trams
+		readMyTramsFromJSON();
+	}
+
+	private void readMyTramsFromJSON() {
+		JSONParser jsonParser;
+		try {
+			ArrayList<Trams> t18 = new ArrayList<Trams>();
+			ArrayList<Trams> bY = new ArrayList<Trams>();
+
+			InputStream is = getAssets().open(Constants.JSONTram);
+			jsonParser = new JSONParser(is);
+
+			for (Iterator<Trams> i = jsonParser.readSchedule("18").iterator(); i
+					.hasNext();) {
+				Trams tram = (Trams) i.next();
+				t18.add(tram);
+			}
+
+			for (Iterator<Trams> i = jsonParser.readSchedule("Y").iterator(); i
+					.hasNext();) {
+				Trams tram = (Trams) i.next();
+				bY.add(tram);
+			}
+
+			Trams[] nextTrams = Utils.getNextTrains(t18);
+			Trams[] nextBuses = Utils.getNextTrains(bY);
+
+			ArrayList<TPGView> tpg = new ArrayList<TPGView>();
+			tpg.add(new TPGView(nextTrams[0].getLine(), getResources()
+					.getDrawable(R.drawable.trams_18), nextTrams[0].getWaiting(),
+					nextTrams[0].getDirection()));
+			tpg.add(new TPGView(nextBuses[0].getLine(), getResources()
+					.getDrawable(R.drawable.trams_y), nextBuses[0].getWaiting(),
+					nextBuses[0].getDirection()));
+			
+			ListView tpgList = (ListView) findViewById(R.id.tpg_list);
+			TPGAdapter customAdapter = new TPGAdapter(
+					getApplicationContext(), tpg);
+			tpgList.setAdapter(customAdapter);
+
+		} catch (IOException e) {
+			Log.e(Constants.TAG, e.getMessage());
+		}
 	}
 
 	@Override

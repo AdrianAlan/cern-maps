@@ -64,15 +64,15 @@ public class JSONParser {
 		return people;
 	}
 
-	public ArrayList<Trams> readSchedule() {
+	public ArrayList<Trams> readSchedule(String lineNumber) {
 		ArrayList<Trams> trams = new ArrayList<Trams>();
 		try {
-			JSONArray jsonTrams = jObj.getJSONArray(Constants.JSON_TAG_TRAMS);
+			JSONArray jsonTrams = jObj.getJSONArray(lineNumber);
 			for (int i = 0; i < jsonTrams.length(); i++) {
 				JSONObject tram = jsonTrams.getJSONObject(i);
-				String line = tram.getString(Constants.JSON_TAG_TRAMS_LINE);
 				String time = tram.getString(Constants.JSON_TAG_TRAMS_TIME);
-				trams.add(new Trams(line, time));
+				String direction = tram.getString(Constants.JSON_TAG_TRAMS_Direction);
+				trams.add(new Trams(lineNumber, time, direction));
 			}
 		} catch (JSONException e) {
 			Log.e(Constants.TAG, "Error parsing data " + e.toString());

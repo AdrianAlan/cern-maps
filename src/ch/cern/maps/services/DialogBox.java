@@ -36,28 +36,4 @@ public class DialogBox extends Activity {
 		return mBuilder.create();
 	}
 
-	public Dialog startTramBox(String t18, String tY1, String tY2) {
-		TextView tram18, tramY1, tramY2;
-
-		LayoutInflater inflater = (LayoutInflater) mContext
-				.getSystemService(LAYOUT_INFLATER_SERVICE);
-		View layout = inflater.inflate(R.layout.dialog_trams, null);
-		tram18 = (TextView) layout.findViewById(R.id.box18);
-		if (t18 != null) {
-			tram18.setText(mContext.getString(R.string.NextTramIn) + t18);
-		}
-		tramY1 = (TextView) layout.findViewById(R.id.boxY1);
-		if (tY1 != null) {
-			tramY1.setText(mContext.getString(R.string.NextBusIn) + tY1);
-		}
-		tramY2 = (TextView) layout.findViewById(R.id.boxY2);
-		if (tY2 != null) {
-			tramY2.setText(mContext.getString(R.string.NextBusIn) + tY2);
-		}
-
-		AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-		builder.setView(layout).setNeutralButton(R.string.OK, null);
-		return builder.create();
-	}
-
 }

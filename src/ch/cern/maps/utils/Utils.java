@@ -1,42 +1,51 @@
 package ch.cern.maps.utils;
 
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Date;
 
-import android.util.Log;
 import ch.cern.maps.models.Trams;
 
 public class Utils {
 
-	private static int minA, minB;
+	private static Trams minA, minB;
 
-	public static String getNextTrains(ArrayList<Trams> tramList) {
-		minA = 10080;
-		minB = 10080;
+	public static Trams[] getNextTrains(ArrayList<Trams> tramList) {
+		minA = new Trams("", "24:00", "--");
+		minB = new Trams("", "24:00", "--");
+		minA.setWaiting(1440);
+		minB.setWaiting(1440);
 		Date nowTime = new Date();
 
 		for (Trams t : tramList) {
 			String[] time = t.getTime().split(":");
-			@SuppressWarnings("deprecation")
-			int toGo = (60 * 24 * Integer.parseInt(time[0])
-					+ Integer.parseInt(time[1]) * 60 + Integer
-						.parseInt(time[2]))
-					- (24 * 60 * (nowTime.getDay() - 1) + nowTime.getHours()
-							* 60 + nowTime.getMinutes());
+			int toGo = Integer.parseInt(time[0]) * 60
+					+ Integer.parseInt(time[1])
+					- (nowTime.getHours() * 60 + nowTime.getMinutes());
 			if (toGo < 0) {
-				toGo += 60 * 24 * 7;
+				toGo += 60 * 24;
 			}
-			minimumTime(minA, minB, toGo);
+			t.setWaiting(toGo);
+			minimumTime(minA, minB, t);
 		}
-		return " " + Math.min(minA, minB) + "min; " + Math.max(minA, minB)
-				+ "min.";
+		Trams[] tr = { minA, minB };
+		return tr;
 	}
 
-	public static void minimumTime(int A, int B, int C) {
-		int max = Math.max(A, B);
-		minA = Math.min(A, B);
-		minB = Math.min(max, C);
+	public static void minimumTime(Trams A, Trams B, Trams C) {
+		Trams left;
+		int max = Math.max(A.getWaiting(), B.getWaiting());
+		if (Math.min(A.getWaiting(), B.getWaiting()) == A.getWaiting()) {
+			minA = A;
+			left = B;
+		} else {
+			minA = B;
+			left = A;
+		}
+		if (Math.min(max, C.getWaiting()) == C.getWaiting()) {
+			minB = C;
+		} else {
+			minB = left;
+		}
 	}
 
 	public static double[] getPixel(double x, double y) {

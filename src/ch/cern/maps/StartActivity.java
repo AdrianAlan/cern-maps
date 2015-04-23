@@ -1,20 +1,12 @@
 package ch.cern.maps;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Locale;
 
 import ch.cern.maps.adapters.NavigationAdapter;
 import ch.cern.maps.geo.LocationService;
 import ch.cern.maps.geo.OrientationService;
 import ch.cern.maps.models.Building;
-import ch.cern.maps.models.Trams;
 import ch.cern.maps.services.*;
 import ch.cern.maps.utils.*;
 import ch.cern.www.R;
@@ -80,7 +72,6 @@ public class StartActivity extends Activity {
 	private SensorsReceiver mStateReceiver;
 	private MapTypeReceiver mMapTypeReceiver;
 	private SharedPreferences mPreferences;
-	private String t18, tY1, tY2;
 	private TextView editTextSearch;
 	private Typeface mTypeface;
 	private WebView webView;
@@ -176,7 +167,7 @@ public class StartActivity extends Activity {
 		imageButtonMapType.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				showDialogBox(1);
+				showDialogBox();
 			}
 		});
 	}
@@ -278,22 +269,10 @@ public class StartActivity extends Activity {
 		return null;
 	}
 
-	public void showDialogBox(int i) {
+	public void showDialogBox() {
 		myDialog = new Dialog(this);
 		DialogBox customDialogBox = new DialogBox(this);
-		switch (i) {
-		case 1:
-			myDialog = customDialogBox.startInfoBox(mTypeface);
-			break;
-		case 2:
-			progressBar.setVisibility(View.VISIBLE);
-			readMyTramsFromJSON();
-			myDialog = customDialogBox.startTramBox(t18, tY1, tY2);
-			progressBar.setVisibility(View.INVISIBLE);
-			break;
-		default:
-			break;
-		}
+		myDialog = customDialogBox.startInfoBox(mTypeface);
 		myDialog.show();
 	}
 
@@ -427,35 +406,6 @@ public class StartActivity extends Activity {
 				webView.setPictureListener(null);
 			}
 		});
-	}
-
-	private void readMyTramsFromJSON() {
-		JSONParser jsonParser;
-		try {
-			ArrayList<Trams> trams18 = new ArrayList<Trams>();
-			ArrayList<Trams> tramsY1 = new ArrayList<Trams>();
-			ArrayList<Trams> tramsY2 = new ArrayList<Trams>();
-			InputStream is = getAssets().open(Constants.JSONTram);
-			jsonParser = new JSONParser(is);
-			for (Iterator<Trams> i = jsonParser.readSchedule().iterator(); i
-					.hasNext();) {
-				Trams tram = (Trams) i.next();
-				if (tram.getLine().equals("18")) {
-					trams18.add(tram);
-				} else if (tram.getLine().equals("Y1")) {
-					tramsY1.add(tram);
-				} else if (tram.getLine().equals("Y2")) {
-					tramsY2.add(tram);
-				}
-			}
-			t18 = Utils.getNextTrains(trams18);
-			tY1 = Utils.getNextTrains(tramsY1);
-			tY2 = Utils.getNextTrains(tramsY2);
-
-		} catch (IOException e) {
-			Log.e(Constants.TAG, e.getMessage());
-		}
-
 	}
 
 	private void onScrollPage(int mLeft, int mTop) {
