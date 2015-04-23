@@ -3,13 +3,14 @@ package ch.cern.maps;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
+import ch.cern.maps.adapters.NavigationAdapter;
+import ch.cern.maps.adapters.PhonebookAdapter;
 import ch.cern.maps.models.Person;
-import ch.cern.maps.navigation.NavigationAdapter;
+import ch.cern.maps.services.CheckConnection;
 import ch.cern.maps.utils.Constants;
 import ch.cern.maps.utils.GetContentByURL;
 import ch.cern.maps.utils.ImageHelper;
 import ch.cern.maps.utils.JSONParser;
-import ch.cern.maps.utils.Utils;
 import ch.cern.www.R;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -36,6 +37,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,8 +45,12 @@ import android.widget.Toast;
 public class PhonebookActivity extends Activity {
 
 	private ActionBarDrawerToggle actionBarDrawerToggle;
-	private int[] mTVs = { R.id.action_bar_title, R.id.editPersonSearch };
+	private boolean isInternet;
+	private int[] mTVs = { R.id.action_bar_title, R.id.editPersonSearch,
+			R.id.textViewNoInternet };
 	private PhonebookReceiver mPhonebookReceiver;
+	private RelativeLayout noConnection;
+	private LinearLayout isConnection;
 	private ImageButton imageButtonPhonebook;
 	private TextView editTextSearch;
 	private Typeface mTypeface;
@@ -110,9 +116,9 @@ public class PhonebookActivity extends Activity {
 		iv.setImageBitmap(ImageHelper.decodeSampledBitmapFromResource(
 				getResources(), R.drawable.cern, displaymetrics.widthPixels,
 				150));
-		
+
 		editTextSearch = (TextView) findViewById(R.id.editPersonSearch);
-		 
+
 		imageButtonPhonebook = (ImageButton) findViewById(R.id.imageButtonSearchPhonebook);
 		imageButtonPhonebook.setOnClickListener(new OnClickListener() {
 			@Override
@@ -120,15 +126,20 @@ public class PhonebookActivity extends Activity {
 				startQuery();
 			}
 		});
+
+		noConnection = (RelativeLayout) findViewById(R.id.layoutNoConnection);
+		isConnection = (LinearLayout) findViewById(R.id.layoutSearch);
 	}
-	
+
 	protected void startQuery() {
 		if (editTextSearch.getText().toString().equals(null)
 				|| editTextSearch.getText().toString().equals("")) {
 			ToastResult(getString(R.string.OnEmptySearch));
 		} else {
-			ToastResult(editTextSearch.getText().toString());
-			new GetContentByURL(getApplicationContext()).execute(editTextSearch.getText().toString());
+			if (isInternet) {
+				new GetContentByURL(getApplicationContext())
+						.execute(editTextSearch.getText().toString());
+			}
 		}
 	}
 
@@ -164,11 +175,19 @@ public class PhonebookActivity extends Activity {
 					.equals(Constants.PhonebookActionTag)) {
 				String mt = mReceivedIntent
 						.getStringExtra(Constants.PhonebookResponse);
-				Log.e("TAGs", mt);
 				JSONParser jsonParser = new JSONParser(
 						new ByteArrayInputStream(mt.getBytes()));
 				ArrayList<Person> p = jsonParser.readPhonebook();
-				Log.e("TAGs2", p.get(0).getFamilyname());
+				ListView phonebookList = (ListView) findViewById(R.id.people_list);
+				PhonebookAdapter customAdapter = new PhonebookAdapter(
+						getApplicationContext(), p);
+				phonebookList.setAdapter(customAdapter);
+			}
+			if (mReceivedIntent.getAction().equals(
+					Constants.InternetConnectionActionTag)) {
+				isInternet = mReceivedIntent.getBooleanExtra(
+						Constants.InternetConnectionStatus, false);
+				hideLayouts(isInternet);
 			}
 		}
 	}
@@ -179,7 +198,19 @@ public class PhonebookActivity extends Activity {
 		mPhonebookReceiver = new PhonebookReceiver();
 		IntentFilter intentPhonebookFilter = new IntentFilter();
 		intentPhonebookFilter.addAction(Constants.PhonebookActionTag);
+		intentPhonebookFilter.addAction(Constants.InternetConnectionActionTag);
 		registerReceiver(mPhonebookReceiver, intentPhonebookFilter);
+		isInternetAvailable();
+	}
+
+	public void hideLayouts(Boolean isInternet) {
+		if (isInternet) {
+			isConnection.setVisibility(View.VISIBLE);
+			noConnection.setVisibility(View.INVISIBLE);
+		} else {
+			isConnection.setVisibility(View.INVISIBLE);
+			noConnection.setVisibility(View.VISIBLE);
+		}
 	}
 
 	@Override
@@ -187,8 +218,13 @@ public class PhonebookActivity extends Activity {
 		unregisterReceiver(mPhonebookReceiver);
 		super.onPause();
 	}
-	
+
 	private void ToastResult(String s) {
 		Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+	}
+
+	public void isInternetAvailable() {
+		new CheckConnection(getApplicationContext())
+				.execute(Constants.PingURLForConnection);
 	}
 }

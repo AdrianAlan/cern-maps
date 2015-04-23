@@ -11,6 +11,7 @@
     <string name="select_view">Select View</string>
     <string name="textOpenStreetMapsContributors">© OpenStreetMap contributors</string>
     <string name="OnEmptySearch">Please type in something!</string>
+    <string name="nointernet">There is no internet connection at the moment. For security reasons Phonebook requires internet.</string>
     <string name="trams">CERN</string>
     <string name="image">IMG</string>
     <string name="BelAir">Bel-Air</string>

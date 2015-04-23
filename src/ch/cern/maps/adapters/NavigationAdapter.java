@@ -1,8 +1,10 @@
-package ch.cern.maps.navigation;
+package ch.cern.maps.adapters;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
+import ch.cern.maps.AboutActivity;
+import ch.cern.maps.PhonebookActivity;
+import ch.cern.maps.StartActivity;
 import ch.cern.maps.models.DataNavigation;
 import ch.cern.maps.utils.Constants;
 import ch.cern.www.R;
@@ -16,7 +18,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MapAdapter extends BaseAdapter {
+public class NavigationAdapter extends BaseAdapter {
 
 	private ArrayList<DataNavigation> navObjects;
 	private Typeface mTypeface;
@@ -24,13 +26,13 @@ public class MapAdapter extends BaseAdapter {
 	private TextView tv;
 	private ImageView iv;
 
-	public MapAdapter(Context c) {
+	public NavigationAdapter(Context c) {
 		mContext = c;
 		String[] navTitles = c.getResources().getStringArray(
-				R.array.MapSelectorTitles);
+				R.array.NavigationTitles);
 		String[] navDescription = c.getResources().getStringArray(
-				R.array.MapSelectorDescriptions);
-		int[] navIcons = Constants.mapSelectorIcons;
+				R.array.NavigationDescriptions);
+		int[] navIcons = Constants.navIcons;
 		navObjects = new ArrayList<DataNavigation>();
 		for (int i = 0; i < navTitles.length; i++) {
 			navObjects.add(new DataNavigation(navTitles[i], navDescription[i],
@@ -78,18 +80,26 @@ public class MapAdapter extends BaseAdapter {
 		view.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				DataNavigation mp = (DataNavigation) getItem(index);
-				sendTypeIntent(mp.getTitle().toLowerCase(Locale.ENGLISH));	
+				if (index == 0) {
+					Intent i = new Intent(mContext, StartActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					mContext.startActivity(i);
+				}
+				
+				if (index == 1) {
+					Intent i = new Intent(mContext, PhonebookActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					mContext.startActivity(i);
+				}
+				
+				if (index == 4) {
+					Intent i = new Intent(mContext, AboutActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					mContext.startActivity(i);
+				}
 			}
 		});
 
 		return view;
-	}
-	
-	public void sendTypeIntent(String mType) {
-		Intent typeIntent = new Intent();
-		typeIntent.setAction(Constants.MapTypeActionTag);
-		typeIntent.putExtra(Constants.MapType, mType);
-		mContext.sendBroadcast(typeIntent);
 	}
 }

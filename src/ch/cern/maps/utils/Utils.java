@@ -1,8 +1,10 @@
 package ch.cern.maps.utils;
 
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.util.Log;
 import ch.cern.maps.models.Trams;
 
 public class Utils {

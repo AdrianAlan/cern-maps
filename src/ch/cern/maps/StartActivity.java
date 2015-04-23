@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
 
+import ch.cern.maps.adapters.NavigationAdapter;
 import ch.cern.maps.geo.LocationService;
 import ch.cern.maps.geo.OrientationService;
 import ch.cern.maps.models.Building;
 import ch.cern.maps.models.Trams;
-import ch.cern.maps.navigation.NavigationAdapter;
 import ch.cern.maps.services.*;
 import ch.cern.maps.utils.*;
 import ch.cern.www.R;

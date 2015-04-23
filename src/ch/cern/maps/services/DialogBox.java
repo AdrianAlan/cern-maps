@@ -1,6 +1,6 @@
 package ch.cern.maps.services;
 
-import ch.cern.maps.navigation.MapAdapter;
+import ch.cern.maps.adapters.MapAdapter;
 import ch.cern.www.R;
 import android.app.Activity;
 import android.app.AlertDialog;

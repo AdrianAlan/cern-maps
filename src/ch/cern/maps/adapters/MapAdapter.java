@@ -1,10 +1,8 @@
-package ch.cern.maps.navigation;
+package ch.cern.maps.adapters;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-import ch.cern.maps.AboutActivity;
-import ch.cern.maps.PhonebookActivity;
-import ch.cern.maps.StartActivity;
 import ch.cern.maps.models.DataNavigation;
 import ch.cern.maps.utils.Constants;
 import ch.cern.www.R;
@@ -17,9 +15,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class NavigationAdapter extends BaseAdapter {
+public class MapAdapter extends BaseAdapter {
 
 	private ArrayList<DataNavigation> navObjects;
 	private Typeface mTypeface;
@@ -27,13 +24,13 @@ public class NavigationAdapter extends BaseAdapter {
 	private TextView tv;
 	private ImageView iv;
 
-	public NavigationAdapter(Context c) {
+	public MapAdapter(Context c) {
 		mContext = c;
 		String[] navTitles = c.getResources().getStringArray(
-				R.array.NavigationTitles);
+				R.array.MapSelectorTitles);
 		String[] navDescription = c.getResources().getStringArray(
-				R.array.NavigationDescriptions);
-		int[] navIcons = Constants.navIcons;
+				R.array.MapSelectorDescriptions);
+		int[] navIcons = Constants.mapSelectorIcons;
 		navObjects = new ArrayList<DataNavigation>();
 		for (int i = 0; i < navTitles.length; i++) {
 			navObjects.add(new DataNavigation(navTitles[i], navDescription[i],
@@ -81,31 +78,18 @@ public class NavigationAdapter extends BaseAdapter {
 		view.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				
-				if (index == 0) {
-					Intent i = new Intent(mContext, StartActivity.class);
-					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					mContext.startActivity(i);
-				}
-				
-				if (index == 1) {
-					Intent i = new Intent(mContext, PhonebookActivity.class);
-					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					mContext.startActivity(i);
-				}
-				
-				if (index == 4) {
-					Intent i = new Intent(mContext, AboutActivity.class);
-					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					mContext.startActivity(i);
-				}
-				
-				Toast.makeText(parent.getContext(),
-						"view clicked: " + index + dataModel.getaDescription(),
-						Toast.LENGTH_SHORT).show();
+				DataNavigation mp = (DataNavigation) getItem(index);
+				sendTypeIntent(mp.getTitle().toLowerCase(Locale.ENGLISH));	
 			}
 		});
 
 		return view;
+	}
+	
+	public void sendTypeIntent(String mType) {
+		Intent typeIntent = new Intent();
+		typeIntent.setAction(Constants.MapTypeActionTag);
+		typeIntent.putExtra(Constants.MapType, mType);
+		mContext.sendBroadcast(typeIntent);
 	}
 }

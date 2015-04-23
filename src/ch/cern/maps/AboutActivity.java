@@ -1,6 +1,6 @@
 package ch.cern.maps;
 
-import ch.cern.maps.navigation.NavigationAdapter;
+import ch.cern.maps.adapters.NavigationAdapter;
 import ch.cern.maps.utils.ImageHelper;
 import ch.cern.www.R;
 import android.app.ActionBar;
