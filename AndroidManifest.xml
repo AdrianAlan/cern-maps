@@ -35,6 +35,12 @@
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" >
         </activity>
         <activity
+            android:name="ch.cern.maps.TPGScheduleActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" >
+        </activity>
+        <activity
             android:name="ch.cern.maps.AboutActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"

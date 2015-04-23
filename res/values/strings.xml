@@ -13,6 +13,7 @@
     <string name="OnEmptySearch">Please type in something!</string>
     <string name="nointernet">There is no internet connection at the moment. For security reasons Phonebook requires internet.</string>
     <string name="trams">CERN</string>
+    <string name="tpg">TPG Timetable</string>
     <string name="image">IMG</string>
     <string name="BelAir">Bel-Air</string>
     <string name="ValThoiry">Val-Thoiry</string>
@@ -59,7 +60,6 @@
         <item>Everyday we\'re shutteling</item>
         <item>Gurus that build this app</item>
     </string-array>
-    
     <string-array name="MapSelectorTitles">
         <item>Standard</item>
         <item>Cycle</item>
