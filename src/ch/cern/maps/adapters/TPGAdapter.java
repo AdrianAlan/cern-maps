@@ -64,11 +64,22 @@ public class TPGAdapter extends BaseAdapter {
 		
 		tv = (TextView) view.findViewById(R.id.textViewMinutes);
 		tv.setTypeface(mTypeface);
-		tv.setText(dataModel.getNextIn() + "");
+		tv.setText(dataModel.getNext()[0].getWaiting() + "");
 		
 		tv = (TextView) view.findViewById(R.id.textViewDirection);
 		tv.setTypeface(mTypeface);
-		tv.setText("minutes in direction " + dataModel.getDirectionTo());
+		tv.setText("minutes in direction " + dataModel.getNext()[0].getDirection());
+		
+		tv = (TextView) view.findViewById(R.id.textViewNext2);
+		tv.setTypeface(mTypeface);
+		
+		tv = (TextView) view.findViewById(R.id.textViewMinutes2);
+		tv.setTypeface(mTypeface);
+		tv.setText(dataModel.getNext()[1].getWaiting() + "");
+		
+		tv = (TextView) view.findViewById(R.id.textViewDirection2);
+		tv.setTypeface(mTypeface);
+		tv.setText("minutes in direction " + dataModel.getNext()[1].getDirection());
 		
 		return view;
 	}

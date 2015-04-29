@@ -139,11 +139,9 @@ public class TPGScheduleActivity extends Activity {
 
 			ArrayList<TPGView> tpg = new ArrayList<TPGView>();
 			tpg.add(new TPGView(nextTrams[0].getLine(), getResources()
-					.getDrawable(R.drawable.trams_18), nextTrams[0].getWaiting(),
-					nextTrams[0].getDirection()));
+					.getDrawable(R.drawable.trams_18), nextTrams));
 			tpg.add(new TPGView(nextBuses[0].getLine(), getResources()
-					.getDrawable(R.drawable.trams_y), nextBuses[0].getWaiting(),
-					nextBuses[0].getDirection()));
+					.getDrawable(R.drawable.trams_y), nextBuses));
 			
 			ListView tpgList = (ListView) findViewById(R.id.tpg_list);
 			TPGAdapter customAdapter = new TPGAdapter(

@@ -5,15 +5,13 @@ import android.graphics.drawable.Drawable;
 public class TPGView {
 
 	private Drawable lineColor;
-	private int nextIn;
-	private String lineNumber, directionTo;
+	private Trams[] next;
+	private String lineNumber;
 
-	public TPGView(String lineNumber, Drawable drawable, int j,
-			String directionTo) {
+	public TPGView(String lineNumber, Drawable drawable, Trams[] nextTrams) {
 		setLineNumber(lineNumber);
 		setLineColor(drawable);
-		setNextIn(j);
-		setDirectionTo(directionTo);
+		setNext(nextTrams);
 	}
 
 	public String getLineNumber() {
@@ -32,19 +30,11 @@ public class TPGView {
 		this.lineColor = lineColor;
 	}
 
-	public int getNextIn() {
-		return nextIn;
+	public Trams[] getNext() {
+		return next;
 	}
 
-	public void setNextIn(int nextIn) {
-		this.nextIn = nextIn;
-	}
-
-	public String getDirectionTo() {
-		return directionTo;
-	}
-
-	public void setDirectionTo(String directionTo) {
-		this.directionTo = directionTo;
+	public void setNext(Trams[] next) {
+		this.next = next;
 	}
 }
