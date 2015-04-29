@@ -36,6 +36,7 @@
     <string name="line">Line</string>
     <string name="nool"></string>
     <string name="icon">icon</string>
+    <string name="refresh">Refresh</string>
 
     <!-- About -->
     <string name="about">About</string>

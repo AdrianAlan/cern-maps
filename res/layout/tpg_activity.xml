@@ -18,17 +18,18 @@
     <LinearLayout
         android:id="@+id/layoutStop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_height="48dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:layout_marginTop="150dip"
-        android:background="@color/trans"
+        android:background="@color/cern_grey"
+        android:gravity="center_vertical"
         android:visibility="visible" >
 
         <ImageButton
             android:id="@+id/imageButtonCERNStop"
-            android:layout_width="48dip"
-            android:layout_height="48dip"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
             android:layout_margin="5dip"
             android:background="@color/trans"
             android:contentDescription="@string/phonebook"
@@ -36,30 +37,68 @@
 
         <TextView
             android:id="@+id/stopName"
-            android:layout_width="match_parent"
-            android:layout_height="48dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="5dip"
+            android:layout_weight="1"
             android:background="@color/trans"
-            android:gravity="start|center_vertical"
-            android:padding="3dip"
             android:text="@string/trams"
             android:textColor="@color/cern_white"
             android:textSize="@dimen/text_normal" >
         </TextView>
+
+        <Button
+            android:id="@+id/buttonRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_header"
+            android:minWidth="44dp"
+            android:padding="0dp"
+            android:text="@string/refresh"
+            android:textColor="@color/cern_white" />
+
+        <Button
+            android:id="@+id/buttonStart"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_header"
+            android:minWidth="44dp"
+            android:padding="0dp"
+            android:text="Start"
+            android:textColor="@color/cern_white" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/starting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutStop"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dip"
+        android:background="@color/trans"
+        android:gravity="start|center_vertical"
+        android:padding="3dip"
+        android:text="Starting from now"
+        android:textColor="@color/cern_white"
+        android:textSize="@dimen/text_small" >
+    </TextView>
 
     <ProgressBar
         android:id="@+id/progressBarTPG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutStop"
+        android:layout_below="@+id/starting"
         android:layout_centerHorizontal="true" />
 
     <ListView
         android:id="@+id/tpg_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutStop"
+        android:layout_below="@+id/starting"
         android:background="@color/cern_black"
         android:choiceMode="none"
         android:divider="@color/cern_greyed"

@@ -28,8 +28,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -43,6 +45,7 @@ public class TPGScheduleActivity extends Activity {
 	private int[] mTVs = { R.id.action_bar_title, R.id.stopName };
 	private Typeface mTypeface;
 	private ProgressBar loading;
+	private Button refreshButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -106,11 +109,27 @@ public class TPGScheduleActivity extends Activity {
 				.decodeSampledBitmapFromResource(getResources(),
 						R.drawable.tpg, displaymetrics.widthPixels, 150));
 		loading = (ProgressBar) findViewById(R.id.progressBarTPG);
-		
-		// Get the trams
+		setRefreshButton();
+	}
+
+	@Override
+	protected void onResume() {
 		loading.setVisibility(View.VISIBLE);
 		readMyTramsFromJSON();
 		loading.setVisibility(View.INVISIBLE);
+		super.onResume();
+	}
+
+	private void setRefreshButton() {
+		refreshButton = (Button) findViewById(R.id.buttonRefresh);
+		refreshButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				loading.setVisibility(View.VISIBLE);
+				readMyTramsFromJSON();
+				loading.setVisibility(View.INVISIBLE);
+			}
+		});
 	}
 
 	private void readMyTramsFromJSON() {
@@ -142,10 +161,10 @@ public class TPGScheduleActivity extends Activity {
 					.getDrawable(R.drawable.trams_18), nextTrams));
 			tpg.add(new TPGView(nextBuses[0].getLine(), getResources()
 					.getDrawable(R.drawable.trams_y), nextBuses));
-			
+
 			ListView tpgList = (ListView) findViewById(R.id.tpg_list);
-			TPGAdapter customAdapter = new TPGAdapter(
-					getApplicationContext(), tpg);
+			TPGAdapter customAdapter = new TPGAdapter(getApplicationContext(),
+					tpg);
 			tpgList.setAdapter(customAdapter);
 
 		} catch (IOException e) {
