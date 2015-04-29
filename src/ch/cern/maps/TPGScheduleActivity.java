@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import ch.cern.maps.adapters.NavigationAdapter;
-import ch.cern.maps.adapters.PhonebookAdapter;
 import ch.cern.maps.adapters.TPGAdapter;
 import ch.cern.maps.models.TPGView;
 import ch.cern.maps.models.Trams;
@@ -34,8 +33,8 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
 public class TPGScheduleActivity extends Activity {
@@ -43,6 +42,7 @@ public class TPGScheduleActivity extends Activity {
 	private ActionBarDrawerToggle actionBarDrawerToggle;
 	private int[] mTVs = { R.id.action_bar_title, R.id.stopName };
 	private Typeface mTypeface;
+	private ProgressBar loading;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,7 @@ public class TPGScheduleActivity extends Activity {
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
 
-		// Customization
+		// Customization of the top bar
 		final Drawable actionBarColor = getResources().getDrawable(
 				R.drawable.top_lines);
 		actionBar.setBackgroundDrawable(actionBarColor);
@@ -89,27 +89,28 @@ public class TPGScheduleActivity extends Activity {
 		View childLayout = inflater.inflate(R.layout.tpg_activity,
 				(ViewGroup) findViewById(R.layout.tpg_activity));
 		parentLayout.addView(childLayout);
-
-		LinearLayout ll = (LinearLayout) findViewById(R.id.searchLayout);
-		ll.setVisibility(View.INVISIBLE);
-
 		TextView tv = (TextView) findViewById(R.id.action_bar_title);
 		tv.setText(getResources().getString(R.string.tpg));
 
+		// Layout start
+		LinearLayout ll = (LinearLayout) findViewById(R.id.searchLayout);
+		ll.setVisibility(View.INVISIBLE);
 		mTypeface = Typeface.createFromAsset(getAssets(), "DroidSans.ttf");
 		for (int i = 0; i < mTVs.length; i++) {
 			setFontsOnTextViews(mTVs[i]);
 		}
-
 		ImageView iv = (ImageView) findViewById(R.id.tpgimg);
 		DisplayMetrics displaymetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 		iv.setImageBitmap(ImageHelper
 				.decodeSampledBitmapFromResource(getResources(),
 						R.drawable.tpg, displaymetrics.widthPixels, 150));
-
+		loading = (ProgressBar) findViewById(R.id.progressBarTPG);
+		
 		// Get the trams
+		loading.setVisibility(View.VISIBLE);
 		readMyTramsFromJSON();
+		loading.setVisibility(View.INVISIBLE);
 	}
 
 	private void readMyTramsFromJSON() {

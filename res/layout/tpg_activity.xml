@@ -48,6 +48,13 @@
         </TextView>
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBarTPG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutStop"
+        android:layout_centerHorizontal="true" />
+    
     <ListView
         android:id="@+id/tpg_list"
         android:layout_width="match_parent"
@@ -61,5 +68,7 @@
         android:paddingLeft="15dp"
         android:paddingRight="0dp"
         android:paddingStart="15dp" />
+
+
 
 </RelativeLayout>
