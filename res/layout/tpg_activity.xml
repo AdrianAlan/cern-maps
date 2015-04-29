@@ -19,11 +19,11 @@
         android:id="@+id/layoutStop"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
         android:layout_marginTop="150dip"
         android:background="@color/cern_grey"
         android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:visibility="visible" >
 
         <ImageButton
@@ -67,6 +67,7 @@
             android:layout_weight="1"
             android:background="@drawable/selector_header"
             android:minWidth="44dp"
+            android:onClick="showTimePickerDialog"
             android:padding="0dp"
             android:text="Start"
             android:textColor="@color/cern_white" />
@@ -82,17 +83,9 @@
         android:background="@color/trans"
         android:gravity="start|center_vertical"
         android:padding="3dip"
-        android:text="Starting from now"
         android:textColor="@color/cern_white"
         android:textSize="@dimen/text_small" >
     </TextView>
-
-    <ProgressBar
-        android:id="@+id/progressBarTPG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/starting"
-        android:layout_centerHorizontal="true" />
 
     <ListView
         android:id="@+id/tpg_list"
@@ -107,5 +100,12 @@
         android:paddingLeft="15dp"
         android:paddingRight="0dp"
         android:paddingStart="15dp" />
+    
+    <ProgressBar
+        android:id="@+id/progressBarTPG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/starting"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

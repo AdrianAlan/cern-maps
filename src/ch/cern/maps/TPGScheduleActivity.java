@@ -3,6 +3,7 @@ package ch.cern.maps;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 
 import ch.cern.maps.adapters.NavigationAdapter;
@@ -16,6 +17,9 @@ import ch.cern.maps.utils.Utils;
 import ch.cern.www.R;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -23,8 +27,10 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.text.format.DateFormat;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,15 +43,18 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 @SuppressWarnings("deprecation")
 public class TPGScheduleActivity extends Activity {
 
 	private ActionBarDrawerToggle actionBarDrawerToggle;
-	private int[] mTVs = { R.id.action_bar_title, R.id.stopName };
+	private int[] mTVs = { R.id.action_bar_title, R.id.stopName, R.id.starting };
 	private Typeface mTypeface;
 	private ProgressBar loading;
 	private Button refreshButton;
+	private TextView fromWhen;
+	private int hour, minute;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -110,14 +119,19 @@ public class TPGScheduleActivity extends Activity {
 						R.drawable.tpg, displaymetrics.widthPixels, 150));
 		loading = (ProgressBar) findViewById(R.id.progressBarTPG);
 		setRefreshButton();
+		fromWhen = (TextView) findViewById(R.id.starting);
 	}
 
 	@Override
 	protected void onResume() {
-		loading.setVisibility(View.VISIBLE);
+		refreshTime();
 		readMyTramsFromJSON();
-		loading.setVisibility(View.INVISIBLE);
 		super.onResume();
+	}
+
+	private void refreshTime() {
+		hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+		minute = Calendar.getInstance().get(Calendar.MINUTE);
 	}
 
 	private void setRefreshButton() {
@@ -125,14 +139,14 @@ public class TPGScheduleActivity extends Activity {
 		refreshButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				loading.setVisibility(View.VISIBLE);
+				refreshTime();
 				readMyTramsFromJSON();
-				loading.setVisibility(View.INVISIBLE);
 			}
 		});
 	}
 
 	private void readMyTramsFromJSON() {
+		loading.setVisibility(View.VISIBLE);
 		JSONParser jsonParser;
 		try {
 			ArrayList<Trams> t18 = new ArrayList<Trams>();
@@ -153,8 +167,8 @@ public class TPGScheduleActivity extends Activity {
 				bY.add(tram);
 			}
 
-			Trams[] nextTrams = Utils.getNextTrains(t18);
-			Trams[] nextBuses = Utils.getNextTrains(bY);
+			Trams[] nextTrams = Utils.getNextTrains(t18, hour, minute);
+			Trams[] nextBuses = Utils.getNextTrains(bY, hour, minute);
 
 			ArrayList<TPGView> tpg = new ArrayList<TPGView>();
 			tpg.add(new TPGView(nextTrams[0].getLine(), getResources()
@@ -170,6 +184,8 @@ public class TPGScheduleActivity extends Activity {
 		} catch (IOException e) {
 			Log.e(Constants.TAG, e.getMessage());
 		}
+		setFromWhenText(hour, minute);
+		loading.setVisibility(View.INVISIBLE);
 	}
 
 	@Override
@@ -195,5 +211,37 @@ public class TPGScheduleActivity extends Activity {
 	private void setFontsOnTextViews(int arg) {
 		TextView tv = (TextView) findViewById(arg);
 		tv.setTypeface(mTypeface);
+	}
+
+	public void showTimePickerDialog(View v) {
+		DialogFragment newFragment = new TimePickerFragment();
+		newFragment.show(getFragmentManager(), "timePicker");
+	}
+
+	public class TimePickerFragment extends DialogFragment implements
+			TimePickerDialog.OnTimeSetListener {
+
+		@Override
+		public Dialog onCreateDialog(Bundle savedInstanceState) {
+			return new TimePickerDialog(new ContextThemeWrapper(getActivity(),
+					R.style.AppStyle), this, hour, minute,
+					DateFormat.is24HourFormat(getActivity()));
+		}
+
+		public void onTimeSet(TimePicker view, int hourOfDay, int m) {
+			hour = hourOfDay;
+			minute = m;
+			readMyTramsFromJSON();
+		}
+	}
+
+	private void setFromWhenText(int i, int j) {
+		String m;
+		if (j<10) {
+			m = "0" + j;
+		} else {
+			m = j + "";
+		}
+		fromWhen.setText("Transport today at " + i + ":" + m);
 	}
 }
