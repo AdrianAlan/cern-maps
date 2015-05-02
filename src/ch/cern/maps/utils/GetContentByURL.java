@@ -17,7 +17,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
 
 public class GetContentByURL extends AsyncTask<String, Void, String> {
 
@@ -28,8 +27,6 @@ public class GetContentByURL extends AsyncTask<String, Void, String> {
 	}
 	
 	protected String doInBackground(String... urls) {
-		Log.e("String", urls[0]);
-
 		String resString = null;
 
 		String searchString = urls[0].toLowerCase(Locale.ENGLISH);
@@ -63,8 +60,6 @@ public class GetContentByURL extends AsyncTask<String, Void, String> {
 	}
 
 	protected void onPostExecute(String res) {
-		Log.e("TAG", res);
-		
 		Intent typeIntent = new Intent();
 		typeIntent.setAction(Constants.PhonebookActionTag);
 		typeIntent.putExtra(Constants.PhonebookResponse, res);

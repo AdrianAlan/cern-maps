@@ -151,7 +151,8 @@ public class TPGScheduleActivity extends Activity {
 		try {
 			ArrayList<Trams> t18 = new ArrayList<Trams>();
 			ArrayList<Trams> bY = new ArrayList<Trams>();
-
+			ArrayList<Trams> bNA = new ArrayList<Trams>();
+			
 			InputStream is = getAssets().open(Constants.JSONTram);
 			jsonParser = new JSONParser(is);
 
@@ -166,15 +167,24 @@ public class TPGScheduleActivity extends Activity {
 				Trams tram = (Trams) i.next();
 				bY.add(tram);
 			}
+			
+			for (Iterator<Trams> i = jsonParser.readSchedule("NA").iterator(); i
+					.hasNext();) {
+				Trams tram = (Trams) i.next();
+				bNA.add(tram);
+			}
 
 			Trams[] nextTrams = Utils.getNextTrains(t18, hour, minute);
 			Trams[] nextBuses = Utils.getNextTrains(bY, hour, minute);
+			Trams[] nextNight = Utils.getNextTrains(bNA, hour, minute);
 
 			ArrayList<TPGView> tpg = new ArrayList<TPGView>();
 			tpg.add(new TPGView(nextTrams[0].getLine(), getResources()
 					.getDrawable(R.drawable.trams_18), nextTrams));
 			tpg.add(new TPGView(nextBuses[0].getLine(), getResources()
 					.getDrawable(R.drawable.trams_y), nextBuses));
+			tpg.add(new TPGView(nextNight[0].getLine(), getResources()
+					.getDrawable(R.drawable.trams_na), nextNight));
 
 			ListView tpgList = (ListView) findViewById(R.id.tpg_list);
 			TPGAdapter customAdapter = new TPGAdapter(getApplicationContext(),

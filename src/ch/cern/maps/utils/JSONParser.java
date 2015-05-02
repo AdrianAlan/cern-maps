@@ -70,9 +70,10 @@ public class JSONParser {
 			JSONArray jsonTrams = jObj.getJSONArray(lineNumber);
 			for (int i = 0; i < jsonTrams.length(); i++) {
 				JSONObject tram = jsonTrams.getJSONObject(i);
-				String time = tram.getString(Constants.JSON_TAG_TRAMS_TIME);
-				String direction = tram.getString(Constants.JSON_TAG_TRAMS_Direction);
-				trams.add(new Trams(lineNumber, time, direction));
+				String time = tram.getString(Constants.JSON_TAG_Trams_Time);
+				String direction = tram.getString(Constants.JSON_TAG_Trams_Direction);
+				String day = tram.getString(Constants.JSON_TAG_Trams_Day);
+				trams.add(new Trams(lineNumber, time, direction, day));
 			}
 		} catch (JSONException e) {
 			Log.e(Constants.TAG, "Error parsing data " + e.toString());

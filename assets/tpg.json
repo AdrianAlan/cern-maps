@@ -1,738 +1,2078 @@
 {
     "18": [
-            {
-                "time": "05:24",
-                "direction": "Carouge"
-            },
-            {
-                "time": "05:39",
-                "direction": "Carouge"
-            },
-            {
-                "time": "05:54",
-                "direction": "Carouge"
-            },
-            {
-                "time": "06:09",
-                "direction": "Carouge"
-            },
-            {
-                "time": "06:24",
-                "direction": "Carouge"
-            },
-            {
-                "time": "06:39",
-                "direction": "Carouge"
-            },
-            {
-                "time": "06:53",
-                "direction": "Carouge"
-            },
-            {
-                "time": "07:01",
-                "direction": "Carouge"
-            },
-            {
-                "time": "07:12",
-                "direction": "Carouge"
-            },
-            {
-                "time": "07:22",
-                "direction": "Carouge"
-            },
-            {
-                "time": "07:33",
-                "direction": "Carouge"
-            },
-            {
-                "time": "07:42",
-                "direction": "Carouge"
-            },
-            {
-                "time": "07:52",
-                "direction": "Carouge"
-            },
-            {
-                "time": "08:02",
-                "direction": "Carouge"
-            },
-            {
-                "time": "08:12",
-                "direction": "Carouge"
-            },
-            {
-                "time": "08:22",
-                "direction": "Carouge"
-            },
-            {
-                "time": "08:33",
-                "direction": "Carouge"
-            },
-            {
-                "time": "08:43",
-                "direction": "Carouge"
-            },
-            {
-                "time": "08:53",
-                "direction": "Carouge"
-            },
-            {
-                "time": "09:03",
-                "direction": "Carouge"
-            },
-            {
-                "time": "09:13",
-                "direction": "Carouge"
-            },
-            {
-                "time": "09:23",
-                "direction": "Carouge"
-            },
-            {
-                "time": "09:33",
-                "direction": "Carouge"
-            },
-            {
-                "time": "09:43",
-                "direction": "Carouge"
-            },
-            {
-                "time": "09:53",
-                "direction": "Carouge"
-            },
-            {
-                "time": "10:03",
-                "direction": "Carouge"
-            },
-            {
-                "time": "10:14",
-                "direction": "Carouge"
-            },
-            {
-                "time": "10:24",
-                "direction": "Carouge"
-            },
-            {
-                "time": "10:34",
-                "direction": "Carouge"
-            },
-            {
-                "time": "10:44",
-                "direction": "Carouge"
-            },
-            {
-                "time": "10:54",
-                "direction": "Carouge"
-            },
-            {
-                "time": "11:04",
-                "direction": "Carouge"
-            },
-            {
-                "time": "11:15",
-                "direction": "Carouge"
-            },
-            {
-                "time": "11:24",
-                "direction": "Carouge"
-            },
-            {
-                "time": "11:34",
-                "direction": "Carouge"
-            },
-            {
-                "time": "11:44",
-                "direction": "Carouge"
-            },
-            {
-                "time": "11:55",
-                "direction": "Carouge"
-            },
-            {
-                "time": "12:04",
-                "direction": "Carouge"
-            },
-            {
-                "time": "12:15",
-                "direction": "Carouge"
-            },
-            {
-                "time": "12:25",
-                "direction": "Carouge"
-            },
-            {
-                "time": "12:35",
-                "direction": "Carouge"
-            },
-            {
-                "time": "12:45",
-                "direction": "Carouge"
-            },
-            {
-                "time": "12:55",
-                "direction": "Carouge"
-            },
-            {
-                "time": "13:05",
-                "direction": "Carouge"
-            },
-            {
-                "time": "13:15",
-                "direction": "Carouge"
-            },
-            {
-                "time": "13:25",
-                "direction": "Carouge"
-            },
-            {
-                "time": "13:35",
-                "direction": "Carouge"
-            },
-            {
-                "time": "13:45",
-                "direction": "Carouge"
-            },
-            {
-                "time": "13:56",
-                "direction": "Carouge"
-            },
-            {
-                "time": "14:06",
-                "direction": "Carouge"
-            },
-            {
-                "time": "14:16",
-                "direction": "Carouge"
-            },
-            {
-                "time": "14:26",
-                "direction": "Carouge"
-            },
-            {
-                "time": "14:36",
-                "direction": "Carouge"
-            },
-            {
-                "time": "14:47",
-                "direction": "Carouge"
-            },
-            {
-                "time": "14:56",
-                "direction": "Carouge"
-            },
-            {
-                "time": "15:07",
-                "direction": "Carouge"
-            },
-            {
-                "time": "15:17",
-                "direction": "Carouge"
-            },
-            {
-                "time": "15:26",
-                "direction": "Carouge"
-            },
-            {
-                "time": "15:37",
-                "direction": "Carouge"
-            },
-            {
-                "time": "15:48",
-                "direction": "Carouge"
-            },
-            {
-                "time": "15:57",
-                "direction": "Carouge"
-            },
-            {
-                "time": "16:00",
-                "direction": "Carouge"
-            },
-            {
-                "time": "16:19",
-                "direction": "Carouge"
-            },
-            {
-                "time": "16:29",
-                "direction": "Carouge"
-            },
-            {
-                "time": "16:38",
-                "direction": "Carouge"
-            },
-            {
-                "time": "16:49",
-                "direction": "Carouge"
-            },
-            {
-                "time": "17:00",
-                "direction": "Carouge"
-            },
-            {
-                "time": "17:10",
-                "direction": "Carouge"
-            },
-            {
-                "time": "17:20",
-                "direction": "Carouge"
-            },
-            {
-                "time": "17:30",
-                "direction": "Carouge"
-            },
-            {
-                "time": "17:40",
-                "direction": "Carouge"
-            },
-            {
-                "time": "17:51",
-                "direction": "Carouge"
-            },
-            {
-                "time": "18:01",
-                "direction": "Carouge"
-            },
-            {
-                "time": "18:11",
-                "direction": "Carouge"
-            },
-            {
-                "time": "18:22",
-                "direction": "Carouge"
-            },
-            {
-                "time": "18:32",
-                "direction": "Carouge"
-            },
-            {
-                "time": "18:42",
-                "direction": "Carouge"
-            },
-            {
-                "time": "18:53",
-                "direction": "Carouge"
-            },
-            {
-                "time": "19:03",
-                "direction": "Carouge"
-            },
-            {
-                "time": "19:13",
-                "direction": "Carouge"
-            },
-            {
-                "time": "19:29",
-                "direction": "Carouge"
-            },
-            {
-                "time": "19:40",
-                "direction": "Carouge"
-            },
-            {
-                "time": "19:52",
-                "direction": "Carouge"
-            },
-            {
-                "time": "20:07",
-                "direction": "Carouge"
-            },
-            {
-                "time": "20:16",
-                "direction": "Carouge"
-            },
-            {
-                "time": "20:34",
-                "direction": "Carouge"
-            },
-            {
-                "time": "20:58",
-                "direction": "Carouge"
-            },
-            {
-                "time": "21:17",
-                "direction": "Carouge"
-            },
-            {
-                "time": "21:37",
-                "direction": "Carouge"
-            },
-            {
-                "time": "21:57",
-                "direction": "Carouge"
-            },
-            {
-                "time": "22:17",
-                "direction": "Carouge"
-            },
-            {
-                "time": "22:37",
-                "direction": "Carouge"
-            },
-            {
-                "time": "22:57",
-                "direction": "Carouge"
-            },
-            {
-                "time": "23:17",
-                "direction": "Carouge"
-            }
-        ],
-        "Y": [
-            {
-                "time": "06:03",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "06:34",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "07:06",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "07:34",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "07:50",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "08:05",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "08:21",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "08:36",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "08:51",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "09:06",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "09:22",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "09:36",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "09:53",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "10:23",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "10:54",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "11:24",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "11:54",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "12:24",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "12:54",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "13:24",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "13:54",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "14:24",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "14:54",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "15:24",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "15:54",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "16:25",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "16:49",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "17:05",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "17:20",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "17:35",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "17:50",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "18:04",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "18:19",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "18:33",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "18:48",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "19:03",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "19:16",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "19:35",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "19:59",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "20:59",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "22:01",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "23:02",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "00:04",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "01:03",
-                "direction": "Val-Thoiry"
-            },
-            {
-                "time": "05:50",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "06:21",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "06:53",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "07:17",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "07:37",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "07:52",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "08:08",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "08:23",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "08:38",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "08:54",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "09:07",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "09:21",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "09:36",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "09:55",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "10:25",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "10:55",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "11:24",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "11:54",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "12:24",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "12:54",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "13:24",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "13:54",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "14:24",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "14:54",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "15:24",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "15:54",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "16:24",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "16:40",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "16:55",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "17:10",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "17:25",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "17:40",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "17:55",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "18:00",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "18:24",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "18:39",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "18:54",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "19:00",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "19:24",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "19:52",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "20:53",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "21:56",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "22:58",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "23:59",
-                "direction": "Ferney-Voltaire"
-            },
-            {
-                "time": "00:59",
-                "direction": "Ferney-Voltaire"
-            }
-        ]
-    }
+        {
+            "day": "week",
+            "time": "05:24",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "05:39",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "05:54",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "06:09",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "06:24",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "06:39",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "06:53",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "07:01",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "07:12",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "07:22",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "07:33",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "07:42",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "07:52",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "08:02",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "08:12",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "08:22",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "08:33",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "08:43",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "08:53",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "09:03",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "09:13",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "09:23",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "09:33",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "09:43",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "09:53",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "10:03",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "10:14",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "10:24",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "10:34",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "10:44",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "10:54",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "11:04",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "11:15",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "11:24",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "11:34",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "11:44",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "11:55",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "12:04",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "12:15",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "12:25",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "12:35",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "12:45",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "12:55",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "13:05",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "13:15",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "13:25",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "13:35",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "13:45",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "13:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "14:06",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "14:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "14:26",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "14:36",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "14:47",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "14:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "15:07",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "15:17",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "15:26",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "15:37",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "15:48",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "15:57",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "16:08",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "16:19",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "16:29",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "16:38",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "16:49",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "17:00",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "17:10",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "17:20",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "17:30",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "17:40",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "17:51",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "18:01",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "18:11",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "18:22",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "18:32",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "18:42",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "18:53",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "19:03",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "19:13",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "19:29",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "19:40",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "19:52",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "20:07",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "20:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "20:34",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "20:58",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "21:17",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "21:37",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "21:57",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "22:17",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "22:37",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "22:57",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "23:17",
+            "direction": "Carouge"
+        },
+        {
+            "day": "week",
+            "time": "19:19",
+            "direction": "De Stael"
+        },
+        {
+            "day": "week",
+            "time": "20:22",
+            "direction": "De Stael"
+        },
+        {
+            "day": "week",
+            "time": "21:07",
+            "direction": "De Stael"
+        },
+        {
+            "day": "week",
+            "time": "23:37",
+            "direction": "De Stael"
+        },
+        {
+            "day": "week",
+            "time": "23:57",
+            "direction": "De Stael"
+        },
+        {
+            "day": "week",
+            "time": "00:17",
+            "direction": "De Stael"
+        },
+        {
+            "day": "week",
+            "time": "00:37",
+            "direction": "De Stael"
+        },
+        {
+            "day": "week",
+            "time": "00:49",
+            "direction": "De Stael"
+        },
+        {
+            "day": "week",
+            "time": "20:40",
+            "direction": "Palettes"
+        },
+        {
+            "day": "sa",
+            "time": "05:38",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "05:54",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "06:07",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "06:23",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "06:37",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "06:52",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "07:07",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "07:22",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "07:37",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "07:52",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "08:07",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "08:24",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "08:42",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "08:57",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "09:12",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "09:27",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "09:42",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "09:57",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "10:12",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "10:27",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "10:42",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "10:57",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "11:12",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "11:27",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "11:42",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "11:57",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "12:12",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "12:27",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "12:42",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "12:55",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "13:07",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "13:19",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "13:32",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "13:44",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "13:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "14:09",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "14:21",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "14:33",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "14:46",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "14:58",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "15:10",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "15:23",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "15:35",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "15:47",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "16:00",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "16:12",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "16:24",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "16:37",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "16:49",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "17:01",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "17:14",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "17:26",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "17:38",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "17:51",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "18:03",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "18:27",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "18:40",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "18:57",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "19:13",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "19:27",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "19:43",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "19:57",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "20:13",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "20:27",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "20:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "21:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "21:36",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "21:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "22:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "22:36",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "22:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "23:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "06:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "06:36",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "06:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "07:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "07:36",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "07:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "08:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "08:36",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "08:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "09:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "09:36",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "09:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "10:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "10:36",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "10:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "11:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "11:36",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "11:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "12:16",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "12:36",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "12:56",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "13:14",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "13:29",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "13:44",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "13:59",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "14:14",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "14:29",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "14:44",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "14:59",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "15:14",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "15:29",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "15:44",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "15:59",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "16:14",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "16:29",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "16:44",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "16:59",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "17:14",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "17:29",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "17:44",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "17:59",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "18:14",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "18:29",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "18:55",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "19:19",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "19:39",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "19:59",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "20:19",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "20:39",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "20:59",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "21:18",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "21:39",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "21:58",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "22:18",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "22:38",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "22:58",
+            "direction": "Carouge"
+        },
+        {
+            "day": "su",
+            "time": "23:18",
+            "direction": "Carouge"
+        },
+        {
+            "day": "sa",
+            "time": "18:15",
+            "direction": "Palettes"
+        },
+        {
+            "day": "sa",
+            "time": "18:46",
+            "direction": "Palettes"
+        },
+        {
+            "day": "sa",
+            "time": "20:43",
+            "direction": "Palettes"
+        },
+        {
+            "day": "sa",
+            "time": "21:06",
+            "direction": "Palettes"
+        },
+        {
+            "day": "sa",
+            "time": "23:36",
+            "direction": "Palettes"
+        },
+        {
+            "day": "sa",
+            "time": "23:56",
+            "direction": "Palettes"
+        },
+        {
+            "day": "sa",
+            "time": "00:16",
+            "direction": "Palettes"
+        },
+        {
+            "day": "sa",
+            "time": "00:36",
+            "direction": "Palettes"
+        },
+        {
+            "day": "sa",
+            "time": "00:51",
+            "direction": "Palettes"
+        },
+        {
+            "day": "su",
+            "time": "18:44",
+            "direction": "Palettes"
+        },
+        {
+            "day": "su",
+            "time": "19:06",
+            "direction": "Palettes"
+        },
+        {
+            "day": "su",
+            "time": "23:38",
+            "direction": "Palettes"
+        },
+        {
+            "day": "su",
+            "time": "23:58",
+            "direction": "Palettes"
+        },
+        {
+            "day": "su",
+            "time": "00:17",
+            "direction": "Palettes"
+        },
+        {
+            "day": "su",
+            "time": "00:37",
+            "direction": "Palettes"
+        },
+        {
+            "day": "su",
+            "time": "00:52",
+            "direction": "Palettes"
+        }
+    ],
+    "Y": [
+        {
+            "day": "week",
+            "time": "05:50",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "06:21",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "06:53",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "07:17",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "07:37",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "07:52",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "08:08",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "08:23",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "08:38",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "08:54",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "09:07",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "09:21",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "09:36",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "09:55",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "10:25",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "10:55",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "11:24",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "11:54",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "12:24",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "12:54",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "13:24",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "13:54",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "14:24",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "14:54",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "15:24",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "15:54",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "16:24",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "16:40",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "16:55",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "17:10",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "17:25",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "17:40",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "17:55",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "18:09",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "18:24",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "18:39",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "18:54",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "19:09",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "19:24",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "19:52",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "20:53",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "21:56",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "22:58",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "23:59",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "00:59",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "week",
+            "time": "06:03",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "06:34",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "07:06",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "07:34",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "07:50",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "08:05",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "08:21",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "08:36",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "08:51",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "09:06",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "09:22",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "09:36",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "09:53",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "10:23",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "10:54",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "11:24",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "11:54",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "12:24",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "12:54",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "13:24",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "13:54",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "14:24",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "14:54",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "15:24",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "15:54",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "16:25",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "16:49",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "17:05",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "17:20",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "17:35",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "17:50",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "18:04",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "18:19",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "18:33",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "18:48",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "19:03",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "19:16",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "19:35",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "19:59",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "20:59",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "22:01",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "23:02",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "00:04",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "01:03",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "16:49",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "sa",
+            "time": "17:35",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "sa",
+            "time": "18:20",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "sa",
+            "time": "19:05",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "sa",
+            "time": "19:55",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "sa",
+            "time": "20:55",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "sa",
+            "time": "21:56",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "sa",
+            "time": "22:57",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "sa",
+            "time": "23:58",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "sa",
+            "time": "00:58",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "sa",
+            "time": "06:33",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "07:34",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "08:35",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "09:35",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "10:25",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "11:11",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "11:56",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "12:41",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "13:26",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "14:11",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "14:56",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "15:41",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "16:26",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "17:11",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "17:56",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "18:41",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "19:25",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "20:10",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "20:59",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "22:00",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "23:02",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "00:03",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "01:02",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "07:46",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "08:46",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "09:47",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "10:47",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "11:47",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "12:47",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "13:46",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "14:42",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "15:42",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "16:42",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "17:45",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "18:48",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "19:51",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "20:54",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "21:56",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "22:57",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "23:59",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "00:59",
+            "direction": "Ferney-Voltaire"
+        },
+        {
+            "day": "su",
+            "time": "07:37",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "08:38",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "09:38",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "10:39",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "11:39",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "12:39",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "13:39",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "14:41",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "15:45",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "16:48",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "17:51",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "18:54",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "19:57",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "20:59",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "22:01",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "23:03",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "00:04",
+            "direction": "Val-Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "01:02",
+            "direction": "Val-Thoiry"
+        }
+    ],
+    "NA": [
+        {
+            "day": "week",
+            "time": "03:14",
+            "direction": "Rive"
+        },
+        {
+            "day": "sa",
+            "time": "03:14",
+            "direction": "Rive"
+        },
+        {
+            "day": "sa",
+            "time": "03:15",
+            "direction": "Rive"
+        },
+        {
+            "day": "week",
+            "time": "01:44",
+            "direction": "Thoiry"
+        },
+        {
+            "day": "week",
+            "time": "02:24",
+            "direction": "Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "01:44",
+            "direction": "Thoiry"
+        },
+        {
+            "day": "sa",
+            "time": "02:24",
+            "direction": "Thoiry"
+        },
+        {
+            "day": "su",
+            "time": "02:24",
+            "direction": "Thoiry"
+        }
+    ]
+}

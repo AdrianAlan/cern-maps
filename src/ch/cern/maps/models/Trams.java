@@ -2,14 +2,13 @@ package ch.cern.maps.models;
 
 public class Trams {
 
-	private String line;
-	private String time;
-	private String direction;
+	private String line, time, direction, day;
 	private int waiting;
 
-	public Trams(String line, String time, String direction) {
+	public Trams(String line, String time, String direction, String day) {
 		this.setLine(line);
 		this.setTime(time);
+		this.setDay(day);
 		this.setDirection(direction);
 	}
 
@@ -28,7 +27,7 @@ public class Trams {
 	public void setLine(String line) {
 		this.line = line;
 	}
-	
+
 	public String getDirection() {
 		return direction;
 	}
@@ -43,6 +42,14 @@ public class Trams {
 
 	public void setWaiting(int waiting) {
 		this.waiting = waiting;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
 	}
 
 }

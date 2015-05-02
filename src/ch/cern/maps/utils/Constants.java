@@ -8,10 +8,10 @@ public class Constants {
 	public static final String TAG = "CERNMAPS";
 
 	public static final String JSONTram = "tpg.json";
-	public static final String JSON_TAG_TRAMS = "trams";
-	public static final String JSON_TAG_TRAMS_LINE = "line";
-	public static final String JSON_TAG_TRAMS_TIME = "time";
-	public static final String JSON_TAG_TRAMS_Direction = "direction";
+	public static final String JSON_TAG_Trams = "trams";
+	public static final String JSON_TAG_Trams_Time = "time";
+	public static final String JSON_TAG_Trams_Direction = "direction";
+	public static final String JSON_TAG_Trams_Day = "day";
 
 	public static final String JSON_BUILDINGS = "buildings.json";
 	public static final String JSON_TAG_BUILDINGS_LATITUDE = "lat";
@@ -67,4 +67,5 @@ public class Constants {
 	public static final String InternetConnectionActionTag = "InternetConnectionActionTag";
 	public static final String InternetConnectionStatus = "InternetConnectionStatus";
 	public static final String PingURLForConnection = "cern.ch";
+	
 }
