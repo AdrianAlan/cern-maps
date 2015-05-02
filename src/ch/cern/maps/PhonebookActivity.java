@@ -22,10 +22,12 @@ import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,6 +38,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,9 +50,12 @@ public class PhonebookActivity extends Activity {
 	private boolean isInternet;
 	private int[] mTVs = { R.id.action_bar_title, R.id.editPersonSearch,
 			R.id.textViewNoInternet };
+	private Handler uCantHandleThat = new Handler();
 	private PhonebookReceiver mPhonebookReceiver;
+	private ProgressBar loading;
 	private RelativeLayout noConnection;
 	private LinearLayout isConnection;
+	private ListView phonebookList;
 	private ImageButton imageButtonPhonebook;
 	private TextView editTextSearch;
 	private Typeface mTypeface;
@@ -126,8 +132,12 @@ public class PhonebookActivity extends Activity {
 			}
 		});
 
+		loading = (ProgressBar) findViewById(R.id.progressBarPhonebook);
+
 		noConnection = (RelativeLayout) findViewById(R.id.layoutNoConnection);
 		isConnection = (LinearLayout) findViewById(R.id.layoutSearch);
+
+		phonebookList = (ListView) findViewById(R.id.people_list);
 	}
 
 	protected void startQuery() {
@@ -136,6 +146,9 @@ public class PhonebookActivity extends Activity {
 			ToastResult(getString(R.string.OnEmptySearch));
 		} else {
 			if (isInternet) {
+				loading.setVisibility(View.VISIBLE);
+				uCantHandleThat.postDelayed(runForYourLife,
+						Constants.LocateMeTreshold);
 				new GetContentByURL(getApplicationContext())
 						.execute(editTextSearch.getText().toString());
 			}
@@ -170,17 +183,25 @@ public class PhonebookActivity extends Activity {
 	private class PhonebookReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context arg0, Intent mReceivedIntent) {
+			loading.setVisibility(View.INVISIBLE);
+			uCantHandleThat.removeCallbacks(runForYourLife);
 			if (mReceivedIntent.getAction()
 					.equals(Constants.PhonebookActionTag)) {
 				String mt = mReceivedIntent
 						.getStringExtra(Constants.PhonebookResponse);
-				JSONParser jsonParser = new JSONParser(
-						new ByteArrayInputStream(mt.getBytes()));
-				ArrayList<Person> p = jsonParser.readPhonebook();
-				ListView phonebookList = (ListView) findViewById(R.id.people_list);
-				PhonebookAdapter customAdapter = new PhonebookAdapter(
-						getApplicationContext(), p);
-				phonebookList.setAdapter(customAdapter);
+				if (mt != null) {
+					JSONParser jsonParser = new JSONParser(
+							new ByteArrayInputStream(mt.getBytes()));
+					ArrayList<Person> p = jsonParser.readPhonebook();
+					if (p.size() == 0) {
+						ToastResult("No results");
+					}
+					PhonebookAdapter customAdapter = new PhonebookAdapter(
+							getApplicationContext(), p);
+					phonebookList.setAdapter(customAdapter);
+				} else {
+					isInternetAvailable();
+				}
 			}
 			if (mReceivedIntent.getAction().equals(
 					Constants.InternetConnectionActionTag)) {
@@ -204,13 +225,36 @@ public class PhonebookActivity extends Activity {
 
 	public void hideLayouts(Boolean isInternet) {
 		if (isInternet) {
-			isConnection.setVisibility(View.VISIBLE);
+			uCantHandleThat.removeCallbacks(checkConnection);
+			loading.setVisibility(View.INVISIBLE);
 			noConnection.setVisibility(View.INVISIBLE);
+			isConnection.setVisibility(View.VISIBLE);
+			phonebookList.setVisibility(View.VISIBLE);
 		} else {
+			phonebookList.setVisibility(View.INVISIBLE);
 			isConnection.setVisibility(View.INVISIBLE);
+			loading.setVisibility(View.VISIBLE);
 			noConnection.setVisibility(View.VISIBLE);
+			uCantHandleThat.postDelayed(checkConnection,
+					Constants.LocateMeTreshold);
 		}
 	}
+
+	private Runnable runForYourLife = new Runnable() {
+		public void run() {
+			loading.setVisibility(View.INVISIBLE);
+			ToastResult(getString(R.string.UnsuccessfulPhonebook));
+		}
+	};
+
+	private Runnable checkConnection = new Runnable() {
+		public void run() {
+			uCantHandleThat.removeCallbacks(checkConnection);
+			isInternetAvailable();
+			uCantHandleThat.postDelayed(checkConnection,
+					Constants.LocateMeTreshold);
+		}
+	};
 
 	@Override
 	protected void onPause() {

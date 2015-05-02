@@ -29,8 +29,6 @@ public class GetContentByURL extends AsyncTask<String, Void, String> {
 	}
 	
 	protected String doInBackground(String... urls) {
-		Log.e("String", urls[0]);
-
 		String resString = null;
 
 		String searchString = urls[0].toLowerCase(Locale.ENGLISH);
@@ -64,8 +62,6 @@ public class GetContentByURL extends AsyncTask<String, Void, String> {
 	}
 
 	protected void onPostExecute(String res) {
-		Log.e("TAG", res);
-		
 		Intent typeIntent = new Intent();
 		typeIntent.setAction(Constants.PhonebookActionTag);
 		typeIntent.putExtra(Constants.PhonebookResponse, res);
