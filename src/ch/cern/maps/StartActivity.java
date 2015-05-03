@@ -13,6 +13,7 @@ import ch.cern.www.R;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
@@ -82,7 +83,7 @@ public class StartActivity extends Activity {
 
 		// Show Action Bar
 		this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
-		setContentView(R.layout.activity_start);
+		setContentView(R.layout.drawer_layout);
 
 		// Take care of navigation drawer and action bar
 		ListView drawerListView = (ListView) findViewById(R.id.left_drawer);
@@ -129,8 +130,8 @@ public class StartActivity extends Activity {
 		 */
 		LinearLayout parentLayout = (LinearLayout) findViewById(R.id.content_frame);
 		// parentLayout.addView(childLayout);
-		View childLayout = inflater.inflate(R.layout.start_map,
-				(ViewGroup) findViewById(R.layout.start_map));
+		View childLayout = inflater.inflate(R.layout.map_activity,
+				(ViewGroup) findViewById(R.layout.map_activity));
 		parentLayout.addView(childLayout);
 
 		// Initiate activity elements
@@ -153,7 +154,15 @@ public class StartActivity extends Activity {
 		initializeVariables();
 
 		// Setup
-		setWebView(mPreferences.getString(Constants.MapType, ""), 0, 0);
+
+		Intent i = getIntent();
+		String mOffice = i.getStringExtra("Something");
+		if (mOffice != null && !mOffice.equals("")) {
+			mOffice = mOffice.split("-")[0];
+			setWebView(mPreferences.getString(Constants.MapType, ""), -1, -1, mOffice);
+		} else {
+			setWebView(mPreferences.getString(Constants.MapType, ""), 0, 0, null);
+		}
 		setLocateMeFuction();
 		setSearchBuilding();
 		setMapTypeSelector();
@@ -214,35 +223,33 @@ public class StartActivity extends Activity {
 		imageButtonSearch.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				searchForMe();
+				searchBuilding();
 			}
 		});
+	}
+
+	private void searchBuilding() {
+		searchForMe(editTextSearch.getText().toString());
 	}
 
 	/*
 	 * Gets position of the building and converts to proper scroll coordinates
 	 */
-	protected void searchForMe() {
-		if (editTextSearch.getText().toString().equals(null)
-				|| editTextSearch.getText().toString().equals("")) {
+	protected void searchForMe(String s) {
+		if (s.equals(null) || s.equals("")) {
 			ToastResult(getString(R.string.OnEmptySearch));
 		} else {
-			double[] search = getPositionOfTheBuildingFromJSON(editTextSearch
-					.getText().toString());
-
+			double[] search = getPositionOfTheBuildingFromJSON(s);
 			if (search == null) {
-				ToastResult(getString(R.string.NoSearchResults) + " "
-						+ editTextSearch.getText());
+				ToastResult(getString(R.string.NoSearchResults) + " " + s);
 			} else if (search[1] < Constants.MAP_WEST
 					|| search[1] > Constants.MAP_EAST
 					|| search[0] > Constants.MAP_NORTH
 					|| search[0] < Constants.MAP_SOUTH) {
-				ToastResult(getString(R.string.MapToSmall)
-						+ editTextSearch.getText());
+				ToastResult(getString(R.string.MapToSmall) + s);
 				GPSPixel[0] = 0;
 				GPSPixel[1] = 0;
 			} else {
-
 				progressBar.setVisibility(View.VISIBLE);
 				GPSPixel = Utils.getPixel(search[1], search[0]);
 				onShowGPS((int) GPSPixel[0], (int) GPSPixel[1],
@@ -278,7 +285,6 @@ public class StartActivity extends Activity {
 
 	private void setLocateMeFuction() {
 		imageButtonLocateMe = (ImageButton) findViewById(R.id.imageButtonLocateMe);
-
 		imageButtonLocateMe.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -349,7 +355,8 @@ public class StartActivity extends Activity {
 	}
 
 	@SuppressLint({ "SetJavaScriptEnabled" })
-	private void setWebView(String mMapType, double f, double g) {
+	private void setWebView(String mMapType, double f, double g, final String s) {
+		Log.e("TAG", "main");
 		if (f != 0 && g != 0) {
 			initialScroll[0] = f;
 			initialScroll[1] = g;
@@ -401,8 +408,12 @@ public class StartActivity extends Activity {
 				progressBar.setVisibility(View.INVISIBLE);
 				webView.getSettings().setSupportZoom(true);
 				webView.getSettings().setBuiltInZoomControls(true);
-				// Let us scroll to Main Building
-				scrollMe(initialScroll);
+				if (initialScroll[0] != -1) {
+					// Let us scroll to Main Building
+					scrollMe(initialScroll);
+				} else {
+					searchForMe(s);
+				}
 				webView.setPictureListener(null);
 			}
 		});
@@ -503,7 +514,7 @@ public class StartActivity extends Activity {
 					x = 2641;
 					y = 4833;
 				}
-				setWebView(mt, x, y);
+				setWebView(mt, x, y, null);
 			}
 		}
 	}

@@ -13,9 +13,9 @@
         android:id="@+id/textViewLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:gravity="center_vertical|start"
         android:text="@string/line"
-        android:layout_marginTop="4dp"
         android:textColor="@color/cern_white"
         android:textSize="@dimen/text_normal" />
 
@@ -24,11 +24,11 @@
         android:layout_width="40dip"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
-        android:layout_toRightOf="@+id/textViewLine"
-        android:layout_toEndOf="@+id/textViewLine"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
+        android:layout_toEndOf="@+id/textViewLine"
+        android:layout_toRightOf="@+id/textViewLine"
         android:background="@drawable/trams_18"
         android:gravity="center_vertical|center_horizontal"
         android:text="@string/Y"
@@ -40,75 +40,79 @@
         android:id="@+id/textViewNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewMinutes"
         android:layout_below="@+id/imageViewLine"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical|start"
-        android:layout_alignBottom="@+id/textViewMinutes"
         android:text="@string/next_in"
         android:textColor="@color/cern_white"
         android:textSize="@dimen/text_small" />
-    
+
     <TextView
         android:id="@+id/textViewMinutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginLeft="10dip"
-        android:layout_toRightOf="@+id/textViewNext"
-        android:layout_toEndOf="@+id/textViewNext"
         android:layout_below="@+id/imageViewLine"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/textViewNext"
+        android:layout_toRightOf="@+id/textViewNext"
+        android:gravity="center"
         android:textColor="@color/cern_white"
         android:textSize="@dimen/text_big" />
-    
+
     <TextView
         android:id="@+id/textViewDirection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:gravity="center"
-        android:layout_toRightOf="@+id/textViewMinutes"
-        android:layout_toEndOf="@+id/textViewMinutes"
         android:layout_alignBottom="@+id/textViewMinutes"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/textViewMinutes"
+        android:layout_toRightOf="@+id/textViewMinutes"
+        android:gravity="center"
         android:textColor="@color/cern_white"
         android:textSize="@dimen/text_small" />
-    
-        <TextView
+
+    <TextView
         android:id="@+id/textViewNext2"
         android:layout_width="wrap_content"
-        android:layout_below="@+id/textViewNext"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewMinutes2"
+        android:layout_below="@+id/textViewNext"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical|start"
-        android:layout_alignBottom="@+id/textViewMinutes2"
         android:text="@string/next_in"
         android:textColor="@color/cern_white"
         android:textSize="@dimen/text_small" />
-    
+
     <TextView
         android:id="@+id/textViewMinutes2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginLeft="10dip"
-        android:layout_toRightOf="@+id/textViewNext2"
-        android:layout_toEndOf="@+id/textViewNext2"
         android:layout_below="@+id/textViewNext"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/textViewNext2"
+        android:layout_toRightOf="@+id/textViewNext2"
+        android:gravity="center"
         android:textColor="@color/cern_white"
         android:textSize="@dimen/text_big" />
-    
+
     <TextView
         android:id="@+id/textViewDirection2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:gravity="center"
-        android:layout_toRightOf="@+id/textViewMinutes2"
-        android:layout_toEndOf="@+id/textViewMinutes2"
         android:layout_alignBottom="@+id/textViewMinutes2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/textViewMinutes2"
+        android:layout_toRightOf="@+id/textViewMinutes2"
+        android:gravity="center"
         android:textColor="@color/cern_white"
         android:textSize="@dimen/text_small" />
 

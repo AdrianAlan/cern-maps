@@ -17,9 +17,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="5dp"
+        android:background="@drawable/gps"
         android:contentDescription="@string/icon"
-        android:gravity="center_vertical"
-        android:background="@drawable/gps" />
+        android:gravity="center_vertical" />
 
     <TextView
         android:id="@+id/personTitle"
@@ -38,10 +38,11 @@
         android:id="@+id/personDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/personIcon"
-        android:layout_toRightOf="@+id/personIcon"
         android:layout_below="@+id/personTitle"
         android:layout_marginLeft="3dp"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/personIcon"
+        android:layout_toRightOf="@+id/personIcon"
         android:gravity="center_vertical"
         android:textColor="@color/cern_white"
         android:textSize="@dimen/text_small" />

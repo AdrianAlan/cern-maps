@@ -23,7 +23,7 @@ public class DialogBox extends Activity {
 	public Dialog startInfoBox(Typeface tf) {
 		LayoutInflater mInflater = (LayoutInflater) mContext
 				.getSystemService(LAYOUT_INFLATER_SERVICE);
-		View mLayout = mInflater.inflate(R.layout.dialog_box, null);
+		View mLayout = mInflater.inflate(R.layout.map_selector_dialog, null);
 		TextView tv = (TextView) mLayout.findViewById(R.id.boxTitle);
 		tv.setTypeface(tf);
 
@@ -35,5 +35,4 @@ public class DialogBox extends Activity {
 		drawerListView.setAdapter(customAdapter);
 		return mBuilder.create();
 	}
-
 }

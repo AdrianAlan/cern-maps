@@ -66,7 +66,7 @@ public class PhonebookActivity extends Activity {
 
 		// Show Action Bar
 		this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
-		setContentView(R.layout.activity_start);
+		setContentView(R.layout.drawer_layout);
 
 		// Take care of navigation drawer and action bar
 		ListView drawerListView = (ListView) findViewById(R.id.left_drawer);

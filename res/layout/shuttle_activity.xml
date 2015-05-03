@@ -6,14 +6,14 @@
     android:orientation="vertical" >
 
     <ImageView
-        android:id="@+id/tpgimg"
+        android:id="@+id/imageShuttle"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:adjustViewBounds="true"
         android:contentDescription="@string/phonebook"
         android:scaleType="centerCrop"
-        android:src="@drawable/tpg" />
+        android:src="@drawable/img_leading_shuttle" />
 
     <LinearLayout
         android:id="@+id/layoutStop"
@@ -21,60 +21,69 @@
         android:layout_height="48dp"
         android:layout_marginTop="150dip"
         android:background="@color/cern_grey"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|center_horizontal"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:visibility="visible" >
 
         <ImageButton
             android:id="@+id/imageButtonCERNStop"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_margin="5dip"
-            android:background="@color/trans"
-            android:contentDescription="@string/phonebook"
-            android:src="@drawable/ic_action_transport_tram_icon" />
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/ic_transport"
+            android:contentDescription="@string/CERNShuttleService" />
 
         <TextView
-            android:id="@+id/stopName"
+            android:id="@+id/circuitName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
             android:layout_weight="1"
             android:background="@color/trans"
-            android:text="@string/trams"
             android:textColor="@color/cern_white"
             android:textSize="@dimen/text_normal" >
         </TextView>
 
-        <Button
-            android:id="@+id/buttonRefresh"
+        <ImageButton
+            android:id="@+id/buttonSelectCircuit"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/selector_header"
+            android:contentDescription="@string/CERNShuttleService"
             android:minWidth="44dp"
             android:padding="0dp"
-            android:text="@string/refresh"
-            android:textColor="@color/cern_white" />
+            android:src="@drawable/ic_action_labels" />
 
-        <Button
-            android:id="@+id/buttonStart"
+        <ImageButton
+            android:id="@+id/buttonSelectTime"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/selector_header"
+            android:contentDescription="@string/CERNShuttleService"
             android:minWidth="44dp"
-            android:onClick="showTimePickerDialog"
             android:padding="0dp"
-            android:text="@string/StartFrom"
-            android:textColor="@color/cern_white" />
+            android:src="@drawable/ic_action_time" />
+
+        <ImageButton
+            android:id="@+id/buttonSelectStop"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_header"
+            android:contentDescription="@string/CERNShuttleService"
+            android:minWidth="44dp"
+            android:padding="0dp"
+            android:src="@drawable/ic_action_place" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/starting"
+        android:id="@+id/textSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layoutStop"
@@ -88,10 +97,10 @@
     </TextView>
 
     <ListView
-        android:id="@+id/tpg_list"
+        android:id="@+id/listShuttles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/starting"
+        android:layout_below="@+id/textSubTitle"
         android:background="@color/cern_black"
         android:choiceMode="none"
         android:divider="@color/cern_greyed"
@@ -100,12 +109,5 @@
         android:paddingLeft="15dp"
         android:paddingRight="0dp"
         android:paddingStart="15dp" />
-
-    <ProgressBar
-        android:id="@+id/progressBarTPG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/starting"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

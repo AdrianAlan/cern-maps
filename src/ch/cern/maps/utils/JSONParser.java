@@ -4,13 +4,17 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import ch.cern.maps.models.Building;
+import ch.cern.maps.models.Circuit;
 import ch.cern.maps.models.Person;
 import ch.cern.maps.models.Trams;
 import android.util.Log;
@@ -71,7 +75,8 @@ public class JSONParser {
 			for (int i = 0; i < jsonTrams.length(); i++) {
 				JSONObject tram = jsonTrams.getJSONObject(i);
 				String time = tram.getString(Constants.JSON_TAG_Trams_Time);
-				String direction = tram.getString(Constants.JSON_TAG_Trams_Direction);
+				String direction = tram
+						.getString(Constants.JSON_TAG_Trams_Direction);
 				String day = tram.getString(Constants.JSON_TAG_Trams_Day);
 				trams.add(new Trams(lineNumber, time, direction, day));
 			}
@@ -94,5 +99,52 @@ public class JSONParser {
 		} catch (JSONException e) {
 			return null;
 		}
+	}
+
+	public Circuit readShuttle(String lineName) {
+		Circuit line = null;
+		try {
+			JSONObject jsonShuttle = jObj.getJSONObject(lineName);
+			ArrayList<String> timeList = new ArrayList<String>();
+			Map<String, ArrayList<String>> stopList = new HashMap<String, ArrayList<String>>();
+			for (Iterator<String> iterator = jsonShuttle.keys(); iterator
+					.hasNext();) {
+				String st = (String) iterator.next();
+				JSONArray jsonStops = jsonShuttle.getJSONObject(st)
+						.getJSONArray("Stops");
+				ArrayList<String> al = new ArrayList<String>();
+				for (int i = 0; i < jsonStops.length(); i++) {
+					al.add(jsonStops.getString(i));
+				}
+				stopList.put(st, al);
+				timeList.add(st);
+			}
+			line = new Circuit(lineName, timeList, stopList);
+		} catch (JSONException e) {
+			Log.e(Constants.TAG, "Error parsing data " + e.toString());
+			e.printStackTrace();
+		}
+		return line;
+	}
+
+	public String[] readShuttleSchedule(Circuit mCircuit) {
+		try {
+			JSONObject jsonShuttle = jObj.getJSONObject(mCircuit.getName());
+			JSONObject jsonShuttle2 = jsonShuttle.getJSONObject(mCircuit
+					.getSelectedTime());
+			JSONObject jsonShuttle3 = jsonShuttle2.getJSONObject("Time");
+			JSONArray jsonShuttle4 = jsonShuttle3.getJSONArray(mCircuit
+					.getSelectedStop());
+			String[] s = new String[jsonShuttle4.length()];
+			for (int i = 0; i < jsonShuttle4.length(); i++) {
+				s[i] = jsonShuttle4.optString(i);
+			}
+			return s;
+		} catch (JSONException e) {
+			Log.e(Constants.TAG, "Error parsing data " + e.toString());
+			e.printStackTrace();
+			
+		}
+		return null;
 	}
 }

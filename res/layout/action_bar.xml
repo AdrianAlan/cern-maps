@@ -30,9 +30,9 @@
             android:background="@drawable/searchbg"
             android:fitsSystemWindows="true"
             android:hint="@string/search"
+            android:imeOptions="actionDone"
             android:inputType="number"
             android:padding="3dip"
-            android:imeOptions="actionDone"
             android:textColor="@color/cern_white" >
 
             <requestFocus />

@@ -2,9 +2,12 @@ package ch.cern.maps.adapters;
 
 import java.util.ArrayList;
 
+import ch.cern.maps.StartActivity;
+import ch.cern.maps.TPGScheduleActivity;
 import ch.cern.maps.models.Person;
 import ch.cern.www.R;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,16 +65,13 @@ public class PhonebookAdapter extends BaseAdapter {
 		tv.setText("Group: " + dataModel.getGroup() + "; Office: "
 				+ dataModel.getOffice() + "; Email: " + dataModel.getEmail());
 		iv = (ImageView) view.findViewById(R.id.personIcon);
-
 		iv.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-
-				// TODO Invoke StartActivity
-
-				Toast.makeText(parent.getContext(),
-						"Office: " + dataModel.getOffice(), Toast.LENGTH_SHORT)
-						.show();
+				Intent i = new Intent(mContext, StartActivity.class);
+				i.putExtra("Something", dataModel.getOffice());
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				mContext.startActivity(i);
 			}
 		});
 

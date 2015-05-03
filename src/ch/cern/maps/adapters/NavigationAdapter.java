@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import ch.cern.maps.AboutActivity;
 import ch.cern.maps.PhonebookActivity;
+import ch.cern.maps.ShuttleScheduleActivity;
 import ch.cern.maps.StartActivity;
 import ch.cern.maps.TPGScheduleActivity;
 import ch.cern.maps.models.DataNavigation;
@@ -18,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class NavigationAdapter extends BaseAdapter {
 
@@ -101,10 +101,9 @@ public class NavigationAdapter extends BaseAdapter {
 				}
 
 				if (index == 3) {
-					Toast.makeText(
-							mContext,
-							"CERN shuttle is going to be updated in version 3.01",
-							Toast.LENGTH_LONG).show();
+					Intent i = new Intent(mContext, ShuttleScheduleActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					mContext.startActivity(i);
 				}
 
 				if (index == 4) {

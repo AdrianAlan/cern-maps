@@ -25,13 +25,16 @@
     <string name="OK">OK</string>
     <string name="next_in">next in</string>
     <string name="NextTramIn">Next tram in:</string>
+    <string name="StartFrom">Starting from</string>
     <string name="GPSOff">GPS is disabled in your device</string>
     <string name="enable">Enable</string>
     <string name="cancel">Cancel</string>
     <string name="stopasking">Stop Asking</string>
+    <string name="CERNShuttleService">Shuttle service schedule</string>
     <string name="OutOfBound">You are too far from CERN</string>
     <string name="NoSearchResults">Sorry, no results for&#32;</string>
     <string name="MapToSmall">Map to small to show&#32;</string>
+    <string name="NextShuttleIn">transport at</string>
     <string name="Y">Y</string>
     <string name="N18">18</string>
     <string name="line">Line</string>
@@ -46,7 +49,7 @@
     <string name="contribute">Please report suggestions and bugs (and feel free to contribute to the code) to https://github.com/AdrianAlan/cern-maps</string>
     <string name="contributors">© 2015 Created by</string>
     <string name="github">GitHub</string>
-    <string name="licence">This software contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL). See more at www.openstreetmap.org/copyright. Adrian Alan Pol and Andrea Giardini wrote this app. As long as you retain this notice you can do whatever you want with this stuff. If we meet some day, and you think this stuff is worth it, you can buy us a beer in return.</string>
+    <string name="licence">This software contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL). See more at www.openstreetmap.org/copyright. Adrian Alan Pol and Andrea Giardini wrote this app. As long as you retain this notice you can do whatever you want with this stuff. If we meet some day, and you think this stuff is worth it, you can buy us a beer in return.\n\nWe would like to send special thanks to Sebastian Lopienski, who helped us a lot with the app, and GS department for giving us hints about map services.</string>
 
     <!-- Navigation -->
     <string-array name="NavigationTitles">
@@ -59,9 +62,9 @@
     <string-array name="NavigationDescriptions">
         <item>Locate your own black hole</item>
         <item>For stalking CERN people</item>
-        <item>Anyway on strike probably</item>
+        <item>Probably on strike</item>
         <item>Everyday we\'re shutteling</item>
-        <item>Gurus that build this app</item>
+        <item>Who let the dogs out</item>
     </string-array>
     <string-array name="MapSelectorTitles">
         <item>Standard</item>

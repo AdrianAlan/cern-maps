@@ -16,6 +16,9 @@ public class Constants {
 	public static final String JSON_BUILDINGS = "buildings.json";
 	public static final String JSON_TAG_BUILDINGS_LATITUDE = "lat";
 	public static final String JSON_TAG_BUILDINGS_LONGITUDE = "lon";
+	
+	public static final String JSONCERNShuttle = "shuttle.json";
+	
 
 	public static final int MAP_HEIGHT = 5376;
 	public static final int MAP_WIDTH = 5376;
@@ -50,6 +53,9 @@ public class Constants {
 	public static final int[] mapSelectorIcons = { R.drawable.ic_standard,
 			R.drawable.ic_cycle, R.drawable.ic_transport };
 
+	public static final String[] shuttleCircuits = { "Circuit 1",
+		"Circuit 2", "Circuit 3", "Circuit 4" };
+	
 	public static final int UpdatePeriod = 2592000;
 	
 	public static final String MapTypeActionTag = "MapTypeActionTag";
