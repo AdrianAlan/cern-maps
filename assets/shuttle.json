@@ -1,5 +1,5 @@
 {
-    "Circuit 1": {
+    "Circuit 1 - Meyrin": {
         "Morning": {
             "Stops": [
                 "33",
@@ -224,7 +224,7 @@
             }
         }
     },
-    "Circuit 2": {
+    "Circuit 2 - Prévessin": {
         "Afternoon": {
             "Stops": [
                 "500",
@@ -368,7 +368,7 @@
             }
         }
     },
-    "Circuit 3": {
+    "Circuit 3 - Shift": {
         "All Day": {
             "Stops": [
                 "33",
@@ -430,7 +430,7 @@
             }
         }
     },
-    "Circuit 4": {
+    "Circuit 4 - Airport": {
         "All day": {
             "Stops": [
                 "500",
