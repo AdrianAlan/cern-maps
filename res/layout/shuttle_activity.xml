@@ -42,7 +42,7 @@
             android:layout_weight="1"
             android:background="@color/trans"
             android:textColor="@color/cern_white"
-            android:textSize="@dimen/text_normal" >
+            android:textSize="@dimen/text_small" >
         </TextView>
 
         <ImageButton
