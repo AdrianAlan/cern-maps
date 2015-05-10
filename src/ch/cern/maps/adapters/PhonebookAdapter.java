@@ -3,7 +3,6 @@ package ch.cern.maps.adapters;
 import java.util.ArrayList;
 
 import ch.cern.maps.StartActivity;
-import ch.cern.maps.TPGScheduleActivity;
 import ch.cern.maps.models.Person;
 import ch.cern.www.R;
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class PhonebookAdapter extends BaseAdapter {
 
