@@ -8,7 +8,7 @@
     <string name="phonebook">Phonebook</string>
     <string name="overflow">More maps</string>
     <string name="search">Search&#8230;</string>
-    <string name="select_view">Select View</string>
+    <string name="SelectView">Select View</string>
     <string name="textOpenStreetMapsContributors">© OpenStreetMap contributors</string>
     <string name="OnEmptySearch">Please type in something!</string>
     <string name="nointernet">There is no internet connection at the moment. For security reasons Phonebook requires internet.</string>
@@ -18,14 +18,13 @@
     <string name="BelAir">Bel-Air</string>
     <string name="ValThoiry">Val-Thoiry</string>
     <string name="FerneyVoltaireMairie">Ferney-Voltaire-Mairie</string>
-    <string name="next_trams">Next trains in: Sorry, no data</string>
     <string name="UnsuccessfulLocatization">Cannot estimate your position</string>
     <string name="UnsuccessfulPhonebook">Cannot get results for your query</string>
     <string name="WaitForLocation">Waiting for location</string>
     <string name="OK">OK</string>
     <string name="next_in">next in</string>
     <string name="NextTramIn">Next tram in:</string>
-    <string name="StartFrom">Starting from</string>
+    <string name="startFrom">Starting from</string>
     <string name="GPSOff">GPS is disabled in your device</string>
     <string name="enable">Enable</string>
     <string name="cancel">Cancel</string>
