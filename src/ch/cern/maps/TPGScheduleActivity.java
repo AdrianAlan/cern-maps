@@ -37,7 +37,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -52,7 +52,7 @@ public class TPGScheduleActivity extends Activity {
 	private int[] mTVs = { R.id.action_bar_title, R.id.stopName, R.id.starting };
 	private Typeface mTypeface;
 	private ProgressBar loading;
-	private Button refreshButton;
+	private ImageButton refreshButton;
 	private TextView fromWhen;
 	private int hour, minute;
 
@@ -135,7 +135,7 @@ public class TPGScheduleActivity extends Activity {
 	}
 
 	private void setRefreshButton() {
-		refreshButton = (Button) findViewById(R.id.buttonRefresh);
+		refreshButton = (ImageButton) findViewById(R.id.buttonRefresh);
 		refreshButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
