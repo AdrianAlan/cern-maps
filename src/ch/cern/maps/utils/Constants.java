@@ -54,7 +54,7 @@ public class Constants {
 			R.drawable.ic_cycle, R.drawable.ic_transport };
 
 	public static final String[] shuttleCircuits = { "Circuit 1 - Meyrin",
-		"Circuit 2 - Prévessin", "Circuit 3 - Shift", 
+		"Circuit 2 - Prevessin", "Circuit 3 - Shift", 
 		"Circuit 4 - Airport" };
 	
 	public static final int UpdatePeriod = 2592000;
