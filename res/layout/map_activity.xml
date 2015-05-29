@@ -9,8 +9,6 @@
         android:id="@+id/mapWebView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
         android:scrollbars="none" />
 
     <ProgressBar
@@ -32,20 +30,14 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/locate_me" >
 
-        <LinearLayout
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:background="@color/cern_blue_transparent" >
-
-            <ImageButton
-                android:id="@+id/imageButtonLocateMe"
-                android:layout_width="44dip"
-                android:layout_height="44dip"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/locateme"
-                android:src="@drawable/ic_action_locate" />
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/imageButtonLocateMe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/selector_locate_me"
+            android:contentDescription="@string/locateme"
+            android:src="@drawable/ic_action_locate" />
     </RelativeLayout>
 
     <TextView

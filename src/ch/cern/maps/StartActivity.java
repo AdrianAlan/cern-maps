@@ -284,26 +284,6 @@ public class StartActivity extends Activity {
 
 	private void setLocateMeFuction() {
 		imageButtonLocateMe = (ImageButton) findViewById(R.id.imageButtonLocateMe);
-		imageButtonLocateMe.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					imageButtonLocateMe
-							.setImageResource(R.drawable.ic_action_locate);
-					imageButtonLocateMe
-							.setBackgroundResource(R.color.cern_blue_transparent);
-					return false;
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					imageButtonLocateMe
-							.setImageResource(R.drawable.ic_action_locate);
-					imageButtonLocateMe.setBackgroundColor(getResources()
-							.getColor(R.color.cern_transparent));
-					return false;
-				}
-				return false;
-			}
-		});
-
 		imageButtonLocateMe.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
