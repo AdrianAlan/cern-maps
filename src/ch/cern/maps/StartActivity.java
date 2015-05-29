@@ -114,7 +114,7 @@ public class StartActivity extends Activity {
 
 		// You customizationaction_bar
 		TextView tv = (TextView) findViewById(R.id.action_bar_title);
-		tv.setText(getResources().getString(R.string.none));
+		tv.setText(getResources().getString(R.string.nool));
 
 		final Drawable actionBarColor = getResources().getDrawable(
 				R.drawable.top_lines);

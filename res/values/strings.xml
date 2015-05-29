@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="none"></string>
+    <string name="nool"></string>
     <string name="app_name">CERN Maps</string>
     <string name="schedule">Schedule</string>
     <string name="locateme">Locate Me</string>
@@ -15,15 +15,11 @@
     <string name="trams">CERN</string>
     <string name="tpg">TPG Timetable</string>
     <string name="image">IMG</string>
-    <string name="BelAir">Bel-Air</string>
-    <string name="ValThoiry">Val-Thoiry</string>
-    <string name="FerneyVoltaireMairie">Ferney-Voltaire-Mairie</string>
     <string name="UnsuccessfulLocatization">Cannot estimate your position</string>
     <string name="UnsuccessfulPhonebook">Cannot get results for your query</string>
     <string name="WaitForLocation">Waiting for location</string>
     <string name="OK">OK</string>
     <string name="next_in">next in</string>
-    <string name="NextTramIn">Next tram in:</string>
     <string name="startFrom">Starting from</string>
     <string name="GPSOff">GPS is disabled in your device</string>
     <string name="enable">Enable</string>
@@ -37,9 +33,7 @@
     <string name="Y">Y</string>
     <string name="N18">18</string>
     <string name="line">Line</string>
-    <string name="nool"></string>
     <string name="icon">icon</string>
-    <string name="refresh">Refresh</string>
 
     <!-- About -->
     <string name="about">About</string>
