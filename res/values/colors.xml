@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="cern_black">#2e2e2e</color>
-    <color name="cern_white">#ebebeb</color>
-    <color name="cern_grey">#454545</color>
-    <color name="cern_blue">#22529e</color>
-    <color name="cern_blue_shadow">#8cabdd</color>
-    <color name="cern_greyed">#999999</color>
-    <color name="cern_purple">#a901db</color>
-    <color name="cern_pink">#f5a9f2</color>
-    <color name="trans">#00000000 </color>
+    <!-- Colors per Google design guidelines  -->
+    
+    <color name="cern_black">#212121</color>
+    <color name="cern_blue">#0d47a1</color>
+    <color name="cern_blued">#64b5f6</color>
+    <color name="cern_grey">#424242</color>
+    <color name="cern_greyed">#9e9e9e</color>
+    <color name="cern_pink">#ec407a</color>
+    <color name="cern_purple">#ab47bc</color>
+    <color name="cern_transparent">#00000000</color>
+    <color name="cern_white">#fafafa</color>
 
 </resources>

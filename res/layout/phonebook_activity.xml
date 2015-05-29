@@ -22,7 +22,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="150dip"
-        android:background="@color/trans"
+        android:background="@color/cern_transparent"
         android:visibility="visible" >
 
         <ImageButton
@@ -60,7 +60,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dip"
-        android:background="@color/trans"
+        android:background="@color/cern_transparent"
         android:visibility="invisible" >
 
         <ImageView

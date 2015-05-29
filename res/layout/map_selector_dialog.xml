@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:background="@color/trans"
+        android:background="@color/cern_transparent"
         android:gravity="center_vertical"
         android:text="@string/SelectView"
         android:textColor="@color/cern_white"

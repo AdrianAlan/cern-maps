@@ -2,7 +2,7 @@
     android:id="@+id/action_bar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/trans"
+    android:background="@color/cern_transparent"
     android:gravity="center_vertical" >
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
-        android:background="@color/trans" >
+        android:background="@color/cern_transparent" >
 
         <EditText
             android:id="@+id/editTextSearch"

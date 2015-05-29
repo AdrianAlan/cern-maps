@@ -297,7 +297,7 @@ public class StartActivity extends Activity {
 					imageButtonLocateMe
 							.setImageResource(R.drawable.ic_action_locate);
 					imageButtonLocateMe.setBackgroundColor(getResources()
-							.getColor(R.color.trans));
+							.getColor(R.color.cern_transparent));
 					return false;
 				}
 				return false;

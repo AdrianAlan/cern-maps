@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
             android:layout_weight="1"
-            android:background="@color/trans"
+            android:background="@color/cern_transparent"
             android:textColor="@color/cern_white"
             android:textSize="@dimen/text_small" >
         </TextView>
@@ -89,7 +89,7 @@
         android:layout_below="@+id/layoutStop"
         android:layout_centerHorizontal="true"
         android:layout_margin="5dip"
-        android:background="@color/trans"
+        android:background="@color/cern_transparent"
         android:gravity="start|center_vertical"
         android:padding="3dip"
         android:textColor="@color/cern_white"

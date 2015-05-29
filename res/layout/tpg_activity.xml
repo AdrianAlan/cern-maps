@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_margin="5dip"
-            android:background="@color/trans"
+            android:background="@color/cern_transparent"
             android:contentDescription="@string/phonebook"
             android:src="@drawable/ic_action_transport_tram_icon" />
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
             android:layout_weight="1"
-            android:background="@color/trans"
+            android:background="@color/cern_transparent"
             android:text="@string/trams"
             android:textColor="@color/cern_white"
             android:textSize="@dimen/text_normal" >
@@ -80,7 +80,7 @@
         android:layout_below="@+id/layoutStop"
         android:layout_centerHorizontal="true"
         android:layout_margin="5dip"
-        android:background="@color/trans"
+        android:background="@color/cern_transparent"
         android:gravity="start|center_vertical"
         android:padding="3dip"
         android:textColor="@color/cern_white"
