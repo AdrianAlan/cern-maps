@@ -27,10 +27,11 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -123,6 +124,26 @@ public class PhonebookActivity extends Activity {
 				150));
 
 		editTextSearch = (TextView) findViewById(R.id.editPersonSearch);
+		editTextSearch.setOnKeyListener(new OnKeyListener()
+		{
+			@Override
+		    public boolean onKey(View v, int keyCode, KeyEvent event)
+		    {
+		        if (event.getAction() == KeyEvent.ACTION_DOWN)
+		        {
+		            switch (keyCode)
+		            {
+		                case KeyEvent.KEYCODE_DPAD_CENTER:
+		                case KeyEvent.KEYCODE_ENTER:
+		                	startQuery();
+		                    return true;
+		                default:
+		                    break;
+		            }
+		        }
+		        return false;
+		    }
+		});
 
 		imageButtonPhonebook = (ImageButton) findViewById(R.id.imageButtonSearchPhonebook);
 		imageButtonPhonebook.setOnClickListener(new OnClickListener() {
