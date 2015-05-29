@@ -291,7 +291,7 @@ public class StartActivity extends Activity {
 					imageButtonLocateMe
 							.setImageResource(R.drawable.ic_action_locate);
 					imageButtonLocateMe
-							.setBackgroundResource(R.drawable.locatemebg);
+							.setBackgroundResource(R.color.cern_blue_transparent);
 					return false;
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					imageButtonLocateMe

@@ -4,6 +4,7 @@
     <!-- Colors per Google design guidelines -->
     <color name="cern_black">#212121</color>
     <color name="cern_blue">#0d47a1</color>
+    <color name="cern_blue_transparent">#880d47a1</color>
     <color name="cern_blued">#64b5f6</color>
     <color name="cern_grey">#424242</color>
     <color name="cern_grey_transparent">#aa424242</color>
