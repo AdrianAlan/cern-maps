@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Colors per Google design guidelines  -->
-    
+    <!-- Colors per Google design guidelines -->
     <color name="cern_black">#212121</color>
     <color name="cern_blue">#0d47a1</color>
     <color name="cern_blued">#64b5f6</color>
