@@ -15,7 +15,7 @@
         android:layout_marginStart="10dp"
         android:background="@color/trans"
         android:gravity="center_vertical"
-        android:text="@string/select_view"
+        android:text="@string/SelectView"
         android:textColor="@color/cern_white"
         android:textSize="22sp" />
 
