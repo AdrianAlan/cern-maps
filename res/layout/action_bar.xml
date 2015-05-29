@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_margin="5dip"
             android:layout_weight="1"
-            android:background="@drawable/searchbg"
+            android:background="@color/cern_grey_transparent"
             android:fitsSystemWindows="true"
             android:hint="@string/search"
             android:imeOptions="actionDone"
