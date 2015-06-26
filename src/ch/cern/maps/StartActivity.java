@@ -155,7 +155,7 @@ public class StartActivity extends Activity {
 		// Setup
 
 		Intent i = getIntent();
-		String mOffice = i.getStringExtra("Something");
+		String mOffice = i.getStringExtra(Constants.ScrollToTag);
 		if (mOffice != null && !mOffice.equals("")) {
 			mOffice = mOffice.split("-")[0];
 			setWebView(mPreferences.getString(Constants.MapType, ""), -1, -1, mOffice);

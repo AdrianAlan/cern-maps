@@ -74,5 +74,6 @@ public class Constants {
 	public static final String InternetConnectionActionTag = "InternetConnectionActionTag";
 	public static final String InternetConnectionStatus = "InternetConnectionStatus";
 	public static final String PingURLForConnection = "cern.ch";
+	public static final String ScrollToTag = "ScrollToTag";
 	
 }

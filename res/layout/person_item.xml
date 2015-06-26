@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/map"
+    android:id="@+id/personItem"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:background="@drawable/selector_navigation"
@@ -17,14 +17,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="5dp"
-        android:background="@drawable/gps"
+        android:background="@drawable/ic_action_person"
         android:contentDescription="@string/icon"
         android:gravity="center_vertical" />
 
     <TextView
         android:id="@+id/personTitle"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
@@ -39,8 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/personTitle"
-        android:layout_marginLeft="3dp"
-        android:layout_marginStart="3dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:layout_toEndOf="@+id/personIcon"
         android:layout_toRightOf="@+id/personIcon"
         android:gravity="center_vertical"

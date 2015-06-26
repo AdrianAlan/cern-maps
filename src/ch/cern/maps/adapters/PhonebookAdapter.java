@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import ch.cern.maps.StartActivity;
 import ch.cern.maps.models.Person;
+import ch.cern.maps.utils.Constants;
 import ch.cern.www.R;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class PhonebookAdapter extends BaseAdapter {
@@ -21,7 +22,6 @@ public class PhonebookAdapter extends BaseAdapter {
 	private Context mContext;
 	private ArrayList<Person> mPeople;
 	private TextView tv;
-	private ImageView iv;
 
 	public PhonebookAdapter(Context c, ArrayList<Person> p) {
 		this.mContext = c;
@@ -55,19 +55,19 @@ public class PhonebookAdapter extends BaseAdapter {
 
 		final Person dataModel = mPeople.get(index);
 
+		RelativeLayout rl = (RelativeLayout) view.findViewById(R.id.personItem);
 		tv = (TextView) view.findViewById(R.id.personTitle);
 		tv.setTypeface(mTypeface);
 		tv.setText(dataModel.getFamilyname() + ", " + dataModel.getFirstname());
 		tv = (TextView) view.findViewById(R.id.personDescription);
 		tv.setTypeface(mTypeface);
-		tv.setText("Group: " + dataModel.getGroup() + "; Office: "
-				+ dataModel.getOffice() + "; Email: " + dataModel.getEmail());
-		iv = (ImageView) view.findViewById(R.id.personIcon);
-		iv.setOnClickListener(new View.OnClickListener() {
+		tv.setText("Group: " + dataModel.getGroup() + "\nOffice: "
+				+ dataModel.getOffice() + "\nEmail: " + dataModel.getEmail());
+		rl.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				Intent i = new Intent(mContext, StartActivity.class);
-				i.putExtra("Something", dataModel.getOffice());
+				i.putExtra(Constants.ScrollToTag, dataModel.getOffice());
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				mContext.startActivity(i);
 			}
