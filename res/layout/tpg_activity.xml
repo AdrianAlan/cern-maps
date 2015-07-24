@@ -13,7 +13,7 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/phonebook"
         android:scaleType="centerCrop"
-        android:src="@drawable/tpg" />
+        android:src="@drawable/img_leading_tpg" />
 
     <LinearLayout
         android:id="@+id/layoutStop"
