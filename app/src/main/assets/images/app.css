@@ -1,0 +1,25 @@
+#gps {
+    background-image: url(gps.png);
+    background-size: 100%;
+    display: none;
+    position: absolute;
+    margin: 0;
+    z-index: 10
+}
+
+#pos {
+    background-image: url(pos.png);
+    background-size: 100%;
+    display: none;
+    position: absolute;
+    margin: 0;
+    z-index: 20
+}
+
+#circle {
+    display: none;
+    position: absolute;
+    background: #F08080;
+    -webkit-opacity: 0.5;
+    z-index: 2
+}
