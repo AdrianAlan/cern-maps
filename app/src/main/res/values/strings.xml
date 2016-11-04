@@ -43,7 +43,7 @@
     <string name="contribute">Please report suggestions and bugs (and feel free to contribute to the code) to https://github.com/AdrianAlan/cern-maps</string>
     <string name="contributors">© 2015 Created by</string>
     <string name="github">GitHub</string>
-    <string name="licence">This software contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL). See more at www.openstreetmap.org/copyright. Adrian Alan Pol and Andrea Giardini wrote this app. As long as you retain this notice you can do whatever you want with this stuff. If we meet some day, and you think this stuff is worth it, you can buy us a beer in return.\n\nWe would like to send special thanks to Sebastian Lopienski, who helped us a lot with the app, and GS department for giving us hints about map services.</string>
+    <string name="licence">This software contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL). See more at www.openstreetmap.org/copyright. AdrianAlan, AndreaGiardini and martinmine wrote this app. As long as you retain this notice you can do whatever you want with this stuff. If we meet some day, and you think this stuff is worth it, you can buy us a beer in return.\n\nWe would like to send special thanks to Sebastian Lopienski, who helped us a lot with the app, and GS department for giving us hints about map services.</string>
     <string name="location_permission_denied_result">I need permission to see your location :(</string>
 
     <!-- Navigation -->
