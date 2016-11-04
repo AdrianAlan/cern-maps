@@ -41,7 +41,7 @@
             android:layout_margin="5dip"
             android:background="@color/cern_white"
             android:fitsSystemWindows="true"
-            android:hint="@string/search"
+            android:hint="@string/phonebook_search_text"
             android:imeOptions="actionDone"
             android:inputType="textPersonName"
             android:padding="3dip"

@@ -7,7 +7,6 @@
     <string name="locateme">Locate Me</string>
     <string name="phonebook">Phonebook</string>
     <string name="overflow">More maps</string>
-    <string name="search">Building number</string>
     <string name="SelectView">Select View</string>
     <string name="textOpenStreetMapsContributors">© OpenStreetMap contributors</string>
     <string name="OnEmptySearch">Please type in something!</string>
@@ -35,6 +34,12 @@
     <string name="line">Line</string>
     <string name="icon">icon</string>
     <string name="refresh">Refresh</string>
+
+    <!-- Map -->
+    <string name="map_search_text">Building number</string>
+
+    <!-- Phonebook -->
+    <string name="phonebook_search_text">Name</string>
 
     <!-- About -->
     <string name="about">About</string>

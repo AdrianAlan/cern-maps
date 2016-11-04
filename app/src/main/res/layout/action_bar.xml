@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:background="@color/cern_grey_transparent"
             android:fitsSystemWindows="true"
-            android:hint="@string/search"
+            android:hint="@string/map_search_text"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:padding="3dip"
