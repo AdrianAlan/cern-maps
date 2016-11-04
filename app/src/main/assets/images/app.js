@@ -24,9 +24,11 @@ function mPosPosition(mLeft, mTop, mRadius, mScale) {
 
 function pageScroll(mLeft, mTop) {
     $('html, body').animate({
-        scrollTop: mTop,
+        scrollTop: mTop
+    }, 700);
+    $('html, body').animate({
         scrollLeft: mLeft
-    }, 500);
+    }, 700);
 }
 
 function mRotationPos(mDegree) {
