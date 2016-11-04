@@ -38,8 +38,8 @@
 
     <!-- About -->
     <string name="about">About</string>
-    <string name="adrian">adrianalan.pol@gmail.com \nCERN PH \nTechnical University of Denmark</string>
-    <string name="andrea">contact@andreagiardini.com \nCERN IT \nUniversity of Bologna</string>
+    <string name="adrian">Adrian Alan Pol \nCERN PH</string>
+    <string name="andrea">Andrea Giardini \nCERN IT</string>
     <string name="contribute">Please report suggestions and bugs (and feel free to contribute to the code) to https://github.com/AdrianAlan/cern-maps</string>
     <string name="contributors">© 2015 Created by</string>
     <string name="github">GitHub</string>
